@@ -2,12 +2,13 @@
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
+import AddingDoctor from "./AddingDoctor";
 
 function AddDoctor() {
   return (
     <DashboardLayout>
       <DashboardNavbar />
-      Add Doctor Page
+      <AddingDoctor />
       <Footer />
     </DashboardLayout>
   );
