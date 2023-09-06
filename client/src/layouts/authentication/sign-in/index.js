@@ -21,7 +21,7 @@ import Image1 from "./AdminLogin1.png";
 import "./LogIn.css";
 
 //
-import Footer from "examples/Footer";
+import Footer from "components/Footer";
 
 //
 import { useNavigate } from "react-router-dom";

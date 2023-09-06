@@ -37,7 +37,7 @@ function WardCard({ color, wardName, count, icon }) {
       </MDBox>
       <Divider />
       <MDBox display="flex" pb={1} px={2} justifyContent="center" alignItems="center">
-        <MDTypography variant="button" display="flex" color="secondary" fontWeight="bold">
+        <MDTypography variant="button" display="flex" color="text" fontWeight="bold">
           Doctors : {count}
         </MDTypography>
       </MDBox>
@@ -56,7 +56,7 @@ function WardCard({ color, wardName, count, icon }) {
           p={0.5}
           width="8rem"
         >
-          <MDTypography variant="button" display="flex" fontWeight="bold">
+          <MDTypography variant="button" display="flex" fontWeight="regular">
             View Details
           </MDTypography>
         </MDBox>
@@ -64,10 +64,7 @@ function WardCard({ color, wardName, count, icon }) {
     </Card>
   );
 }
-/**
- * 
-      
- */
+
 // Setting default values for the props of WardCard
 WardCard.defaultProps = {
   color: "info",
