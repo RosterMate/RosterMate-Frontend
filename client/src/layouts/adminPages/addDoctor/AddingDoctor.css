@@ -1,22 +1,21 @@
-.para{
+.para {
   margin-bottom: 30px;
-  color:rgb(80, 80, 80);
+  color: rgb(80, 80, 80);
 }
-.wrapper{
+.wrapper {
   max-width: 600px;
   width: 100%;
   margin: 30px auto 0;
   padding: 10px;
-
 }
 
-.wrapper .form_container{
+.wrapper .form_container {
   background: #fff;
   padding: 30px;
   box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.15);
   border-radius: 15px;
 }
-.heading{
+.heading {
   background: #015a80;
   margin: -30px;
   text-align: center;
@@ -25,34 +24,29 @@
   margin-bottom: 35px;
   padding: 10px;
   border-radius: 15px 15px 0px 0px;
-  
-  
 }
-.wrapper .form_container .form_item{
+.wrapper .form_container .form_item {
   margin-bottom: 25px;
 }
 
-.form_wrap.fullname,
-.form_wrap.select_box{
+.form_wrap.fullname {
   display: flex;
 }
 
-.form_wrap.fullname .form_item,
-.form_wrap.select_box .form_item{
+.form_wrap.fullname .form_item {
   width: 50%;
 }
 
-.form_wrap.fullname .form_item:first-child,
-.form_wrap.select_box .form_item:first-child{
+.form_wrap.fullname .form_item:first-child {
   margin-right: 4%;
 }
 
-.wrapper .form_container .form_item label{
+.wrapper .form_container .form_item label {
   display: block;
   margin-bottom: 5px;
 }
 
-.form_item input{
+.form_item input {
   width: 100%;
   padding: 10px;
   font-size: 16px;
@@ -60,11 +54,11 @@
   border-radius: 15px;
 }
 
-.form_item Input:focus{
+.form_item Input:focus {
   border-color: #6271f0;
 }
 
-.btn Button{
+.btn Button {
   background: #1598d4;
   border: 1px solid #1598d4;
   padding: 10px;
@@ -74,4 +68,5 @@
   border-radius: 15px;
   cursor: pointer;
   color: #fff;
+  margin-bottom: 10px;
 }
