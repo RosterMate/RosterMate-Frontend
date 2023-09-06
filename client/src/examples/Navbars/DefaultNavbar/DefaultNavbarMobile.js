@@ -7,7 +7,7 @@ import Menu from "@mui/material/Menu";
 // React components
 import MDBox from "components/MDBox";
 
-// React example components
+// example components
 import DefaultNavbarLink from "examples/Navbars/DefaultNavbar/DefaultNavbarLink";
 
 function DefaultNavbarMobile({ open, close }) {
