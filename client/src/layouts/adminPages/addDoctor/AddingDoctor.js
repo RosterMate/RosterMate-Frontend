@@ -3,51 +3,51 @@ import Input from "../../../components/InputBox/Input";
 import Button from "../../../components/Button/Button";
 import "./AddingDoctor.css";
 
-function AddingDoctor() {
-  const [fullname, setFullName] = useState("");
-  const [mobileNo, setMobileNo] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [address, setAddress] = useState("");
-  const [university, setUniversity] = useState("");
-  const [degree, setDegree] = useState("");
-  const [degreeperiod, setDegreePeriod] = useState("");
-  const [specialization, setSpecialization] = useState("");
-  const [showNextComponent, setShowNextComponent] = useState(false);
+function AddingConsultant() {
+  const [form1, setForm1] = useState({
+    fullname: "",
+    mobileNo: "",
+    email: "",
+    password: "",
+    address: "",
+  });
 
-  const handleFullNameChange = (event) => {
-    setFullName(event.target.value);
+  const [form2, setForm2] = useState({
+    university: "",
+    degree: "",
+    degreeperiod: "",
+    specialization: "",
+  });
+
+  const [showForm2, setShowForm2] = useState(false);
+
+  const handleForm1Change = (event) => {
+    setForm1({
+      ...form1,
+      [event.target.id]: event.target.value,
+    });
   };
-  const handleMobileNoChange = (event) => {
-    setMobileNo(event.target.value);
+
+  const handleForm2Change = (event2) => {
+    setForm2({
+      ...form2,
+      [event2.target.id]: event2.target.value,
+    });
   };
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  };
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
-  const handleAddressChange = (event) => {
-    setAddress(event.target.value);
-  };
-  const handleUniversityChange = (event) => {
-    setUniversity(event.target.value);
-  };
-  const handleDegreeChange = (event) => {
-    setDegree(event.target.value);
-  };
-  const handleDegreePeriodChange = (event) => {
-    setDegreePeriod(event.target.value);
-  };
-  const handleSpecializationChange = (event) => {
-    setSpecialization(event.target.value);
-  };
+
   const handleNextButtonClick = () => {
-    setShowNextComponent(!showNextComponent);
+    setShowForm2(true);
+    console.log(form1);
   };
+  const handleBackButtonClick = () => {
+    setShowForm2(false);
+    console.log(form2);
+    console.log(form1);
+  };
+
   return (
     <div>
-      {showNextComponent ? (
+      {showForm2 ? (
         <div class="wrapper">
           <div class="form_container">
             <form name="form">
@@ -62,27 +62,19 @@ function AddingDoctor() {
                 <div class="form_item">
                   <Input
                     hName="University Name"
-                    type="University Name"
-                    className=""
+                    type="text"
                     placeholder="University Name"
                     id="university"
-                    autoComplete=""
-                    required
-                    value={university}
-                    onChange={handleUniversityChange}
+                    onChange={handleForm2Change}
                   ></Input>
                 </div>
                 <div class="form_item">
                   <Input
                     hName="Degree"
-                    type="Degree"
-                    className=""
+                    type="text"
                     placeholder="Degree"
                     id="degree"
-                    autoComplete=""
-                    required
-                    value={degree}
-                    onChange={handleDegreeChange}
+                    onChange={handleForm2Change}
                   ></Input>
                 </div>
               </div>
@@ -90,14 +82,10 @@ function AddingDoctor() {
                 <div class="form_item">
                   <Input
                     hName="Degree Period"
-                    type="Degree Period"
-                    className=""
+                    type="text"
                     placeholder="Degree Period"
                     id="degreeperiod"
-                    autoComplete=""
-                    required
-                    value={degreeperiod}
-                    onChange={handleDegreePeriodChange}
+                    onChange={handleForm2Change}
                   ></Input>
                 </div>
               </div>
@@ -105,34 +93,26 @@ function AddingDoctor() {
                 <div class="form_item">
                   <Input
                     hName="Specialization"
-                    type="Specialization"
-                    className=""
+                    type="text"
                     placeholder="Specialization"
                     id="specialization"
-                    autoComplete=""
-                    required
-                    value={specialization}
-                    onChange={handleSpecializationChange}
+                    onChange={handleForm2Change}
                   ></Input>
                 </div>
               </div>
               <div class="btn">
                 <Button
-                  className=""
                   type="button"
-                  fullWidth
                   variant="contained"
-                  onClick={handleNextButtonClick}
+                  onClick={handleBackButtonClick}
                   showMessage="Back"
                 ></Button>
               </div>
               <div class="btn">
                 <Button
-                  className=""
                   type="submit"
-                  fullWidth
                   variant="contained"
-                  onClick=""
+                  onClick={handleBackButtonClick}
                   showMessage="Submit"
                 ></Button>
               </div>
@@ -154,27 +134,19 @@ function AddingDoctor() {
                 <div class="form_item">
                   <Input
                     hName="Full Name"
-                    type="Full Name"
-                    className=""
+                    type="text"
                     placeholder="Full Name"
                     id="fullName"
-                    autoComplete=""
-                    required
-                    value={fullname}
-                    onChange={handleFullNameChange}
+                    onChange={handleForm1Change}
                   ></Input>
                 </div>
                 <div class="form_item">
                   <Input
                     hName="Mobile No."
-                    type="Mobile No."
-                    className=""
+                    type="text"
                     placeholder="Mobile No."
                     id="mobileNo"
-                    autoComplete=""
-                    required
-                    value={mobileNo}
-                    onChange={handleMobileNoChange}
+                    onChange={handleForm1Change}
                   ></Input>
                 </div>
               </div>
@@ -182,14 +154,10 @@ function AddingDoctor() {
                 <div class="form_item">
                   <Input
                     hName="Email"
-                    type="Email"
-                    className=""
+                    type="email"
                     placeholder="Email"
                     id="email"
-                    autoComplete=""
-                    required
-                    value={email}
-                    onChange={handleEmailChange}
+                    onChange={handleForm1Change}
                   ></Input>
                 </div>
               </div>
@@ -198,38 +166,28 @@ function AddingDoctor() {
                   <Input
                     hName="Password"
                     type="Password"
-                    className=""
                     placeholder="Password"
                     id="password"
-                    autoComplete=""
-                    required
-                    value={password}
-                    onChange={handlePasswordChange}
+                    onChange={handleForm1Change}
                   ></Input>
                 </div>
               </div>
 
-              <div class="form_wrap">
+              <div class="form_wrap address">
                 <div class="form_item">
                   <Input
                     hName="Address"
-                    type="Address"
-                    className=""
+                    type="text"
                     placeholder="Address"
                     id="address"
-                    autoComplete=""
-                    required
-                    value={address}
-                    onChange={handleAddressChange}
+                    onChange={handleForm1Change}
                   ></Input>
                 </div>
               </div>
 
               <div class="btn">
                 <Button
-                  className=""
                   type="button"
-                  fullWidth
                   variant="contained"
                   onClick={handleNextButtonClick}
                   showMessage="Next"
@@ -243,4 +201,4 @@ function AddingDoctor() {
   );
 }
 
-export default AddingDoctor;
+export default AddingConsultant;
