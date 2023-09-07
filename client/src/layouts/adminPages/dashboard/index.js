@@ -37,12 +37,12 @@ function Dashboard() {
 
           <Grid item xs={12} md={6} lg={3}>
             <MDBox mb={1.5}>
-              <WardCard icon="store" wardName="ENT" count={4} color="success" />
+              <WardCard icon="store" wardName="ENT" count={4} />
             </MDBox>
           </Grid>
           <Grid item xs={12} md={6} lg={3}>
             <MDBox mb={1.5}>
-              <WardCard icon="store" wardName="Oncology" count={5} color="primary" />
+              <WardCard icon="store" wardName="Oncology" count={5} />
             </MDBox>
           </Grid>
         </Grid>
