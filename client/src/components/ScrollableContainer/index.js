@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
 
+// @mui material components
 import IconButton from "@mui/material/IconButton";
 import ArrowBackIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForwardIos";
@@ -45,7 +46,7 @@ function ScrollableContainer({ children, itemWidth }) {
   const handleScrollRight = () => {
     if (containerRef.current) {
       const container = containerRef.current;
-      const scrollAmount = 10; // Adjust the scroll amount as needed
+      const scrollAmount = 10; // scroll amount
       const interval = 5; // Milliseconds between each step of the animation
       let distance = 0;
 
