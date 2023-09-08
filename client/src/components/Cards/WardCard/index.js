@@ -12,7 +12,11 @@ import MDTypography from "components/MDTypography";
 
 function WardCard({ color, wardName, count, icon }) {
   return (
-    <Card>
+    <Card
+      style={{
+        width: "14rem",
+      }}
+    >
       <MDBox display="flex" justifyContent="space-between" pt={1} px={2}>
         <MDBox
           variant="gradient"
