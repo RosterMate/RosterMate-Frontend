@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
 
@@ -8,6 +10,7 @@ import MailOpen from "@mui/icons-material/Drafts";
 
 // components
 import MDBox from "components/MDBox";
+import MDButton from "components/MDButton";
 import MDTypography from "components/MDTypography";
 
 function Notification({
@@ -21,20 +24,25 @@ function Notification({
   ToShift,
   ToTime,
 }) {
-  const color = status === "NoResponse" ? "info" : status === "Accepted" ? "success" : "error";
-  let topic = "";
-  let icon = null;
+  const [color, setColor] = useState(
+    status === "NoResponse" ? "info" : status === "Accepted" ? "success" : "error"
+  );
+  const [topic, setTopic] = useState(status === "NoResponse" ? "No Response" : status);
 
-  if (status === "NoResponse") {
-    topic = "No Response";
-    icon = <Mail fontSize="large" />;
-  } else if (status === "Accepted") {
-    topic = "Accepted";
-    icon = <MailOpen fontSize="large" />;
-  } else {
-    topic = "Rejected";
-    icon = <MailOpen fontSize="large" />;
-  }
+  const [icon, setIcon] = useState(
+    status === "NoResponse" ? <Mail fontSize="large" /> : <MailOpen fontSize="large" />
+  );
+
+  const handleAccept = () => {
+    setColor("success");
+    setTopic("Accepted");
+    setIcon(<MailOpen fontSize="large" />);
+  };
+  const handleReject = () => {
+    setColor("error");
+    setTopic("Rejected");
+    setIcon(<MailOpen fontSize="large" />);
+  };
 
   return (
     <Card>
@@ -90,54 +98,39 @@ function Notification({
           Time : {ToTime}
         </MDTypography>
       </MDBox>
-      {status === "NoResponse" && isReceived ? (
+      {topic === "No Response" && isReceived ? (
         <MDBox display="flex" justifyContent="center" alignItems="center">
           <MDBox
             variant="gradient"
-            bgColor={color}
-            color={color === "light" ? "dark" : "white"}
-            coloredShadow={color}
             borderRadius="xl"
             display="flex"
             justifyContent="center"
             alignItems="center"
             mx={2}
             mb={1}
-            p={0.5}
-            width="8rem"
           >
-            <MDTypography variant="button" display="flex" fontWeight="regular">
+            <MDButton variant="gradient" color={color} onClick={handleAccept}>
               Accept
-            </MDTypography>
+            </MDButton>
           </MDBox>
           <MDBox
             variant="gradient"
-            bgColor={color}
-            color={color === "light" ? "dark" : "white"}
-            coloredShadow={color}
             borderRadius="xl"
             display="flex"
             justifyContent="center"
             alignItems="center"
             mx={2}
             mb={1}
-            p={0.5}
-            width="8rem"
           >
-            <MDTypography variant="button" display="flex" fontWeight="regular">
+            <MDButton variant="gradient" color={color} onClick={handleReject}>
               Reject
-            </MDTypography>
+            </MDButton>
           </MDBox>
         </MDBox>
       ) : null}
     </Card>
   );
 }
-
-// Setting default values for the props of WardCard
-//Notification.defaultProps = {
-//  color: "info",
-//};
 
 // Typechecking props for the WardCard
 Notification.propTypes = {
