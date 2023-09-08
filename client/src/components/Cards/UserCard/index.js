@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 // @mui material components
 import Card from "@mui/material/Card";
 
-// Material Dashboard 2 React components
+// Components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 
