@@ -4,8 +4,8 @@ import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 
 import IconButton from "@mui/material/IconButton";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import ArrowBackIcon from "@mui/icons-material/ArrowBackIos";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForwardIos";
 
 function ScrollableContainer({ children, itemWidth }) {
   const containerRef = useRef(null);
