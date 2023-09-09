@@ -70,10 +70,6 @@ const routes = [
   },
 
   {
-    type: "collapse",
-    name: "Edit Profile",
-    key: "edit-profile",
-    icon: <Icon fontSize="small">assignment</Icon>,
     route: "/profile/editprofile",
     component: <EditProfile />,
   },
