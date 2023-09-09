@@ -8,6 +8,7 @@ import AddWard from "layouts/adminPages/addWard";
 import AddDoctor from "layouts/adminPages/addDoctor";
 import AddConsultant from "layouts/adminPages/addConsultant";
 
+import EditProfile from "layouts/profile/editprofile";
 // @mui icons
 import Icon from "@mui/material/Icon";
 
@@ -66,6 +67,15 @@ const routes = [
     icon: <Icon fontSize="small">person</Icon>,
     route: "/profile",
     component: <Profile />,
+  },
+
+  {
+    type: "collapse",
+    name: "Edit Profile",
+    key: "edit-profile",
+    icon: <Icon fontSize="small">assignment</Icon>,
+    route: "/profile/editprofile",
+    component: <EditProfile />,
   },
 ];
 

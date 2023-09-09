@@ -1,0 +1,59 @@
+.mainbutton1 {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 120px;
+  height: 25px;
+}
+
+.mainbutton1:hover {
+  background-color: #ccc;
+  border: 1px solid #cccccce9;
+  border-radius: 5px;
+  width: 120px;
+  height: 25px;
+  transform: scale(1.1);
+  transition: all 0.1s ease-in-out;
+}
+
+.accountsettings {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+.accountsettings .form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 110%;
+  padding: 10px 10px;
+}
+.accountsettings .form .form-group {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  margin: 8px;
+}
+.accountsettings .form .form-group label {
+  margin-bottom: 5px;
+}
+
+.accountsettings .form .form-group input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+
+  width: 100%;
+
+  height: 35px;
+  font-size: medium;
+  font-weight: 300;
+}
+.accountsettings .form .form-group input:focus {
+  outline: none;
+  border: 3px solid #8b8a8a;
+  border-radius: 10px;
+}
