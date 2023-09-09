@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import Input from "../../../components/InputBox/Input";
 import Button from "../../../components/Button/Button";
-import "./AddingDoctor.css";
+import "./AddingWard.css";
 
-function AddingDoctor() {
+function AddingWard() {
   const [form, setForm] = useState({
-    fullname: "",
-    mobileNo: "",
-    email: "",
-    password: "",
-    address: "",
+    wardname: "",
+    wardnumber: "",
+    shifts: "",
+    maxleaves: "",
+    consecutiveshifts: "",
     university: "",
     degree: "",
     degreeperiod: "",
@@ -26,72 +26,72 @@ function AddingDoctor() {
   const handleSubmitButtonClick = () => {};
 
   return (
-    <div class="wrapper">
-      <div class="form_container">
+    <div className="wrapper">
+      <div className="form_container">
         <form name="form">
-          <div class="heading">
-            <h1>Add Doctor</h1>
+          <div className="heading">
+            <h1>Add Ward</h1>
           </div>
           <div className="para">
-            <h4>Personal Information</h4>
+            <h4>Ward Information</h4>
           </div>
 
-          <div class="form_wrap fullname">
-            <div class="form_item">
+          <div className="form_wrap fullname">
+            <div className="form_item">
               <Input
-                hName="Full Name"
+                hName="Ward Name"
                 type="text"
-                placeholder="Full Name"
-                id="fullName"
+                placeholder="Ward Name"
+                id="wardname"
                 onChange={handleFormChange}
               ></Input>
             </div>
-            <div class="form_item">
+            <div className="form_item">
               <Input
-                hName="Mobile No."
+                hName="Ward Number"
                 type="text"
-                placeholder="Mobile No."
-                id="mobileNo"
+                placeholder="Ward Number"
+                id="wardnumber"
                 onChange={handleFormChange}
               ></Input>
             </div>
           </div>
-          <div class="form_wrap">
-            <div class="form_item">
+          <div className="form_wrap">
+            <div className="form_item">
               <Input
-                hName="Email"
-                type="email"
-                placeholder="Email"
-                id="email"
+                hName="Number of Shifts"
+                type="text"
+                placeholder="Number of Shifts"
+                id="shifts"
                 onChange={handleFormChange}
               ></Input>
             </div>
           </div>
-          <div class="form_wrap">
-            <div class="form_item">
+          <div className="form_wrap">
+            <div className="form_item">
               <Input
-                hName="Password"
-                type="Password"
-                placeholder="Password"
-                id="password"
+                hName="Maximum Leaves Per month"
+                type="text"
+                placeholder="Maximum Leaves Per month"
+                id="maxleaves"
                 onChange={handleFormChange}
               ></Input>
             </div>
           </div>
 
-          <div class="form_wrap address">
-            <div class="form_item">
+          <div className="form_wrap address">
+            <div className="form_item">
               <Input
-                hName="Address"
+                hName="Consecutive shifts can be done"
                 type="text"
-                placeholder="Address"
-                id="address"
+                placeholder="Consecutive shifts can be done"
+                id="consecutiveshifts"
                 onChange={handleFormChange}
               ></Input>
             </div>
           </div>
           <div className="para">
-            <h4>Academic Information</h4>
+            <h4>Ward Constraints</h4>
           </div>
           <div className="form_wrap fullname">
             <div className="form_item">
@@ -150,4 +150,4 @@ function AddingDoctor() {
   );
 }
 
-export default AddingDoctor;
+export default AddingWard;

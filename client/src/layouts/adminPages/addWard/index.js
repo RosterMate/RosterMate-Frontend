@@ -2,12 +2,13 @@
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
+import AddingWard from "./AddingWard";
 
 function AddWard() {
   return (
     <DashboardLayout>
       <DashboardNavbar />
-      Add Ward Page
+      <AddingWard />
       <Footer />
     </DashboardLayout>
   );
