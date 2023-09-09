@@ -1,18 +1,9 @@
-import { useState } from "react";
 import Card from "@mui/material/Card";
-import Switch from "@mui/material/Switch";
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import "./settings.css";
 
 function PlatformSettings() {
-  const [followsMe, setFollowsMe] = useState(true);
-  const [answersPost, setAnswersPost] = useState(false);
-  const [mentionsMe, setMentionsMe] = useState(true);
-  const [newLaunches, setNewLaunches] = useState(false);
-  const [productUpdate, setProductUpdate] = useState(true);
-  const [newsletter, setNewsletter] = useState(false);
-
   return (
     <Card sx={{ boxShadow: "none" }}>
       <MDBox p={2}>
@@ -103,7 +94,11 @@ function PlatformSettings() {
             <input type="text" name="name" id="name" />
           </div>
         </div>
-        <button className="mainbutton1">Save Changes</button>
+        <button className="mainbutton1">
+          <MDTypography variant="h6" fontWeight="medium" textTransform="capitalize">
+            Save Changes
+          </MDTypography>
+        </button>
       </div>
     </Card>
   );

@@ -1,17 +1,17 @@
 .mainbutton1 {
-  background-color: #fff;
+  background-color: #ccc;
   border: 1px solid #ccc;
   border-radius: 5px;
-  width: 120px;
-  height: 25px;
+  width: 150px;
+  height: 35px;
 }
 
 .mainbutton1:hover {
   background-color: #ccc;
   border: 1px solid #cccccce9;
   border-radius: 5px;
-  width: 120px;
-  height: 25px;
+  width: 175px;
+  height: 45px;
   transform: scale(1.1);
   transition: all 0.1s ease-in-out;
 }
