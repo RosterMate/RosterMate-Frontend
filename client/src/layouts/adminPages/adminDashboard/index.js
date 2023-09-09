@@ -157,7 +157,7 @@ const consultantProfiles = [
   },
 ];
 
-function Dashboard() {
+function AdminDashboard() {
   return (
     <DashboardLayout>
       <DashboardNavbar />
@@ -212,4 +212,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default AdminDashboard;
