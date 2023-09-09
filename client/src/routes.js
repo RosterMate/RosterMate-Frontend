@@ -1,39 +1,24 @@
 // React layouts
-import Dashboard from "layouts/adminPages/dashboard";
+import AdminDashboard from "layouts/adminPages/adminDashboard";
 import Notifications from "layouts/notifications";
 import Profile from "layouts/profile";
-import SignIn from "layouts/authentication/sign-in";
-
 import AddWard from "layouts/adminPages/addWard";
 import AddDoctor from "layouts/adminPages/addDoctor";
 import AddConsultant from "layouts/adminPages/addConsultant";
+import DoctorDashboard from "layouts/doctorPages/DoctorDashboard";
+import ConsultantDashboard from "layouts/consultantPages/ConsultantDashboard";
 
 // @mui icons
 import Icon from "@mui/material/Icon";
 
-const routes = [
-  {
-    name: "Sign In",
-    key: "sign-in",
-    icon: <Icon fontSize="small">login</Icon>,
-    route: "/authentication/sign-in",
-    component: <SignIn />,
-  },
+export const adminRoutes = [
   {
     type: "collapse",
     name: "Dashboard",
-    key: "dashboard",
+    key: "adminDashboard",
     icon: <Icon fontSize="small">dashboard</Icon>,
-    route: "/dashboard",
-    component: <Dashboard />,
-  },
-  {
-    type: "collapse",
-    name: "Notifications",
-    key: "notifications",
-    icon: <Icon fontSize="small">notifications</Icon>,
-    route: "/notifications",
-    component: <Notifications />,
+    route: "/adminDashboard",
+    component: <AdminDashboard />,
   },
   {
     type: "collapse",
@@ -69,4 +54,56 @@ const routes = [
   },
 ];
 
-export default routes;
+export const doctorRoutes = [
+  {
+    type: "collapse",
+    name: "Dashboard",
+    key: "doctorDashboard",
+    icon: <Icon fontSize="small">dashboard</Icon>,
+    route: "/doctorDashboard",
+    component: <DoctorDashboard />,
+  },
+  {
+    type: "collapse",
+    name: "Notifications",
+    key: "notifications",
+    icon: <Icon fontSize="small">notifications</Icon>,
+    route: "/notifications",
+    component: <Notifications />,
+  },
+  {
+    type: "collapse",
+    name: "Profile",
+    key: "profile",
+    icon: <Icon fontSize="small">person</Icon>,
+    route: "/profile",
+    component: <Profile />,
+  },
+];
+
+export const consultantRoutes = [
+  {
+    type: "collapse",
+    name: "Dashboard",
+    key: "consultantDashboard",
+    icon: <Icon fontSize="small">dashboard</Icon>,
+    route: "/consultantDashboard",
+    component: <ConsultantDashboard />,
+  },
+  {
+    type: "collapse",
+    name: "Notifications",
+    key: "notifications",
+    icon: <Icon fontSize="small">notifications</Icon>,
+    route: "/notifications",
+    component: <Notifications />,
+  },
+  {
+    type: "collapse",
+    name: "Profile",
+    key: "profile",
+    icon: <Icon fontSize="small">person</Icon>,
+    route: "/profile",
+    component: <Profile />,
+  },
+];
