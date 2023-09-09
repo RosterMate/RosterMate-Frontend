@@ -1,13 +1,14 @@
-// example components
+// React example components
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "components/Footer";
+import AddingConsultant from "./AddingConsultant";
 
 function AddConsultant() {
   return (
     <DashboardLayout>
       <DashboardNavbar />
-      Add Consultant Page
+      <AddingConsultant />
       <Footer />
     </DashboardLayout>
   );
