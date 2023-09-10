@@ -89,7 +89,7 @@ export default function App() {
   return (
     <ThemeProvider theme={darkMode ? themeDark : theme}>
       <CssBaseline />
-      {layout === "dashboard" && pathname !== "/sign-in" && (
+      {layout === "dashboard" && pathname !== "/" && (
         <>
           {USER_TYPE === USER_TYPES.ADMIN_USER && (
             <Sidenav
@@ -127,7 +127,7 @@ export default function App() {
 
       <Routes>
         {/* Common Pages */}
-        <Route path="/sign-in" element={<SignIn />} />
+        <Route path="/" element={<SignIn />} />
         <Route
           path="/profile"
           element={
