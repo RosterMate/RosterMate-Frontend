@@ -8,16 +8,13 @@ import Footer from "components/Footer";
 // components
 import MDTypography from "components/MDTypography";
 
-function ConsultantDashboard() {
+function CreateSchedule() {
   return (
     <DashboardLayout>
       <DashboardNavbar />
 
       <MDTypography variant="h3" display="flex">
-        Consultant Dashboard
-      </MDTypography>
-      <MDTypography variant="h3" display="flex">
-        show current schedule , view doctors, view consultants
+        Create Schedule Page
       </MDTypography>
 
       <Footer />
@@ -25,4 +22,4 @@ function ConsultantDashboard() {
   );
 }
 
-export default ConsultantDashboard;
+export default CreateSchedule;

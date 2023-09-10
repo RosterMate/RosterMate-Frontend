@@ -34,7 +34,11 @@ import AddWard from "layouts/adminPages/addWard";
 import AddDoctor from "layouts/adminPages/addDoctor";
 import AddConsultant from "layouts/adminPages/addConsultant";
 import DoctorDashboard from "layouts/doctorPages/DoctorDashboard";
+import LeaveRequests from "layouts/doctorPages/LeaveRequests";
+import ShiftChanges from "layouts/doctorPages/ShiftChanges";
 import ConsultantDashboard from "layouts/consultantPages/ConsultantDashboard";
+import CreateSchedule from "layouts/consultantPages/CreateSchedule";
+import GrantLeaveRequests from "layouts/consultantPages/GrantLeaveRequests";
 
 const USER_TYPES = {
   PUBLIC_USER: "Public",
@@ -43,7 +47,7 @@ const USER_TYPES = {
   CONSULTANT_USER: "Consultant",
 };
 
-const USER_TYPE = USER_TYPES.ADMIN_USER;
+const USER_TYPE = USER_TYPES.CONSULTANT_USER;
 
 export default function App() {
   const [controller, dispatch] = useMaterialUIController();
@@ -144,7 +148,6 @@ export default function App() {
             </DocConElement>
           }
         />
-
         {/* Admin Pages */}
         <Route
           path="/adminDashboard"
@@ -178,13 +181,28 @@ export default function App() {
             </AdminElement>
           }
         />
-
         {/* Doctor Pages */}
         <Route
           path="/doctorDashboard"
           element={
             <DoctorElement>
               <DoctorDashboard />
+            </DoctorElement>
+          }
+        />
+        <Route
+          path="/leaveRequests"
+          element={
+            <DoctorElement>
+              <LeaveRequests />
+            </DoctorElement>
+          }
+        />
+        <Route
+          path="/shiftChanges"
+          element={
+            <DoctorElement>
+              <ShiftChanges />
             </DoctorElement>
           }
         />
@@ -198,7 +216,22 @@ export default function App() {
             </ConsultantElement>
           }
         />
-
+        <Route
+          path="/createSchedule"
+          element={
+            <ConsultantElement>
+              <CreateSchedule />
+            </ConsultantElement>
+          }
+        />
+        <Route
+          path="/grantLeaveRequests"
+          element={
+            <ConsultantElement>
+              <GrantLeaveRequests />
+            </ConsultantElement>
+          }
+        />
         <Route path="*" element={<div>Page Not Found!</div>} />
       </Routes>
     </ThemeProvider>
