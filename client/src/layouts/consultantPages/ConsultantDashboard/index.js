@@ -7,6 +7,7 @@ import Footer from "components/Footer";
 
 // components
 import MDTypography from "components/MDTypography";
+import GrantLeaveRequests from "../GrantLeaves/GrantLeaveRequests";
 
 function ConsultantDashboard() {
   return (
@@ -14,7 +15,7 @@ function ConsultantDashboard() {
       <DashboardNavbar />
 
       <MDTypography variant="h3" display="flex">
-        Consultant Dashboard
+        {/* <GrantLeaveRequests /> */}
       </MDTypography>
 
       <Footer />

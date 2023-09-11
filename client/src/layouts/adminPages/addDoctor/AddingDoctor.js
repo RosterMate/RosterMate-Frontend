@@ -23,21 +23,23 @@ function AddingDoctor() {
     });
   };
 
-  const handleSubmitButtonClick = () => {};
+  const handleSubmitButtonClick = () => {
+    console.log(form);
+  };
 
   return (
-    <div class="wrapper">
-      <div class="form_container">
-        <form name="form">
-          <div class="heading">
+    <div className="wrapper">
+      <div className="form_container">
+        <form className="form">
+          <div className="heading">
             <h1>Add Doctor</h1>
           </div>
           <div className="para">
             <h4>Personal Information</h4>
           </div>
 
-          <div class="form_wrap fullname">
-            <div class="form_item">
+          <div className="form_wrap fullname">
+            <div className="form_item">
               <Input
                 hName="Full Name"
                 type="text"
@@ -46,7 +48,7 @@ function AddingDoctor() {
                 onChange={handleFormChange}
               ></Input>
             </div>
-            <div class="form_item">
+            <div className="form_item">
               <Input
                 hName="Mobile No."
                 type="text"
@@ -56,8 +58,8 @@ function AddingDoctor() {
               ></Input>
             </div>
           </div>
-          <div class="form_wrap">
-            <div class="form_item">
+          <div className="form_wrap">
+            <div className="form_item">
               <Input
                 hName="Email"
                 type="email"
@@ -67,8 +69,8 @@ function AddingDoctor() {
               ></Input>
             </div>
           </div>
-          <div class="form_wrap">
-            <div class="form_item">
+          <div className="form_wrap">
+            <div className="form_item">
               <Input
                 hName="Password"
                 type="Password"
@@ -79,8 +81,8 @@ function AddingDoctor() {
             </div>
           </div>
 
-          <div class="form_wrap address">
-            <div class="form_item">
+          <div className="form_wrap address">
+            <div className="form_item">
               <Input
                 hName="Address"
                 type="text"

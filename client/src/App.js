@@ -35,6 +35,7 @@ import AddDoctor from "layouts/adminPages/addDoctor";
 import AddConsultant from "layouts/adminPages/addConsultant";
 import DoctorDashboard from "layouts/doctorPages/DoctorDashboard";
 import ConsultantDashboard from "layouts/consultantPages/ConsultantDashboard";
+import GrantLeaves from "layouts/consultantPages/GrantLeaves";
 
 const USER_TYPES = {
   PUBLIC_USER: "Public",
@@ -43,7 +44,7 @@ const USER_TYPES = {
   CONSULTANT_USER: "Consultant",
 };
 
-const USER_TYPE = USER_TYPES.ADMIN_USER;
+const USER_TYPE = USER_TYPES.CONSULTANT_USER;
 
 export default function App() {
   const [controller, dispatch] = useMaterialUIController();
@@ -195,6 +196,15 @@ export default function App() {
           element={
             <ConsultantElement>
               <ConsultantDashboard />
+            </ConsultantElement>
+          }
+        />
+
+        <Route
+          path="/grantLeaverequests"
+          element={
+            <ConsultantElement>
+              <GrantLeaves />
             </ConsultantElement>
           }
         />
