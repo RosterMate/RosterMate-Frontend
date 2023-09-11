@@ -36,6 +36,7 @@ import AddConsultant from "layouts/adminPages/addConsultant";
 import DoctorDashboard from "layouts/doctorPages/DoctorDashboard";
 import ConsultantDashboard from "layouts/consultantPages/ConsultantDashboard";
 import GrantLeaves from "layouts/consultantPages/GrantLeaves";
+import ShiftChanges from "layouts/consultantPages/ShiftChangesHistory";
 
 const USER_TYPES = {
   PUBLIC_USER: "Public",
@@ -205,6 +206,15 @@ export default function App() {
           element={
             <ConsultantElement>
               <GrantLeaves />
+            </ConsultantElement>
+          }
+        />
+
+        <Route
+          path="/shiftChangesHistory"
+          element={
+            <ConsultantElement>
+              <ShiftChanges />
             </ConsultantElement>
           }
         />
