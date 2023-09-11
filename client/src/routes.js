@@ -7,6 +7,7 @@ import AddDoctor from "layouts/adminPages/addDoctor";
 import AddConsultant from "layouts/adminPages/addConsultant";
 import DoctorDashboard from "layouts/doctorPages/DoctorDashboard";
 import ConsultantDashboard from "layouts/consultantPages/ConsultantDashboard";
+import GrantLeaves from "layouts/consultantPages/GrantLeaves";
 
 // @mui icons
 import Icon from "@mui/material/Icon";
@@ -97,6 +98,14 @@ export const consultantRoutes = [
     icon: <Icon fontSize="small">notifications</Icon>,
     route: "/notifications",
     component: <Notifications />,
+  },
+  {
+    type: "collapse",
+    name: "Leave Requests",
+    key: "leaverequests",
+    icon: <Icon fontSize="small">notifications</Icon>,
+    route: "/grantLeaverequests",
+    component: <GrantLeaves />,
   },
   {
     type: "collapse",

@@ -29,7 +29,7 @@ function AddingConsultant() {
   return (
     <div className="wrapper">
       <div className="form_container">
-        <form name="form">
+        <form className="form">
           <div className="heading">
             <h1>Add Doctor</h1>
           </div>
