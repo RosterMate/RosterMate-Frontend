@@ -9,6 +9,7 @@ import DoctorDashboard from "layouts/doctorPages/DoctorDashboard";
 import ConsultantDashboard from "layouts/consultantPages/ConsultantDashboard";
 import GrantLeaves from "layouts/consultantPages/GrantLeaves";
 
+import EditProfile from "layouts/profile/editprofile";
 // @mui icons
 import Icon from "@mui/material/Icon";
 
@@ -52,6 +53,11 @@ export const adminRoutes = [
     icon: <Icon fontSize="small">person</Icon>,
     route: "/profile",
     component: <Profile />,
+  },
+
+  {
+    route: "/profile/editprofile",
+    component: <EditProfile />,
   },
 ];
 
