@@ -1,17 +1,25 @@
-// React example components
+import React from "react";
+
+// example components
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "components/Footer";
-import AddingDoctor from "./AddingDoctor";
 
-function AddDoctor() {
+// components
+import MDTypography from "components/MDTypography";
+
+function DoctorDashboard() {
   return (
     <DashboardLayout>
       <DashboardNavbar />
-      <AddingDoctor />
+
+      <MDTypography variant="h3" display="flex">
+        Doctor Dashboard
+      </MDTypography>
+
       <Footer />
     </DashboardLayout>
   );
 }
 
-export default AddDoctor;
+export default DoctorDashboard;

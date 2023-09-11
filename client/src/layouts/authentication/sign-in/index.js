@@ -81,7 +81,7 @@ export default function LogIn() {
     console.log("Password:", password);
 
     if (email.trim() !== "" && password.trim() !== "") {
-      navigate("/dashboard");
+      navigate("/adminDashboard");
     }
   };
 
