@@ -12,6 +12,7 @@ import GrantLeaves from "layouts/consultantPages/GrantLeaves";
 import EditProfile from "layouts/profile/editprofile";
 // @mui icons
 import Icon from "@mui/material/Icon";
+import ShiftChanges from "layouts/consultantPages/ShiftChangesHistory";
 
 export const adminRoutes = [
   {
@@ -112,6 +113,14 @@ export const consultantRoutes = [
     icon: <Icon fontSize="small">notifications</Icon>,
     route: "/grantLeaverequests",
     component: <GrantLeaves />,
+  },
+  {
+    type: "collapse",
+    name: "Shift Changes History",
+    key: "shiftchanges",
+    icon: <Icon fontSize="small">notifications</Icon>,
+    route: "/shiftChangesHistory",
+    component: <ShiftChanges />,
   },
   {
     type: "collapse",
