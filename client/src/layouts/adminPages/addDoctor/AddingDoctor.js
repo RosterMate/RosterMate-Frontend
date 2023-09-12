@@ -26,8 +26,8 @@ function AddingDoctor() {
   const handleSubmitButtonClick = () => {};
 
   return (
-    <div class="wrapper">
-      <div class="form_container">
+    <div className="wrapper">
+      <div className="form_container">
         <form name="form">
           <div class="heading">
             <h1>Add Doctor</h1>
@@ -36,8 +36,8 @@ function AddingDoctor() {
             <h4>Personal Information</h4>
           </div>
 
-          <div class="form_wrap fullname">
-            <div class="form_item">
+          <div className="form_wrap fullname">
+            <div className="form_item">
               <Input
                 hName="Full Name"
                 type="text"
@@ -46,7 +46,7 @@ function AddingDoctor() {
                 onChange={handleFormChange}
               ></Input>
             </div>
-            <div class="form_item">
+            <div className="form_item">
               <Input
                 hName="Mobile No."
                 type="text"
@@ -56,8 +56,8 @@ function AddingDoctor() {
               ></Input>
             </div>
           </div>
-          <div class="form_wrap">
-            <div class="form_item">
+          <div className="form_wrap">
+            <div className="form_item">
               <Input
                 hName="Email"
                 type="email"
@@ -67,8 +67,8 @@ function AddingDoctor() {
               ></Input>
             </div>
           </div>
-          <div class="form_wrap">
-            <div class="form_item">
+          <div className="form_wrap">
+            <div className="form_item">
               <Input
                 hName="Password"
                 type="Password"
@@ -79,8 +79,8 @@ function AddingDoctor() {
             </div>
           </div>
 
-          <div class="form_wrap address">
-            <div class="form_item">
+          <div className="form_wrap address">
+            <div className="form_item">
               <Input
                 hName="Address"
                 type="text"

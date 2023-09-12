@@ -39,6 +39,7 @@ import ShiftChanges from "layouts/doctorPages/ShiftChanges";
 import ConsultantDashboard from "layouts/consultantPages/ConsultantDashboard";
 import CreateSchedule from "layouts/consultantPages/CreateSchedule";
 import GrantLeaveRequests from "layouts/consultantPages/GrantLeaveRequests";
+import AccessRestricted from "layouts/accessRestrictedPage";
 
 const USER_TYPES = {
   PUBLIC_USER: "Public",
@@ -47,7 +48,7 @@ const USER_TYPES = {
   CONSULTANT_USER: "Consultant",
 };
 
-const USER_TYPE = USER_TYPES.CONSULTANT_USER;
+const USER_TYPE = USER_TYPES.ADMIN_USER;
 
 export default function App() {
   const [controller, dispatch] = useMaterialUIController();
@@ -232,7 +233,11 @@ export default function App() {
             </ConsultantElement>
           }
         />
-        <Route path="*" element={<div>Page Not Found!</div>} />
+        {/* Page Not Found */}
+        <Route path="*" element={<AccessRestricted />} />
+        {
+          //<Route path="*" element={<div>Page Not Found!</div>} />
+        }
       </Routes>
     </ThemeProvider>
   );
@@ -243,23 +248,20 @@ function AdminElement({ children }) {
     return <>{children}</>;
   } else {
     return <Navigate to="/" />;
-    //return <>You do not have access to this page!</>;
   }
 }
 function DoctorElement({ children }) {
   if (USER_TYPE === USER_TYPES.DOCTOR_USER) {
     return <>{children}</>;
   } else {
-    return <Navigate to="/" />;
-    //return <>You do not have access to this page!</>;
+    return <Navigate to="*" />;
   }
 }
 function ConsultantElement({ children }) {
   if (USER_TYPE === USER_TYPES.CONSULTANT_USER) {
     return <>{children}</>;
   } else {
-    return <Navigate to="/" />;
-    //return <>You do not have access to this page!</>;
+    return <Navigate to="*" />;
   }
 }
 function UserElement({ children }) {
@@ -270,16 +272,14 @@ function UserElement({ children }) {
   ) {
     return <>{children}</>;
   } else {
-    return <Navigate to="/" />;
-    //return <>You do not have access to this page!</>;
+    return <Navigate to="*" />;
   }
 }
 function DocConElement({ children }) {
   if (USER_TYPE === USER_TYPES.DOCTOR_USER || USER_TYPE === USER_TYPES.CONSULTANT_USER) {
     return <>{children}</>;
   } else {
-    return <Navigate to="/" />;
-    //return <>You do not have access to this page!</>;
+    return <Navigate to="*" />;
   }
 }
 

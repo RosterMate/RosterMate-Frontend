@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Axios from "axios";
 
 // MUI
 import Button from "@mui/material/Button";
@@ -20,11 +22,8 @@ import Image1 from "./AdminLogin1.png";
 // CSS
 import "./LogIn.css";
 
-//
+// components
 import Footer from "components/Footer";
-
-//
-import { useNavigate } from "react-router-dom";
 
 function Icons() {
   return (
@@ -81,7 +80,27 @@ export default function LogIn() {
     console.log("Password:", password);
 
     if (email.trim() !== "" && password.trim() !== "") {
-      navigate("/adminDashboard");
+      // Define your Django login API endpoint
+      const apiUrl = "http://127.0.0.1:8000/api/login";
+
+      // Create a data object with the user's email and password
+      const data = {
+        email: email,
+        password: password,
+      };
+
+      Axios.post(apiUrl, data)
+        .then((response) => {
+          const userData = response.data;
+          console.log("User data:", userData);
+
+          // Redirect to the adminDashboard route if login is successful
+          navigate("/adminDashboard");
+        })
+        .catch((error) => {
+          // Handle any errors from the backend
+          console.error("Login error:", error);
+        });
     }
   };
 
