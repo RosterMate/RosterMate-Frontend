@@ -14,6 +14,8 @@ import ShiftChangeRequest from "layouts/doctorPages/ShiftChangeRequest";
 // @mui icons
 import Icon from "@mui/material/Icon";
 import ShiftChanges from "layouts/consultantPages/ShiftChangesHistory";
+import ViewUsers from "layouts/consultantPages/ViewAllUsers";
+import ViewWards from "layouts/consultantPages/ViewAllWards";
 
 export const adminRoutes = [
   {
@@ -133,6 +135,22 @@ export const consultantRoutes = [
     icon: <Icon fontSize="small">notifications</Icon>,
     route: "/shiftChangesHistory",
     component: <ShiftChanges />,
+  },
+  {
+    type: "collapse",
+    name: "View All Users",
+    key: "viewallusers",
+    icon: <Icon fontSize="small">notifications</Icon>,
+    route: "/viewAllUsers",
+    component: <ViewUsers />,
+  },
+  {
+    type: "collapse",
+    name: "View All Wards",
+    key: "viewallwards",
+    icon: <Icon fontSize="small">notifications</Icon>,
+    route: "/viewAllWards",
+    component: <ViewWards />,
   },
   {
     type: "collapse",
