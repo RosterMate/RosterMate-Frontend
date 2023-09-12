@@ -37,6 +37,8 @@ import DoctorDashboard from "layouts/doctorPages/DoctorDashboard";
 import ConsultantDashboard from "layouts/consultantPages/ConsultantDashboard";
 import GrantLeaves from "layouts/consultantPages/GrantLeaves";
 import ShiftChanges from "layouts/consultantPages/ShiftChangesHistory";
+import ViewUsers from "layouts/consultantPages/ViewAllUsers";
+import ViewWards from "layouts/consultantPages/ViewAllWards";
 
 const USER_TYPES = {
   PUBLIC_USER: "Public",
@@ -215,6 +217,24 @@ export default function App() {
           element={
             <ConsultantElement>
               <ShiftChanges />
+            </ConsultantElement>
+          }
+        />
+
+        <Route
+          path="/viewAllUsers"
+          element={
+            <ConsultantElement>
+              <ViewUsers />
+            </ConsultantElement>
+          }
+        />
+
+        <Route
+          path="/viewAllWards"
+          element={
+            <ConsultantElement>
+              <ViewWards />
             </ConsultantElement>
           }
         />
