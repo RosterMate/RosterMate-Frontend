@@ -37,7 +37,7 @@ import DoctorDashboard from "layouts/doctorPages/DoctorDashboard";
 import ConsultantDashboard from "layouts/consultantPages/ConsultantDashboard";
 import GrantLeaves from "layouts/consultantPages/GrantLeaves";
 import ShiftChanges from "layouts/consultantPages/ShiftChangesHistory";
-import ShiftChangeRequest from "layouts/doctorPages/ShiftChangeRequest";
+
 import EditProfile from "layouts/profile/editprofile";
 
 const USER_TYPES = {
@@ -47,7 +47,7 @@ const USER_TYPES = {
   CONSULTANT_USER: "Consultant",
 };
 
-const USER_TYPE = USER_TYPES.ADMIN_USER;
+const USER_TYPE = USER_TYPES.DOCTOR_USER;
 
 export default function App() {
   const [controller, dispatch] = useMaterialUIController();
