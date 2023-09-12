@@ -37,6 +37,8 @@ import DoctorDashboard from "layouts/doctorPages/DoctorDashboard";
 import ConsultantDashboard from "layouts/consultantPages/ConsultantDashboard";
 import GrantLeaves from "layouts/consultantPages/GrantLeaves";
 import ShiftChanges from "layouts/consultantPages/ShiftChangesHistory";
+import ShiftChangeRequest from "layouts/doctorPages/ShiftChangeRequest";
+import EditProfile from "layouts/profile/editprofile";
 
 const USER_TYPES = {
   PUBLIC_USER: "Public",
@@ -45,7 +47,7 @@ const USER_TYPES = {
   CONSULTANT_USER: "Consultant",
 };
 
-const USER_TYPE = USER_TYPES.CONSULTANT_USER;
+const USER_TYPE = USER_TYPES.ADMIN_USER;
 
 export default function App() {
   const [controller, dispatch] = useMaterialUIController();
@@ -131,6 +133,15 @@ export default function App() {
         {/* Common Pages */}
         <Route path="/sign-in" element={<SignIn />} />
         <Route
+          path="/editprofile"
+          element={
+            <UserElement>
+              <EditProfile />
+            </UserElement>
+          }
+        />
+
+        <Route
           path="/profile"
           element={
             <UserElement>
@@ -156,6 +167,16 @@ export default function App() {
             </AdminElement>
           }
         />
+
+        <Route
+          path="/editprofile"
+          element={
+            <AdminElement>
+              <EditProfile />
+            </AdminElement>
+          }
+        />
+
         <Route
           path="/addWards"
           element={
@@ -216,6 +237,15 @@ export default function App() {
             <ConsultantElement>
               <ShiftChanges />
             </ConsultantElement>
+          }
+        />
+
+        <Route
+          path="/shiftChangeRequest"
+          element={
+            <DoctorElement>
+              <shiftChangeRequest />
+            </DoctorElement>
           }
         />
 
