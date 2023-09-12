@@ -10,6 +10,7 @@ import ConsultantDashboard from "layouts/consultantPages/ConsultantDashboard";
 import GrantLeaves from "layouts/consultantPages/GrantLeaves";
 
 import EditProfile from "layouts/profile/editprofile";
+import ShiftChangeRequest from "layouts/doctorPages/ShiftChangeRequest";
 // @mui icons
 import Icon from "@mui/material/Icon";
 import ShiftChanges from "layouts/consultantPages/ShiftChangesHistory";
@@ -59,7 +60,10 @@ export const adminRoutes = [
   },
 
   {
-    route: "/profile/editprofile",
+    name: "Edit Profile",
+    key: "editProfile",
+    icon: <Icon fontSize="small">person</Icon>,
+    route: "/editprofile",
     component: <EditProfile />,
   },
 ];
@@ -88,6 +92,14 @@ export const doctorRoutes = [
     icon: <Icon fontSize="small">person</Icon>,
     route: "/profile",
     component: <Profile />,
+  },
+  {
+    type: "collapse",
+    name: "Shift Change Request",
+    key: "shiftChangeRequest",
+    icon: <Icon fontSize="small">D</Icon>,
+    route: "/shiftChangeRequest",
+    component: <ShiftChangeRequest />,
   },
 ];
 

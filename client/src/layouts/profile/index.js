@@ -59,7 +59,7 @@ function Overview() {
                     color: "instagram",
                   },
                 ]}
-                action={{ route: "/profile/editprofile", tooltip: "Edit Profile" }}
+                action={{ route: "/editprofile", tooltip: "Edit Profile" }}
                 shadow={true}
               />
               <Divider orientation="vertical" sx={{ mx: 0 }} />

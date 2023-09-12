@@ -40,6 +40,8 @@ import ShiftChanges from "layouts/consultantPages/ShiftChangesHistory";
 import ViewUsers from "layouts/consultantPages/ViewAllUsers";
 import ViewWards from "layouts/consultantPages/ViewAllWards";
 
+import EditProfile from "layouts/profile/editprofile";
+
 const USER_TYPES = {
   PUBLIC_USER: "Public",
   ADMIN_USER: "Admin",
@@ -47,7 +49,7 @@ const USER_TYPES = {
   CONSULTANT_USER: "Consultant",
 };
 
-const USER_TYPE = USER_TYPES.CONSULTANT_USER;
+const USER_TYPE = USER_TYPES.DOCTOR_USER;
 
 export default function App() {
   const [controller, dispatch] = useMaterialUIController();
@@ -133,6 +135,15 @@ export default function App() {
         {/* Common Pages */}
         <Route path="/sign-in" element={<SignIn />} />
         <Route
+          path="/editprofile"
+          element={
+            <UserElement>
+              <EditProfile />
+            </UserElement>
+          }
+        />
+
+        <Route
           path="/profile"
           element={
             <UserElement>
@@ -158,6 +169,16 @@ export default function App() {
             </AdminElement>
           }
         />
+
+        <Route
+          path="/editprofile"
+          element={
+            <AdminElement>
+              <EditProfile />
+            </AdminElement>
+          }
+        />
+
         <Route
           path="/addWards"
           element={
