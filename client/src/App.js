@@ -35,7 +35,7 @@ import AddDoctor from "layouts/adminPages/addDoctor";
 import AddConsultant from "layouts/adminPages/addConsultant";
 import DoctorDashboard from "layouts/doctorPages/DoctorDashboard";
 import LeaveRequests from "layouts/doctorPages/LeaveRequests";
-import ShiftChanges from "layouts/doctorPages/ShiftChanges";
+//import ShiftChanges from "layouts/doctorPages/ShiftChanges";
 import ConsultantDashboard from "layouts/consultantPages/ConsultantDashboard";
 import CreateSchedule from "layouts/consultantPages/CreateSchedule";
 import AccessRestricted from "layouts/accessRestrictedPage";
@@ -44,7 +44,6 @@ import ShiftChanges from "layouts/consultantPages/ShiftChangesHistory";
 import ViewUsers from "layouts/consultantPages/ViewAllUsers";
 import ViewWards from "layouts/consultantPages/ViewAllWards";
 import EditProfile from "layouts/profile/editprofile";
-
 
 export default function App() {
   const [controller, dispatch] = useMaterialUIController();
@@ -248,7 +247,6 @@ export default function App() {
           //<Route path="*" element={<div>Page Not Found!</div>} />
         }
 
-
         <Route
           path="/grantLeaverequests"
           element={
@@ -284,8 +282,6 @@ export default function App() {
             </ConsultantElement>
           }
         />
-
-
       </Routes>
     </ThemeProvider>
   );

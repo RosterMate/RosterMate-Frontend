@@ -7,19 +7,17 @@ import AddDoctor from "layouts/adminPages/addDoctor";
 import AddConsultant from "layouts/adminPages/addConsultant";
 import DoctorDashboard from "layouts/doctorPages/DoctorDashboard";
 import LeaveRequests from "layouts/doctorPages/LeaveRequests";
-import ShiftChanges from "layouts/doctorPages/ShiftChanges";
 import ConsultantDashboard from "layouts/consultantPages/ConsultantDashboard";
 import CreateSchedule from "layouts/consultantPages/CreateSchedule";
 import GrantLeaves from "layouts/consultantPages/GrantLeaves";
-
-import EditProfile from "layouts/profile/editprofile";
-import ShiftChangeRequest from "layouts/doctorPages/ShiftChangeRequest";
-// @mui icons
-import Icon from "@mui/material/Icon";
 import ShiftChanges from "layouts/consultantPages/ShiftChangesHistory";
 import ViewUsers from "layouts/consultantPages/ViewAllUsers";
 import ViewWards from "layouts/consultantPages/ViewAllWards";
+import EditProfile from "layouts/profile/editprofile";
+import ShiftChangeRequest from "layouts/doctorPages/ShiftChangeRequest";
 
+// @mui icons
+import Icon from "@mui/material/Icon";
 export const adminRoutes = [
   {
     type: "collapse",
@@ -149,11 +147,9 @@ export const consultantRoutes = [
   },
   {
     type: "collapse",
-   
-
     name: "Leave Requests",
     key: "leaverequests",
-    icon: <Icon fontSize="small">notifications</Icon>,
+    icon: <Icon fontSize="small">R</Icon>,
     route: "/grantLeaverequests",
     component: <GrantLeaves />,
   },
@@ -180,7 +176,6 @@ export const consultantRoutes = [
     icon: <Icon fontSize="small">notifications</Icon>,
     route: "/viewAllWards",
     component: <ViewWards />,
-
   },
   {
     type: "collapse",
