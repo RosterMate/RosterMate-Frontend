@@ -29,7 +29,7 @@ import { adminRoutes, doctorRoutes, consultantRoutes } from "./routes";
 import AdminDashboard from "layouts/adminPages/adminDashboard";
 import Notifications from "layouts/notifications";
 import Profile from "layouts/profile";
-import SignIn from "layouts/authentication/sign-in";
+import SignIn, { USER_TYPES, USER_TYPE } from "layouts/authentication/sign-in";
 import AddWard from "layouts/adminPages/addWard";
 import AddDoctor from "layouts/adminPages/addDoctor";
 import AddConsultant from "layouts/adminPages/addConsultant";
@@ -41,14 +41,7 @@ import CreateSchedule from "layouts/consultantPages/CreateSchedule";
 import GrantLeaveRequests from "layouts/consultantPages/GrantLeaveRequests";
 import AccessRestricted from "layouts/accessRestrictedPage";
 
-const USER_TYPES = {
-  PUBLIC_USER: "Public",
-  ADMIN_USER: "Admin",
-  DOCTOR_USER: "Doctor",
-  CONSULTANT_USER: "Consultant",
-};
-
-const USER_TYPE = USER_TYPES.ADMIN_USER;
+//export let USER_TYPE = USER_TYPES.PUBLIC_USER;
 
 export default function App() {
   const [controller, dispatch] = useMaterialUIController();
@@ -234,7 +227,7 @@ export default function App() {
           }
         />
         {/* Page Not Found */}
-        <Route path="*" element={<AccessRestricted />} />
+        <Route path="/error" element={<AccessRestricted />} />
         {
           //<Route path="*" element={<div>Page Not Found!</div>} />
         }
@@ -247,21 +240,21 @@ function AdminElement({ children }) {
   if (USER_TYPE === USER_TYPES.ADMIN_USER) {
     return <>{children}</>;
   } else {
-    return <Navigate to="/" />;
+    return <Navigate to="/error" />;
   }
 }
 function DoctorElement({ children }) {
   if (USER_TYPE === USER_TYPES.DOCTOR_USER) {
     return <>{children}</>;
   } else {
-    return <Navigate to="*" />;
+    return <Navigate to="/error" />;
   }
 }
 function ConsultantElement({ children }) {
   if (USER_TYPE === USER_TYPES.CONSULTANT_USER) {
     return <>{children}</>;
   } else {
-    return <Navigate to="*" />;
+    return <Navigate to="/error" />;
   }
 }
 function UserElement({ children }) {
@@ -272,14 +265,14 @@ function UserElement({ children }) {
   ) {
     return <>{children}</>;
   } else {
-    return <Navigate to="*" />;
+    return <Navigate to="/error" />;
   }
 }
 function DocConElement({ children }) {
   if (USER_TYPE === USER_TYPES.DOCTOR_USER || USER_TYPE === USER_TYPES.CONSULTANT_USER) {
     return <>{children}</>;
   } else {
-    return <Navigate to="*" />;
+    return <Navigate to="/error" />;
   }
 }
 

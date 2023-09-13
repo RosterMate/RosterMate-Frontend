@@ -61,6 +61,15 @@ function Icons() {
 
 const defaultTheme = createTheme();
 
+export const USER_TYPES = {
+  PUBLIC_USER: "Public",
+  ADMIN_USER: "Admin",
+  DOCTOR_USER: "Doctor",
+  CONSULTANT_USER: "Consultant",
+};
+
+export let USER_TYPE = USER_TYPES.PUBLIC_USER;
+
 export default function LogIn() {
   const navigate = useNavigate();
 
@@ -93,13 +102,23 @@ export default function LogIn() {
         .then((response) => {
           const userData = response.data;
           console.log("User data:", userData);
-
-          // Redirect to the adminDashboard route if login is successful
-          navigate("/adminDashboard");
+          if (userData.USERTYPE === "admin") {
+            USER_TYPE = USER_TYPES.ADMIN_USER;
+            navigate("/adminDashboard");
+          } else if (userData.USERTYPE === "doctor") {
+            USER_TYPE = USER_TYPES.DOCTOR_USER;
+            navigate("/doctorDashboard");
+          } else if (userData.USERTYPE === "consultant") {
+            USER_TYPE = USER_TYPES.CONSULTANT_USER;
+            navigate("/consultantDashboard");
+          } else {
+            navigate("/error");
+          }
         })
         .catch((error) => {
           // Handle any errors from the backend
           console.error("Login error:", error);
+          navigate("/error");
         });
     }
   };
