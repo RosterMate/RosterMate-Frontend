@@ -29,27 +29,22 @@ import { adminRoutes, doctorRoutes, consultantRoutes } from "./routes";
 import AdminDashboard from "layouts/adminPages/adminDashboard";
 import Notifications from "layouts/notifications";
 import Profile from "layouts/profile";
-import SignIn from "layouts/authentication/sign-in";
+import SignIn, { USER_TYPES, USER_TYPE } from "layouts/authentication/sign-in";
 import AddWard from "layouts/adminPages/addWard";
 import AddDoctor from "layouts/adminPages/addDoctor";
 import AddConsultant from "layouts/adminPages/addConsultant";
 import DoctorDashboard from "layouts/doctorPages/DoctorDashboard";
+import LeaveRequests from "layouts/doctorPages/LeaveRequests";
+import ShiftChanges from "layouts/doctorPages/ShiftChanges";
 import ConsultantDashboard from "layouts/consultantPages/ConsultantDashboard";
+import CreateSchedule from "layouts/consultantPages/CreateSchedule";
+import AccessRestricted from "layouts/accessRestrictedPage";
 import GrantLeaves from "layouts/consultantPages/GrantLeaves";
 import ShiftChanges from "layouts/consultantPages/ShiftChangesHistory";
 import ViewUsers from "layouts/consultantPages/ViewAllUsers";
 import ViewWards from "layouts/consultantPages/ViewAllWards";
-
 import EditProfile from "layouts/profile/editprofile";
 
-const USER_TYPES = {
-  PUBLIC_USER: "Public",
-  ADMIN_USER: "Admin",
-  DOCTOR_USER: "Doctor",
-  CONSULTANT_USER: "Consultant",
-};
-
-const USER_TYPE = USER_TYPES.DOCTOR_USER;
 
 export default function App() {
   const [controller, dispatch] = useMaterialUIController();
@@ -95,7 +90,7 @@ export default function App() {
   return (
     <ThemeProvider theme={darkMode ? themeDark : theme}>
       <CssBaseline />
-      {layout === "dashboard" && pathname !== "/sign-in" && (
+      {layout === "dashboard" && pathname !== "/" && (
         <>
           {USER_TYPE === USER_TYPES.ADMIN_USER && (
             <Sidenav
@@ -133,7 +128,7 @@ export default function App() {
 
       <Routes>
         {/* Common Pages */}
-        <Route path="/sign-in" element={<SignIn />} />
+        <Route path="/" element={<SignIn />} />
         <Route
           path="/editprofile"
           element={
@@ -159,7 +154,6 @@ export default function App() {
             </DocConElement>
           }
         />
-
         {/* Admin Pages */}
         <Route
           path="/adminDashboard"
@@ -203,13 +197,28 @@ export default function App() {
             </AdminElement>
           }
         />
-
         {/* Doctor Pages */}
         <Route
           path="/doctorDashboard"
           element={
             <DoctorElement>
               <DoctorDashboard />
+            </DoctorElement>
+          }
+        />
+        <Route
+          path="/leaveRequests"
+          element={
+            <DoctorElement>
+              <LeaveRequests />
+            </DoctorElement>
+          }
+        />
+        <Route
+          path="/shiftChanges"
+          element={
+            <DoctorElement>
+              <ShiftChanges />
             </DoctorElement>
           }
         />
@@ -223,6 +232,22 @@ export default function App() {
             </ConsultantElement>
           }
         />
+
+        <Route
+          path="/createSchedule"
+          element={
+            <ConsultantElement>
+              <CreateSchedule />
+            </ConsultantElement>
+          }
+        />
+
+        {/* Page Not Found */}
+        <Route path="/error" element={<AccessRestricted />} />
+        {
+          //<Route path="*" element={<div>Page Not Found!</div>} />
+        }
+
 
         <Route
           path="/grantLeaverequests"
@@ -260,7 +285,7 @@ export default function App() {
           }
         />
 
-        <Route path="*" element={<div>Page Not Found!</div>} />
+
       </Routes>
     </ThemeProvider>
   );
@@ -270,24 +295,21 @@ function AdminElement({ children }) {
   if (USER_TYPE === USER_TYPES.ADMIN_USER) {
     return <>{children}</>;
   } else {
-    return <Navigate to="/" />;
-    //return <>You do not have access to this page!</>;
+    return <Navigate to="/error" />;
   }
 }
 function DoctorElement({ children }) {
   if (USER_TYPE === USER_TYPES.DOCTOR_USER) {
     return <>{children}</>;
   } else {
-    return <Navigate to="/" />;
-    //return <>You do not have access to this page!</>;
+    return <Navigate to="/error" />;
   }
 }
 function ConsultantElement({ children }) {
   if (USER_TYPE === USER_TYPES.CONSULTANT_USER) {
     return <>{children}</>;
   } else {
-    return <Navigate to="/" />;
-    //return <>You do not have access to this page!</>;
+    return <Navigate to="/error" />;
   }
 }
 function UserElement({ children }) {
@@ -298,16 +320,14 @@ function UserElement({ children }) {
   ) {
     return <>{children}</>;
   } else {
-    return <Navigate to="/" />;
-    //return <>You do not have access to this page!</>;
+    return <Navigate to="/error" />;
   }
 }
 function DocConElement({ children }) {
   if (USER_TYPE === USER_TYPES.DOCTOR_USER || USER_TYPE === USER_TYPES.CONSULTANT_USER) {
     return <>{children}</>;
   } else {
-    return <Navigate to="/" />;
-    //return <>You do not have access to this page!</>;
+    return <Navigate to="/error" />;
   }
 }
 

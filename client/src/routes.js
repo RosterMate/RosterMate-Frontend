@@ -6,7 +6,10 @@ import AddWard from "layouts/adminPages/addWard";
 import AddDoctor from "layouts/adminPages/addDoctor";
 import AddConsultant from "layouts/adminPages/addConsultant";
 import DoctorDashboard from "layouts/doctorPages/DoctorDashboard";
+import LeaveRequests from "layouts/doctorPages/LeaveRequests";
+import ShiftChanges from "layouts/doctorPages/ShiftChanges";
 import ConsultantDashboard from "layouts/consultantPages/ConsultantDashboard";
+import CreateSchedule from "layouts/consultantPages/CreateSchedule";
 import GrantLeaves from "layouts/consultantPages/GrantLeaves";
 
 import EditProfile from "layouts/profile/editprofile";
@@ -87,6 +90,22 @@ export const doctorRoutes = [
   },
   {
     type: "collapse",
+    name: "Leave Requests",
+    key: "leaveRequests",
+    icon: <Icon fontSize="small">Requests</Icon>,
+    route: "/leaveRequests",
+    component: <LeaveRequests />,
+  },
+  {
+    type: "collapse",
+    name: "Shift Changes",
+    key: "shiftChanges",
+    icon: <Icon fontSize="small">Change</Icon>,
+    route: "/shiftChanges",
+    component: <ShiftChanges />,
+  },
+  {
+    type: "collapse",
     name: "Profile",
     key: "profile",
     icon: <Icon fontSize="small">person</Icon>,
@@ -122,6 +141,16 @@ export const consultantRoutes = [
   },
   {
     type: "collapse",
+    name: "Create Schedule",
+    key: "createSchedule",
+    icon: <Icon fontSize="small">Schedule</Icon>,
+    route: "/createSchedule",
+    component: <CreateSchedule />,
+  },
+  {
+    type: "collapse",
+   
+
     name: "Leave Requests",
     key: "leaverequests",
     icon: <Icon fontSize="small">notifications</Icon>,
@@ -151,6 +180,7 @@ export const consultantRoutes = [
     icon: <Icon fontSize="small">notifications</Icon>,
     route: "/viewAllWards",
     component: <ViewWards />,
+
   },
   {
     type: "collapse",

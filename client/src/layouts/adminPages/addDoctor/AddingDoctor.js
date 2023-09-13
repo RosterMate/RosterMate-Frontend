@@ -30,8 +30,10 @@ function AddingDoctor() {
   return (
     <div className="wrapper">
       <div className="form_container">
+
         <form className="form">
           <div className="heading">
+
             <h1>Add Doctor</h1>
           </div>
           <div className="para">

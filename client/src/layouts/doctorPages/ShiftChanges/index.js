@@ -7,18 +7,14 @@ import Footer from "components/Footer";
 
 // components
 import MDTypography from "components/MDTypography";
-import GrantLeaveRequests from "../GrantLeaves/GrantLeaveRequests";
 
-function ConsultantDashboard() {
+function ShiftChanges() {
   return (
     <DashboardLayout>
       <DashboardNavbar />
 
       <MDTypography variant="h3" display="flex">
-        {/* <GrantLeaveRequests /> */}
-      </MDTypography>
-      <MDTypography variant="h3" display="flex">
-        show current schedule , view doctors, view consultants
+        Shift Changes
       </MDTypography>
 
       <Footer />
@@ -26,4 +22,4 @@ function ConsultantDashboard() {
   );
 }
 
-export default ConsultantDashboard;
+export default ShiftChanges;
