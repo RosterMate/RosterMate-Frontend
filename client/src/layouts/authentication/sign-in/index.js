@@ -85,14 +85,12 @@ export default function LogIn() {
   };
 
   const handleLogin = () => {
-    console.log("Email:", email);
-    console.log("Password:", password);
+    //console.log("Email:", email);
+    //console.log("Password:", password);
 
     if (email.trim() !== "" && password.trim() !== "") {
-      // Define your Django login API endpoint
       const apiUrl = "http://127.0.0.1:8000/api/login";
 
-      // Create a data object with the user's email and password
       const data = {
         email: email,
         password: password,
@@ -102,16 +100,24 @@ export default function LogIn() {
         .then((response) => {
           const userData = response.data;
           console.log("User data:", userData);
-          if (userData.USERTYPE === "admin") {
-            USER_TYPE = USER_TYPES.ADMIN_USER;
-            navigate("/adminDashboard");
-          } else if (userData.USERTYPE === "doctor") {
-            USER_TYPE = USER_TYPES.DOCTOR_USER;
-            navigate("/doctorDashboard");
-          } else if (userData.USERTYPE === "consultant") {
-            USER_TYPE = USER_TYPES.CONSULTANT_USER;
-            navigate("/consultantDashboard");
+          if (userData.isAuthenticated) {
+            if (userData.USERTYPE === "Admin") {
+              USER_TYPE = USER_TYPES.ADMIN_USER;
+              navigate("/adminDashboard");
+            } else if (userData.USERTYPE === "Doctor") {
+              USER_TYPE = USER_TYPES.DOCTOR_USER;
+              navigate("/doctorDashboard");
+            } else if (userData.USERTYPE === "Consultant") {
+              USER_TYPE = USER_TYPES.CONSULTANT_USER;
+              navigate("/consultantDashboard");
+            } else {
+              console.log("Login type error");
+              USER_TYPE = USER_TYPES.PUBLIC_USER;
+              navigate("/error");
+            }
           } else {
+            console.log("Not Authenticated User");
+            USER_TYPE = USER_TYPES.PUBLIC_USER;
             navigate("/error");
           }
         })
