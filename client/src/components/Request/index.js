@@ -106,7 +106,7 @@ function Notification({
             display="flex"
             justifyContent="center"
             alignItems="center"
-            mx={2}
+            mx={1}
             mb={1}
           >
             <MDButton variant="gradient" color={color} onClick={handleAccept}>
@@ -119,7 +119,7 @@ function Notification({
             display="flex"
             justifyContent="center"
             alignItems="center"
-            mx={2}
+            mx={1}
             mb={1}
           >
             <MDButton variant="gradient" color={color} onClick={handleReject}>
