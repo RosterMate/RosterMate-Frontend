@@ -37,6 +37,7 @@ import DoctorDashboard from "layouts/doctorPages/DoctorDashboard";
 import ConsultantDashboard from "layouts/consultantPages/ConsultantDashboard";
 import GrantLeaves from "layouts/consultantPages/GrantLeaves";
 import ShiftChanges from "layouts/consultantPages/ShiftChangesHistory";
+import ShiftChangeRequest from "layouts/doctorPages/ShiftChangeRequest";
 
 import EditProfile from "layouts/profile/editprofile";
 
@@ -244,7 +245,7 @@ export default function App() {
           path="/shiftChangeRequest"
           element={
             <DoctorElement>
-              <shiftChangeRequest />
+              <ShiftChangeRequest />
             </DoctorElement>
           }
         />
