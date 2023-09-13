@@ -38,10 +38,13 @@ import LeaveRequests from "layouts/doctorPages/LeaveRequests";
 import ShiftChanges from "layouts/doctorPages/ShiftChanges";
 import ConsultantDashboard from "layouts/consultantPages/ConsultantDashboard";
 import CreateSchedule from "layouts/consultantPages/CreateSchedule";
-import GrantLeaveRequests from "layouts/consultantPages/GrantLeaveRequests";
 import AccessRestricted from "layouts/accessRestrictedPage";
+import GrantLeaves from "layouts/consultantPages/GrantLeaves";
+import ShiftChanges from "layouts/consultantPages/ShiftChangesHistory";
+import ViewUsers from "layouts/consultantPages/ViewAllUsers";
+import ViewWards from "layouts/consultantPages/ViewAllWards";
+import EditProfile from "layouts/profile/editprofile";
 
-//export let USER_TYPE = USER_TYPES.PUBLIC_USER;
 
 export default function App() {
   const [controller, dispatch] = useMaterialUIController();
@@ -127,6 +130,15 @@ export default function App() {
         {/* Common Pages */}
         <Route path="/" element={<SignIn />} />
         <Route
+          path="/editprofile"
+          element={
+            <UserElement>
+              <EditProfile />
+            </UserElement>
+          }
+        />
+
+        <Route
           path="/profile"
           element={
             <UserElement>
@@ -151,6 +163,16 @@ export default function App() {
             </AdminElement>
           }
         />
+
+        <Route
+          path="/editprofile"
+          element={
+            <AdminElement>
+              <EditProfile />
+            </AdminElement>
+          }
+        />
+
         <Route
           path="/addWards"
           element={
@@ -210,6 +232,7 @@ export default function App() {
             </ConsultantElement>
           }
         />
+
         <Route
           path="/createSchedule"
           element={
@@ -218,19 +241,51 @@ export default function App() {
             </ConsultantElement>
           }
         />
-        <Route
-          path="/grantLeaveRequests"
-          element={
-            <ConsultantElement>
-              <GrantLeaveRequests />
-            </ConsultantElement>
-          }
-        />
+
         {/* Page Not Found */}
         <Route path="/error" element={<AccessRestricted />} />
         {
           //<Route path="*" element={<div>Page Not Found!</div>} />
         }
+
+
+        <Route
+          path="/grantLeaverequests"
+          element={
+            <ConsultantElement>
+              <GrantLeaves />
+            </ConsultantElement>
+          }
+        />
+
+        <Route
+          path="/shiftChangesHistory"
+          element={
+            <ConsultantElement>
+              <ShiftChanges />
+            </ConsultantElement>
+          }
+        />
+
+        <Route
+          path="/viewAllUsers"
+          element={
+            <ConsultantElement>
+              <ViewUsers />
+            </ConsultantElement>
+          }
+        />
+
+        <Route
+          path="/viewAllWards"
+          element={
+            <ConsultantElement>
+              <ViewWards />
+            </ConsultantElement>
+          }
+        />
+
+
       </Routes>
     </ThemeProvider>
   );

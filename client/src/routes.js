@@ -10,10 +10,15 @@ import LeaveRequests from "layouts/doctorPages/LeaveRequests";
 import ShiftChanges from "layouts/doctorPages/ShiftChanges";
 import ConsultantDashboard from "layouts/consultantPages/ConsultantDashboard";
 import CreateSchedule from "layouts/consultantPages/CreateSchedule";
-import GrantLeaveRequests from "layouts/consultantPages/GrantLeaveRequests";
+import GrantLeaves from "layouts/consultantPages/GrantLeaves";
 
+import EditProfile from "layouts/profile/editprofile";
+import ShiftChangeRequest from "layouts/doctorPages/ShiftChangeRequest";
 // @mui icons
 import Icon from "@mui/material/Icon";
+import ShiftChanges from "layouts/consultantPages/ShiftChangesHistory";
+import ViewUsers from "layouts/consultantPages/ViewAllUsers";
+import ViewWards from "layouts/consultantPages/ViewAllWards";
 
 export const adminRoutes = [
   {
@@ -55,6 +60,14 @@ export const adminRoutes = [
     icon: <Icon fontSize="small">person</Icon>,
     route: "/profile",
     component: <Profile />,
+  },
+
+  {
+    name: "Edit Profile",
+    key: "editProfile",
+    icon: <Icon fontSize="small">person</Icon>,
+    route: "/editprofile",
+    component: <EditProfile />,
   },
 ];
 
@@ -99,6 +112,14 @@ export const doctorRoutes = [
     route: "/profile",
     component: <Profile />,
   },
+  {
+    type: "collapse",
+    name: "Shift Change Request",
+    key: "shiftChangeRequest",
+    icon: <Icon fontSize="small">D</Icon>,
+    route: "/shiftChangeRequest",
+    component: <ShiftChangeRequest />,
+  },
 ];
 
 export const consultantRoutes = [
@@ -128,11 +149,38 @@ export const consultantRoutes = [
   },
   {
     type: "collapse",
-    name: "Grant Leave Requests",
-    key: "grantLeaveRequests",
-    icon: <Icon fontSize="small"> Leave </Icon>,
-    route: "/grantLeaveRequests",
-    component: <GrantLeaveRequests />,
+   
+
+    name: "Leave Requests",
+    key: "leaverequests",
+    icon: <Icon fontSize="small">notifications</Icon>,
+    route: "/grantLeaverequests",
+    component: <GrantLeaves />,
+  },
+  {
+    type: "collapse",
+    name: "Shift Changes History",
+    key: "shiftchanges",
+    icon: <Icon fontSize="small">notifications</Icon>,
+    route: "/shiftChangesHistory",
+    component: <ShiftChanges />,
+  },
+  {
+    type: "collapse",
+    name: "View All Users",
+    key: "viewallusers",
+    icon: <Icon fontSize="small">notifications</Icon>,
+    route: "/viewAllUsers",
+    component: <ViewUsers />,
+  },
+  {
+    type: "collapse",
+    name: "View All Wards",
+    key: "viewallwards",
+    icon: <Icon fontSize="small">notifications</Icon>,
+    route: "/viewAllWards",
+    component: <ViewWards />,
+
   },
   {
     type: "collapse",

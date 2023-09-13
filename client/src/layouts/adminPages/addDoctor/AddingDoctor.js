@@ -23,13 +23,17 @@ function AddingDoctor() {
     });
   };
 
-  const handleSubmitButtonClick = () => {};
+  const handleSubmitButtonClick = () => {
+    console.log(form);
+  };
 
   return (
     <div className="wrapper">
       <div className="form_container">
-        <form name="form">
-          <div class="heading">
+
+        <form className="form">
+          <div className="heading">
+
             <h1>Add Doctor</h1>
           </div>
           <div className="para">

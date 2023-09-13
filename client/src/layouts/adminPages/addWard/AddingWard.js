@@ -28,7 +28,7 @@ function AddingWard() {
   return (
     <div className="wrapper">
       <div className="form_container">
-        <form name="form">
+        <form className="form">
           <div className="heading">
             <h1>Add Ward</h1>
           </div>
