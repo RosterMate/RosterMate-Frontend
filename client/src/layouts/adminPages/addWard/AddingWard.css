@@ -51,20 +51,3 @@
 .form_item Input:focus {
   border-color: #6271f0;
 }
-
-.btn Button {
-  background: #1598d4;
-  border: 1px solid #1598d4;
-  padding: 10px;
-  width: 100%;
-  font-size: 16px;
-  letter-spacing: 1px;
-  border-radius: 15px;
-  cursor: pointer;
-  color: #fff;
-  margin-bottom: 10px;
-}
-
-.btn Button:hover {
-  background: #002bc8;
-}
