@@ -30,10 +30,8 @@ function AddingDoctor() {
   return (
     <div className="wrapper">
       <div className="form_container">
-
         <form className="form">
           <div className="heading">
-
             <h1>Add Doctor</h1>
           </div>
           <div className="para">
@@ -140,14 +138,12 @@ function AddingDoctor() {
             </div>
           </div>
 
-          <div className="btn">
-            <Button
-              type="button"
-              variant="contained"
-              onClick={handleSubmitButtonClick}
-              showMessage="Submit"
-            ></Button>
-          </div>
+          <Button
+            className="btnDoc"
+            type="button"
+            onClick={handleSubmitButtonClick}
+            showMessage="Submit"
+          ></Button>
         </form>
       </div>
     </div>

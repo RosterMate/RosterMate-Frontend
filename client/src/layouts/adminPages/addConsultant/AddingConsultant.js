@@ -148,14 +148,12 @@ function AddingConsultant() {
             </div>
           </div>
 
-          <div className="btn">
-            <Button
-              type="button"
-              variant="contained"
-              onClick={handleSubmitButtonClick}
-              showMessage="Submit"
-            ></Button>
-          </div>
+          <Button
+            className="btnCon"
+            type="button"
+            onClick={handleSubmitButtonClick}
+            showMessage="Submit"
+          ></Button>
         </form>
       </div>
     </div>
