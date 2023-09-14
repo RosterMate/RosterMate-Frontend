@@ -139,11 +139,13 @@ function AddingDoctor() {
             </div>
           </div>
 
+
           <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
             <MDButton color="info" onClick={handleSubmitButtonClick}>
               Submit
             </MDButton>
           </div>
+
         </form>
       </div>
     </div>

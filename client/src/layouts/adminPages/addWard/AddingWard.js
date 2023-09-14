@@ -91,6 +91,7 @@ function AddingWard() {
               ></Input>
             </div>
           </div>
+
           <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
             <MDButton color="info" onClick={handleSubmitButtonClick}>
               Submit

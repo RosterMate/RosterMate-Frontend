@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useSwipeable } from "react-swipeable";
+import Swipeable from "react-swipeable";
 
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
