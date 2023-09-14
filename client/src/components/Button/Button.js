@@ -1,8 +1,9 @@
 import React from "react";
 
+// variant={props.variant}
 function Button(props) {
   return (
-    <button type={props.type} variant={props.variant} onClick={props.onClick}>
+    <button type={props.type} onClick={props.onClick}>
       {props.showMessage}
     </button>
   );
