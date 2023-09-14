@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useSwipeable } from "react-swipeable";
 
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
@@ -23,7 +24,7 @@ function ScrollableContainer({ children, itemWidth }) {
       const isScrollable = container.scrollWidth > container.clientWidth;
       setScrollable(isScrollable);
     }
-  }, []);
+  });
 
   const handleScrollLeft = () => {
     if (containerRef.current) {
@@ -79,7 +80,8 @@ function ScrollableContainer({ children, itemWidth }) {
         style={{
           display: "inline-flex",
           whiteSpace: "nowrap",
-          overflowX: "hidden",
+          overflowX: "auto",
+          WebkitOverflowScrolling: "touch",
         }}
       >
         {children}

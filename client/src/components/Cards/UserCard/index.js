@@ -37,7 +37,7 @@ function UserCard({ color, img, name, description }) {
 
       <MDBox pb={2} px={2} textAlign="center" lineHeight={0}>
         <MDTypography variant="h6" fontWeight="medium" textTransform="capitalize">
-          Dr.{name}
+          {name}
         </MDTypography>
         {description && (
           <MDTypography variant="caption" color="text" fontWeight="regular">
