@@ -9,14 +9,13 @@ import PropTypes from "prop-types";
 
 // example components
 import Sidenav from "./examples/Sidenav";
-import Configurator from "./examples/Configurator";
 
 // React themes
 import theme from "./assets/theme";
 import themeDark from "./assets/theme-dark";
 
 // React contexts
-import { useMaterialUIController, setMiniSidenav, setOpenConfigurator } from "./context";
+import { useMaterialUIController, setMiniSidenav } from "./context";
 
 // Images
 import brandWhite from "./assets/images/logo-ct.png";
@@ -43,7 +42,6 @@ import GrantLeaves from "layouts/consultantPages/GrantLeaves";
 import ShiftChanges from "layouts/consultantPages/ShiftChangesHistory";
 import ViewUsers from "layouts/consultantPages/ViewAllUsers";
 import ViewWards from "layouts/consultantPages/ViewAllWards";
-import EditProfile from "layouts/profile/editprofile";
 
 export default function App() {
   const [controller, dispatch] = useMaterialUIController();
@@ -121,21 +119,12 @@ export default function App() {
               onMouseLeave={handleOnMouseLeave}
             />
           )}
-          <Configurator />
         </>
       )}
 
       <Routes>
         {/* Common Pages */}
         <Route path="/" element={<SignIn />} />
-        <Route
-          path="/editprofile"
-          element={
-            <UserElement>
-              <EditProfile />
-            </UserElement>
-          }
-        />
 
         <Route
           path="/profile"
@@ -159,15 +148,6 @@ export default function App() {
           element={
             <AdminElement>
               <AdminDashboard />
-            </AdminElement>
-          }
-        />
-
-        <Route
-          path="/editprofile"
-          element={
-            <AdminElement>
-              <EditProfile />
             </AdminElement>
           }
         />

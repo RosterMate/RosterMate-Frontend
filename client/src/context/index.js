@@ -95,7 +95,6 @@ const setWhiteSidenav = (dispatch, value) => dispatch({ type: "WHITE_SIDENAV", v
 const setSidenavColor = (dispatch, value) => dispatch({ type: "SIDENAV_COLOR", value });
 const setTransparentNavbar = (dispatch, value) => dispatch({ type: "TRANSPARENT_NAVBAR", value });
 const setFixedNavbar = (dispatch, value) => dispatch({ type: "FIXED_NAVBAR", value });
-const setOpenConfigurator = (dispatch, value) => dispatch({ type: "OPEN_CONFIGURATOR", value });
 const setDirection = (dispatch, value) => dispatch({ type: "DIRECTION", value });
 const setLayout = (dispatch, value) => dispatch({ type: "LAYOUT", value });
 const setDarkMode = (dispatch, value) => dispatch({ type: "DARKMODE", value });
@@ -109,7 +108,6 @@ export {
   setSidenavColor,
   setTransparentNavbar,
   setFixedNavbar,
-  setOpenConfigurator,
   setDirection,
   setLayout,
   setDarkMode,
