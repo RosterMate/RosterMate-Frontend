@@ -1,39 +1,31 @@
 // React layouts
-import Dashboard from "layouts/adminPages/dashboard";
+import AdminDashboard from "layouts/adminPages/adminDashboard";
 import Notifications from "layouts/notifications";
 import Profile from "layouts/profile";
-import SignIn from "layouts/authentication/sign-in";
-
 import AddWard from "layouts/adminPages/addWard";
 import AddDoctor from "layouts/adminPages/addDoctor";
 import AddConsultant from "layouts/adminPages/addConsultant";
+import DoctorDashboard from "layouts/doctorPages/DoctorDashboard";
+import LeaveRequests from "layouts/doctorPages/LeaveRequests";
+import ConsultantDashboard from "layouts/consultantPages/ConsultantDashboard";
+import CreateSchedule from "layouts/consultantPages/CreateSchedule";
+import GrantLeaves from "layouts/consultantPages/GrantLeaves";
+import ShiftChanges from "layouts/consultantPages/ShiftChangesHistory";
+import ViewUsers from "layouts/consultantPages/ViewAllUsers";
+import ViewWards from "layouts/consultantPages/ViewAllWards";
+import EditProfile from "layouts/profile/editprofile";
+import ShiftChangeRequest from "layouts/doctorPages/ShiftChangeRequest";
 
 // @mui icons
 import Icon from "@mui/material/Icon";
-
-const routes = [
-  {
-    name: "Sign In",
-    key: "sign-in",
-    icon: <Icon fontSize="small">login</Icon>,
-    route: "/authentication/sign-in",
-    component: <SignIn />,
-  },
+export const adminRoutes = [
   {
     type: "collapse",
     name: "Dashboard",
-    key: "dashboard",
+    key: "adminDashboard",
     icon: <Icon fontSize="small">dashboard</Icon>,
-    route: "/dashboard",
-    component: <Dashboard />,
-  },
-  {
-    type: "collapse",
-    name: "Notifications",
-    key: "notifications",
-    icon: <Icon fontSize="small">notifications</Icon>,
-    route: "/notifications",
-    component: <Notifications />,
+    route: "/adminDashboard",
+    component: <AdminDashboard />,
   },
   {
     type: "collapse",
@@ -67,6 +59,130 @@ const routes = [
     route: "/profile",
     component: <Profile />,
   },
+
+  {
+    name: "Edit Profile",
+    key: "editProfile",
+    icon: <Icon fontSize="small">person</Icon>,
+    route: "/editprofile",
+    component: <EditProfile />,
+  },
 ];
 
-export default routes;
+export const doctorRoutes = [
+  {
+    type: "collapse",
+    name: "Dashboard",
+    key: "doctorDashboard",
+    icon: <Icon fontSize="small">dashboard</Icon>,
+    route: "/doctorDashboard",
+    component: <DoctorDashboard />,
+  },
+  {
+    type: "collapse",
+    name: "Notifications",
+    key: "notifications",
+    icon: <Icon fontSize="small">notifications</Icon>,
+    route: "/notifications",
+    component: <Notifications />,
+  },
+  {
+    type: "collapse",
+    name: "Leave Requests",
+    key: "leaveRequests",
+    icon: <Icon fontSize="small">Requests</Icon>,
+    route: "/leaveRequests",
+    component: <LeaveRequests />,
+  },
+  {
+    type: "collapse",
+    name: "Shift Changes",
+    key: "shiftChanges",
+    icon: <Icon fontSize="small">Change</Icon>,
+    route: "/shiftChanges",
+    component: <ShiftChanges />,
+  },
+  {
+    type: "collapse",
+    name: "Profile",
+    key: "profile",
+    icon: <Icon fontSize="small">person</Icon>,
+    route: "/profile",
+    component: <Profile />,
+  },
+  {
+    type: "collapse",
+    name: "Shift Change Request",
+    key: "shiftChangeRequest",
+    icon: <Icon fontSize="small">D</Icon>,
+    route: "/shiftChangeRequest",
+    component: <ShiftChangeRequest />,
+  },
+];
+
+export const consultantRoutes = [
+  {
+    type: "collapse",
+    name: "Dashboard",
+    key: "consultantDashboard",
+    icon: <Icon fontSize="small">dashboard</Icon>,
+    route: "/consultantDashboard",
+    component: <ConsultantDashboard />,
+  },
+  {
+    type: "collapse",
+    name: "Notifications",
+    key: "notifications",
+    icon: <Icon fontSize="small">notifications</Icon>,
+    route: "/notifications",
+    component: <Notifications />,
+  },
+  {
+    type: "collapse",
+    name: "Create Schedule",
+    key: "createSchedule",
+    icon: <Icon fontSize="small">Schedule</Icon>,
+    route: "/createSchedule",
+    component: <CreateSchedule />,
+  },
+  {
+    type: "collapse",
+    name: "Leave Requests",
+    key: "leaverequests",
+    icon: <Icon fontSize="small">R</Icon>,
+    route: "/grantLeaverequests",
+    component: <GrantLeaves />,
+  },
+  {
+    type: "collapse",
+    name: "Shift Changes History",
+    key: "shiftchanges",
+    icon: <Icon fontSize="small">notifications</Icon>,
+    route: "/shiftChangesHistory",
+    component: <ShiftChanges />,
+  },
+  {
+    type: "collapse",
+    name: "View All Users",
+    key: "viewallusers",
+    icon: <Icon fontSize="small">notifications</Icon>,
+    route: "/viewAllUsers",
+    component: <ViewUsers />,
+  },
+  {
+    type: "collapse",
+    name: "View All Wards",
+    key: "viewallwards",
+    icon: <Icon fontSize="small">notifications</Icon>,
+    route: "/viewAllWards",
+    component: <ViewWards />,
+  },
+  {
+    type: "collapse",
+    name: "Profile",
+    key: "profile",
+    icon: <Icon fontSize="small">person</Icon>,
+    route: "/profile",
+    component: <Profile />,
+  },
+];

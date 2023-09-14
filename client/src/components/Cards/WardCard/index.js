@@ -72,6 +72,7 @@ function WardCard({ color, wardName, count, icon }) {
 // Setting default values for the props of WardCard
 WardCard.defaultProps = {
   color: "info",
+  icon: "store",
 };
 
 // Typechecking props for the WardCard

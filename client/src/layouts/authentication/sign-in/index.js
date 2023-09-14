@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Axios from "axios";
 
 // MUI
 import Button from "@mui/material/Button";
@@ -20,11 +22,8 @@ import Image1 from "./AdminLogin1.png";
 // CSS
 import "./LogIn.css";
 
-//
+// components
 import Footer from "components/Footer";
-
-//
-import { useNavigate } from "react-router-dom";
 
 function Icons() {
   return (
@@ -62,6 +61,15 @@ function Icons() {
 
 const defaultTheme = createTheme();
 
+export const USER_TYPES = {
+  PUBLIC_USER: "Public",
+  ADMIN_USER: "Admin",
+  DOCTOR_USER: "Doctor",
+  CONSULTANT_USER: "Consultant",
+};
+
+export let USER_TYPE = USER_TYPES.PUBLIC_USER;
+
 export default function LogIn() {
   const navigate = useNavigate();
 
@@ -77,11 +85,47 @@ export default function LogIn() {
   };
 
   const handleLogin = () => {
-    console.log("Email:", email);
-    console.log("Password:", password);
+    //console.log("Email:", email);
+    //console.log("Password:", password);
 
     if (email.trim() !== "" && password.trim() !== "") {
-      navigate("/dashboard");
+      const apiUrl = "http://127.0.0.1:8000/api/login";
+
+      const data = {
+        email: email,
+        password: password,
+      };
+
+      Axios.post(apiUrl, data)
+        .then((response) => {
+          const userData = response.data;
+          console.log("User data:", userData);
+          if (userData.isAuthenticated) {
+            if (userData.USERTYPE === "Admin") {
+              USER_TYPE = USER_TYPES.ADMIN_USER;
+              navigate("/adminDashboard");
+            } else if (userData.USERTYPE === "Doctor") {
+              USER_TYPE = USER_TYPES.DOCTOR_USER;
+              navigate("/doctorDashboard");
+            } else if (userData.USERTYPE === "Consultant") {
+              USER_TYPE = USER_TYPES.CONSULTANT_USER;
+              navigate("/consultantDashboard");
+            } else {
+              console.log("Login type error");
+              USER_TYPE = USER_TYPES.PUBLIC_USER;
+              navigate("/error");
+            }
+          } else {
+            console.log("Not Authenticated User");
+            USER_TYPE = USER_TYPES.PUBLIC_USER;
+            navigate("/error");
+          }
+        })
+        .catch((error) => {
+          // Handle any errors from the backend
+          console.error("Login error:", error);
+          navigate("/error");
+        });
     }
   };
 
