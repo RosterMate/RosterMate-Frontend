@@ -14,10 +14,11 @@ const initialValues = {
 
 function ShiftChangeForm() {
   const [date, setDate] = useState(new Date());
+  const [fromDate, setFromDate] = useState(new Date());
+  const [toDate, setToDate] = useState(new Date());
   const [fromShift, setFromShift] = useState();
   const [toShift, setToShift] = useState();
-  const [selects2, setSelects2] = useState();
-  const [selects3, setSelects3] = useState();
+  const [selectsDoc, setSelectsDoc] = useState();
 
   return (
     <div className="accountsettings">
@@ -29,7 +30,7 @@ function ShiftChangeForm() {
               From Date
             </MDTypography>{" "}
           </label>
-          <input type="date" onChange={(e) => e.target.value} />
+          <input type="date" value={fromDate} onChange={(e) => setFromDate(e.target.value)} />
         </div>
 
         <div className="form-group">
@@ -39,7 +40,7 @@ function ShiftChangeForm() {
               To Date
             </MDTypography>{" "}
           </label>
-          <input type="date" onChange={(e) => e.target.value} />
+          <input type="date" value={toDate} onChange={(e) => setToDate(e.target.value)} />
         </div>
 
         <div className="form-group">
@@ -76,11 +77,11 @@ function ShiftChangeForm() {
           <label htmlFor="name">
             {" "}
             <MDTypography variant="h6" fontWeight="medium" textTransform="capitalize">
-              From Doctor
+              Select Doctor
             </MDTypography>{" "}
           </label>
 
-          <select value={selects2} onChange={(e) => setSelects2(e.target.value)}>
+          <select value={selectsDoc} onChange={(e) => setSelectsDoc(e.target.value)}>
             <option value="1">Doctor 1</option>
             <option value="2">Doctor 2</option>
             <option value="3">Doctor 3</option>

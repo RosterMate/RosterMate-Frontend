@@ -10,8 +10,8 @@
   background-color: #ccc;
   border: 1px solid #cccccce9;
   border-radius: 5px;
-  width: 175px;
-  height: 45px;
+  width: 165px;
+  height: 40px;
   transform: scale(1.1);
   transition: all 0.1s ease-in-out;
 }
