@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Input from "../../../components/InputBox/Input";
 import Button from "../../../components/Button/Button";
 import "./AddingDoctor.css";
+import MDButton from "components/MDButton";
 
 function AddingDoctor() {
   const [form, setForm] = useState({
@@ -138,12 +139,13 @@ function AddingDoctor() {
             </div>
           </div>
 
-          <Button
-            className="btnDoc"
-            type="button"
-            onClick={handleSubmitButtonClick}
-            showMessage="Submit"
-          ></Button>
+
+          <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+            <MDButton color="info" onClick={handleSubmitButtonClick}>
+              Submit
+            </MDButton>
+          </div>
+
         </form>
       </div>
     </div>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Input from "../../../components/InputBox/Input";
 import Button from "../../../components/Button/Button";
 import "./AddingWard.css";
+import MDButton from "components/MDButton";
 
 function AddingWard() {
   const [form, setForm] = useState({
@@ -91,12 +92,11 @@ function AddingWard() {
             </div>
           </div>
 
-          <Button
-            className="btnWard"
-            type="button"
-            onClick={handleSubmitButtonClick}
-            showMessage="Submit"
-          ></Button>
+          <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+            <MDButton color="info" onClick={handleSubmitButtonClick}>
+              Submit
+            </MDButton>
+          </div>
         </form>
       </div>
     </div>

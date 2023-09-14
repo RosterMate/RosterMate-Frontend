@@ -25,6 +25,9 @@ import "./LogIn.css";
 // components
 import Footer from "components/Footer";
 
+// base url to connect backend
+import BASE_URL from "config/baseUrl";
+
 function Icons() {
   return (
     <Box>
@@ -69,6 +72,7 @@ export const USER_TYPES = {
 };
 
 export let USER_TYPE = USER_TYPES.PUBLIC_USER;
+export let USER_EMAIL = "";
 
 export default function LogIn() {
   const navigate = useNavigate();
@@ -89,18 +93,17 @@ export default function LogIn() {
     //console.log("Password:", password);
 
     if (email.trim() !== "" && password.trim() !== "") {
-      const apiUrl = "http://127.0.0.1:8000/api/login";
-
       const data = {
         email: email,
         password: password,
       };
 
-      Axios.post(apiUrl, data)
+      Axios.post(`${BASE_URL}api/login`, data)
         .then((response) => {
           const userData = response.data;
           console.log("User data:", userData);
           if (userData.isAuthenticated) {
+            USER_EMAIL = email;
             if (userData.USERTYPE === "Admin") {
               USER_TYPE = USER_TYPES.ADMIN_USER;
               navigate("/adminDashboard");
