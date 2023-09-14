@@ -1,21 +1,30 @@
 import React, { useState } from "react";
+import Axios from "axios";
+
+//components
 import Input from "../../../components/InputBox/Input";
 import Button from "../../../components/Button/Button";
-import "./AddingWard.css";
 import MDButton from "components/MDButton";
 
+// css
+import "./AddingWard.css";
+
+// base url to connect backend
+import BASE_URL from "config/baseUrl";
+import PopupModal from "components/PopupModal";
+
 function AddingWard() {
-  const [form, setForm] = useState({
+  const [isLoading, setIsLoading] = useState(true);
+
+  const initialForm = {
     wardname: "",
     wardnumber: "",
     shifts: "",
     maxleaves: "",
     consecutiveshifts: "",
-    university: "",
-    degree: "",
-    degreeperiod: "",
-    specialization: "",
-  });
+  };
+
+  const [form, setForm] = useState(initialForm);
 
   const handleFormChange = (event) => {
     setForm({
@@ -24,7 +33,24 @@ function AddingWard() {
     });
   };
 
-  const handleSubmitButtonClick = () => {};
+  const [openModal, setOpenModal] = useState(false);
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  };
+
+  const handleSubmitButtonClick = () => {
+    Axios.post(`${BASE_URL}mainApp/addWard`, form)
+      .then((response) => {
+        console.log("ward add success :", response.data);
+        setIsLoading(false);
+        setOpenModal(true);
+        setForm(initialForm);
+      })
+      .catch((error) => {
+        console.error("Error fetching doctor details:", error);
+      });
+  };
 
   return (
     <div className="wrapper">
@@ -98,6 +124,7 @@ function AddingWard() {
           </div>
         </form>
       </div>
+      <PopupModal open={openModal} message="Ward added successfully" onClose={handleCloseModal} />
     </div>
   );
 }
