@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Input from "../../../components/InputBox/Input";
 import Button from "../../../components/Button/Button";
 import "./AddingConsultant.css";
+import MDButton from "components/MDButton";
 
 function AddingConsultant() {
   const [form, setForm] = useState({
@@ -31,7 +32,7 @@ function AddingConsultant() {
       <div className="form_container">
         <form className="form">
           <div className="heading">
-            <h1>Add Doctor</h1>
+            <h1>Add Consultant</h1>
           </div>
           <div className="para">
             <h4>Personal Information</h4>
@@ -148,13 +149,10 @@ function AddingConsultant() {
             </div>
           </div>
 
-          <div className="btn">
-            <Button
-              type="button"
-              variant="contained"
-              onClick={handleSubmitButtonClick}
-              showMessage="Submit"
-            ></Button>
+          <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+            <MDButton color="info" onClick={handleSubmitButtonClick}>
+              Submit
+            </MDButton>
           </div>
         </form>
       </div>
