@@ -6,9 +6,6 @@ import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "components/Footer";
 
-// Overview page components
-import Header from "layouts/profile/components/Header";
-
 // Data
 
 function ShiftChangeRequest() {
@@ -16,7 +13,6 @@ function ShiftChangeRequest() {
     <DashboardLayout>
       <DashboardNavbar />
       <MDBox mb={2} />
-      <Header></Header>
       <Footer />
     </DashboardLayout>
   );

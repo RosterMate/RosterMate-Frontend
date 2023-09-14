@@ -13,7 +13,6 @@ import GrantLeaves from "layouts/consultantPages/GrantLeaves";
 import ShiftChanges from "layouts/consultantPages/ShiftChangesHistory";
 import ViewUsers from "layouts/consultantPages/ViewAllUsers";
 import ViewWards from "layouts/consultantPages/ViewAllWards";
-import EditProfile from "layouts/profile/editprofile";
 import ShiftChangeRequest from "layouts/doctorPages/ShiftChangeRequest";
 
 // @mui icons
@@ -58,14 +57,6 @@ export const adminRoutes = [
     icon: <Icon fontSize="small">person</Icon>,
     route: "/profile",
     component: <Profile />,
-  },
-
-  {
-    name: "Edit Profile",
-    key: "editProfile",
-    icon: <Icon fontSize="small">person</Icon>,
-    route: "/editprofile",
-    component: <EditProfile />,
   },
 ];
 

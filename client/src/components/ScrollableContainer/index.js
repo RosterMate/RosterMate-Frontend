@@ -82,6 +82,7 @@ function ScrollableContainer({ children, itemWidth }) {
           whiteSpace: "nowrap",
           overflowX: "auto",
           WebkitOverflowScrolling: "touch",
+          paddingBottom: "1rem",
         }}
       >
         {children}

@@ -4,20 +4,15 @@ import { useState, useEffect } from "react";
 import Divider from "@mui/material/Divider";
 import Switch from "@mui/material/Switch";
 import IconButton from "@mui/material/IconButton";
-import Icon from "@mui/material/Icon";
 
 // React components
-import MDBox from "components/MDBox";
-import MDTypography from "components/MDTypography";
-import MDButton from "components/MDButton";
-
-// Custom styles for the Configurator
-import ConfiguratorRoot from "examples/Configurator/ConfiguratorRoot";
+import MDBox from "../MDBox";
+import MDTypography from "../MDTypography";
+import MDButton from "../MDButton";
 
 // React context
 import {
   useMaterialUIController,
-  setOpenConfigurator,
   setTransparentSidenav,
   setWhiteSidenav,
   setFixedNavbar,
@@ -25,16 +20,9 @@ import {
   setDarkMode,
 } from "context";
 
-function Configurator() {
+function Settings() {
   const [controller, dispatch] = useMaterialUIController();
-  const {
-    openConfigurator,
-    fixedNavbar,
-    sidenavColor,
-    transparentSidenav,
-    whiteSidenav,
-    darkMode,
-  } = controller;
+  const { fixedNavbar, sidenavColor, transparentSidenav, whiteSidenav, darkMode } = controller;
   const [disabled, setDisabled] = useState(false);
   const sidenavColors = ["primary", "dark", "info", "success", "warning", "error"];
 
@@ -55,7 +43,6 @@ function Configurator() {
     return () => window.removeEventListener("resize", handleDisabled);
   }, []);
 
-  const handleCloseConfigurator = () => setOpenConfigurator(dispatch, false);
   const handleTransparentSidenav = () => {
     setTransparentSidenav(dispatch, true);
     setWhiteSidenav(dispatch, false);
@@ -105,36 +92,18 @@ function Configurator() {
   });
 
   return (
-    <ConfiguratorRoot variant="permanent" ownerState={{ openConfigurator }}>
+    <>
       <MDBox
         display="flex"
         justifyContent="space-between"
         alignItems="baseline"
         pt={4}
-        pb={0.5}
+        pb={1}
         px={3}
       >
-        <MDBox>
-          <MDTypography variant="h5">RosterMate Configurator</MDTypography>
-        </MDBox>
-
-        <Icon
-          sx={({ typography: { size }, palette: { dark, white } }) => ({
-            fontSize: `${size.lg} !important`,
-            color: darkMode ? white.main : dark.main,
-            stroke: "currentColor",
-            strokeWidth: "2px",
-            cursor: "pointer",
-            transform: "translateY(5px)",
-          })}
-          onClick={handleCloseConfigurator}
-        >
-          close
-        </Icon>
+        <MDTypography variant="h4">RosterMate Configurator</MDTypography>
       </MDBox>
-
       <Divider />
-
       <MDBox pt={0.5} pb={3} px={3}>
         <MDBox>
           <MDTypography variant="h6">Sidenav Colors</MDTypography>
@@ -260,8 +229,8 @@ function Configurator() {
         </MDBox>
         <Divider />
       </MDBox>
-    </ConfiguratorRoot>
+    </>
   );
 }
 
-export default Configurator;
+export default Settings;
