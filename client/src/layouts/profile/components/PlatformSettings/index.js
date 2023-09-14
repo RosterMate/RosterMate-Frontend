@@ -68,27 +68,17 @@ function PlatformSettings() {
             <label htmlFor="name">
               {" "}
               <MDTypography variant="h6" fontWeight="medium" textTransform="capitalize">
-                Password
-              </MDTypography>{" "}
-            </label>
-            <input type="text" name="name" id="name" />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="name">
-              {" "}
-              <MDTypography variant="h6" fontWeight="medium" textTransform="capitalize">
-                Nationality
-              </MDTypography>{" "}
-            </label>
-            <input type="text" name="name" id="name" />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="name">
-              {" "}
-              <MDTypography variant="h6" fontWeight="medium" textTransform="capitalize">
                 Designation
+              </MDTypography>{" "}
+            </label>
+            <input type="text" name="name" id="name" />
+          </div>
+
+          <div className="form-group1">
+            <label htmlFor="name">
+              {" "}
+              <MDTypography variant="h6" fontWeight="medium" textTransform="capitalize">
+                Profile Information
               </MDTypography>{" "}
             </label>
             <input type="text" name="name" id="name" />

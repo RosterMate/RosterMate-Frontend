@@ -8,6 +8,8 @@ import Footer from "components/Footer";
 
 // @mui material components
 import Grid from "@mui/material/Grid";
+
+import Header from "./Header";
 // Overview page componen
 
 // Data
@@ -16,21 +18,19 @@ function ShiftChangeRequest() {
   return (
     <DashboardLayout>
       <DashboardNavbar />
-
-      <MDBox pt={3} mb={2}>
-        <Grid container spacing={3}>
-          <Grid item xs={10} md={8} lg={6}>
-            <MDBox mt={3}>
-              <ShiftChangeForm />
-            </MDBox>
+      <Header>
+        <MDBox pt={3} mb={3}>
+          <Grid container spacing={4}>
+            <Grid item xs={10} md={12} lg={10}>
+              <MDBox mt={3}>
+                <ShiftChangeForm />
+              </MDBox>
+            </Grid>
           </Grid>
-          <Grid item xs={10} md={8} lg={6}>
-            <MDBox mt={3}></MDBox>
-          </Grid>
-        </Grid>
-      </MDBox>
+        </MDBox>
 
-      <Footer />
+        <Footer />
+      </Header>
     </DashboardLayout>
   );
 }

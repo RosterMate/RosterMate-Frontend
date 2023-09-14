@@ -30,42 +30,8 @@ function Overview() {
       <Header>
         <MDBox mt={5} mb={3}>
           <Grid container spacing={1}>
-            <Grid item xs={12} md={10} xl={8}>
+            <Grid item xs={14} md={12} xl={12}>
               <PlatformSettings />
-            </Grid>
-            <Grid item xs={10} md={6} xl={4} sx={{ display: "flex" }}>
-              <Divider orientation="vertical" sx={{ ml: -2, mr: 2 }} />
-              <ProfileInfoCard
-                title="profile information"
-                description="Hi, I’m a Specilist Doctor."
-                info={{
-                  fullName: "Name of the doctor",
-
-                  mobile: "mobile number",
-                  email: "email of the doctor",
-                  location: "Address",
-                }}
-                social={[
-                  {
-                    link: "https://www.facebook.com/",
-                    icon: <FacebookIcon />,
-                    color: "facebook",
-                  },
-                  {
-                    link: "https://twitter.com/",
-                    icon: <TwitterIcon />,
-                    color: "twitter",
-                  },
-                  {
-                    link: "https://www.instagram.com/",
-                    icon: <InstagramIcon />,
-                    color: "instagram",
-                  },
-                ]}
-                action={{ null: null }}
-                shadow={false}
-              />
-              <Divider orientation="vertical" sx={{ mx: 0 }} />
             </Grid>
           </Grid>
         </MDBox>
