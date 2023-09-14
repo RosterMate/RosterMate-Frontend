@@ -71,7 +71,7 @@ export const USER_TYPES = {
   CONSULTANT_USER: "Consultant",
 };
 
-export let USER_TYPE = USER_TYPES.ADMIN_USER;
+export let USER_TYPE = USER_TYPES.PUBLIC_USER;
 export let USER_EMAIL = "";
 
 export default function LogIn() {
