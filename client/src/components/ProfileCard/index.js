@@ -38,6 +38,13 @@ function ProfileCard({ img, name, email, position, address, information, mobile 
     const { name, value } = event.target;
     setUser({ ...user, [name]: value });
   };
+
+  // styles for the text based on the editing modes
+  const textStyles = {
+    color: isEditing ? "black" : "black",
+    fontWeight: isEditing ? "normal" : "bold",
+  };
+
   return (
     <Card
       style={{
@@ -69,11 +76,14 @@ function ProfileCard({ img, name, email, position, address, information, mobile 
           <TextField
             required
             label="Email"
-            name="email"
+            name="Email"
             fullWidth
             value={user.Email}
             onChange={handleChange}
             disabled={!isEditing}
+            InputProps={{
+              style: textStyles,
+            }}
           />
         </div>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -81,22 +91,31 @@ function ProfileCard({ img, name, email, position, address, information, mobile 
             <TextField
               required
               label="Position"
-              name="position"
+              name="Position"
               fullWidth
               value={user.Position}
               onChange={handleChange}
               disabled={!isEditing}
+              InputProps={{
+                style: textStyles,
+              }}
             />
           </div>
           <div style={{ marginTop: "1rem", width: "49%" }}>
             <TextField
               required
               label="Mobile"
-              name="mobile"
+              name="Mobile"
               fullWidth
               value={user.Mobile}
               onChange={handleChange}
               disabled={!isEditing}
+              InputProps={{
+                inputProps: {
+                  maxLength: 10,
+                  style: textStyles,
+                },
+              }}
             />
           </div>
         </div>
@@ -104,21 +123,27 @@ function ProfileCard({ img, name, email, position, address, information, mobile 
           <TextField
             required
             label="Address"
-            name="address"
+            name="Address"
             fullWidth
             value={user.Address}
             onChange={handleChange}
             disabled={!isEditing}
+            InputProps={{
+              style: textStyles,
+            }}
           />
         </div>
         <div style={{ marginTop: "1rem" }}>
           <TextField
             label="More Information"
-            name="information"
+            name="Information"
             fullWidth
             value={user.Information}
             onChange={handleChange}
             disabled={!isEditing}
+            InputProps={{
+              style: textStyles,
+            }}
           />
         </div>
         {isEditing && (
@@ -136,6 +161,14 @@ function ProfileCard({ img, name, email, position, address, information, mobile 
 // Setting default values for the props of WardCard
 ProfileCard.defaultProps = {};
 // Typechecking props for the WardCard
-ProfileCard.propTypes = { img: PropTypes.string, name: PropTypes.string.isRequired };
+ProfileCard.propTypes = {
+  img: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  position: PropTypes.string.isRequired,
+  address: PropTypes.string.isRequired,
+  information: PropTypes.string.isRequired,
+  mobile: PropTypes.string.isRequired,
+};
 
 export default ProfileCard;

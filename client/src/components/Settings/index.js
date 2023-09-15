@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 // @mui material components
 import Divider from "@mui/material/Divider";
@@ -55,6 +56,11 @@ function Settings() {
     setWhiteSidenav(dispatch, false);
     setTransparentSidenav(dispatch, false);
   };
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    navigate("/");
+  };
+
   const handleFixedNavbar = () => setFixedNavbar(dispatch, !fixedNavbar);
   const handleDarkMode = () => setDarkMode(dispatch, !darkMode);
 
@@ -93,18 +99,11 @@ function Settings() {
 
   return (
     <>
-      <MDBox
-        display="flex"
-        justifyContent="space-between"
-        alignItems="baseline"
-        pt={4}
-        pb={1}
-        px={3}
-      >
+      <MDBox display="flex" justifyContent="space-between" alignItems="baseline" pt={2} px={3}>
         <MDTypography variant="h4">RosterMate Configurator</MDTypography>
       </MDBox>
       <Divider />
-      <MDBox pt={0.5} pb={3} px={3}>
+      <MDBox pt={0.5} pb={2} px={3}>
         <MDBox>
           <MDTypography variant="h6">Sidenav Colors</MDTypography>
 
@@ -151,7 +150,7 @@ function Settings() {
           </MDBox>
         </MDBox>
 
-        <MDBox mt={3} lineHeight={1}>
+        <MDBox mt={2} lineHeight={1}>
           <MDTypography variant="h6">SideNav Type</MDTypography>
           <MDTypography variant="button" color="text">
             Choose between different sidenav types.
@@ -228,6 +227,10 @@ function Settings() {
           <Switch checked={darkMode} onChange={handleDarkMode} />
         </MDBox>
         <Divider />
+
+        <MDButton onClick={handleLogout} fullWidth color="info">
+          Logout
+        </MDButton>
       </MDBox>
     </>
   );
