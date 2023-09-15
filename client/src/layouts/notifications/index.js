@@ -36,7 +36,7 @@ function Notifications() {
           <Grid item xs={12} md={6} lg={3}>
             <MDBox mt={3}>
               <RequestCard
-                isReceived={false}
+                isReceived={true}
                 status="NoResponse"
                 fromOrTo="Dr.Weerasekara"
                 FromDate="2023-12-14"
