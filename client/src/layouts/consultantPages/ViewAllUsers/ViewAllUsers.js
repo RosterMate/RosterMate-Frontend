@@ -1,88 +1,50 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import Axios from "axios";
 import Grid from "@mui/material/Grid";
 import MDBox from "components/MDBox";
-import UserCard from "components/Cards/UserCard";
+import UserCard from "../../../components/Cards/UserCard";
 import "./ViewAllUsers.css";
-
-const doctorProfiles = [
-  {
-    name: "David Lee",
-    description: "Neurologist",
-    img: "https://raw.githubusercontent.com/RosterMate/RosterMate-Client/main/client/src/assets/images/profilePictures/Doc1.jpeg",
-  },
-  {
-    name: "David Lee2",
-    description: "Neurologist",
-    img: "https://raw.githubusercontent.com/RosterMate/RosterMate-Client/main/client/src/assets/images/profilePictures/Doc1.jpeg",
-  },
-  {
-    name: "David Lee3",
-    description: "Neurologist",
-    img: "https://raw.githubusercontent.com/RosterMate/RosterMate-Client/main/client/src/assets/images/profilePictures/Doc1.jpeg",
-  },
-  {
-    name: "David Lee4",
-    description: "Neurologist",
-    img: "https://raw.githubusercontent.com/RosterMate/RosterMate-Client/main/client/src/assets/images/profilePictures/Doc1.jpeg",
-  },
-  {
-    name: "David Lee5",
-    description: "Neurologist",
-    img: "https://raw.githubusercontent.com/RosterMate/RosterMate-Client/main/client/src/assets/images/profilePictures/Doc1.jpeg",
-  },
-  {
-    name: "David Lee6",
-    description: "Neurologist",
-    img: "https://raw.githubusercontent.com/RosterMate/RosterMate-Client/main/client/src/assets/images/profilePictures/Doc1.jpeg",
-  },
-  {
-    name: "David Lee6",
-    description: "Neurologist",
-    img: "https://raw.githubusercontent.com/RosterMate/RosterMate-Client/main/client/src/assets/images/profilePictures/Doc2.jpeg",
-  },
-  {
-    name: "David Lee",
-    description: "Neurologist",
-    img: "https://raw.githubusercontent.com/RosterMate/RosterMate-Client/main/client/src/assets/images/profilePictures/Doc1.jpeg",
-  },
-  {
-    name: "David Lee2",
-    description: "Neurologist",
-    img: "https://raw.githubusercontent.com/RosterMate/RosterMate-Client/main/client/src/assets/images/profilePictures/Doc1.jpeg",
-  },
-  {
-    name: "David Lee3",
-    description: "Neurologist",
-    img: "https://raw.githubusercontent.com/RosterMate/RosterMate-Client/main/client/src/assets/images/profilePictures/Doc1.jpeg",
-  },
-  {
-    name: "David Lee4",
-    description: "Neurologist",
-    img: "https://raw.githubusercontent.com/RosterMate/RosterMate-Client/main/client/src/assets/images/profilePictures/Doc4.jpeg",
-  },
-  {
-    name: "David Lee5",
-    description: "Neurologist",
-    img: "https://raw.githubusercontent.com/RosterMate/RosterMate-Client/main/client/src/assets/images/profilePictures/Doc3.jpeg",
-  },
-  {
-    name: "David Lee6",
-    description: "Neurologist",
-    img: "https://raw.githubusercontent.com/RosterMate/RosterMate-Client/main/client/src/assets/images/profilePictures/Doc2.jpeg",
-  },
-];
+import { USER_TYPE, USER_EMAIL } from "layouts/authentication/sign-in";
+import BASE_URL from "config/baseUrl";
+import Loading from "components/Loading";
 
 function ViewAllUsers() {
+  const [allDetails, setAllDetails] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const data = {
+    email: USER_EMAIL,
+    type: USER_TYPE,
+  };
+
+  useEffect(() => {
+    Axios.post(`${BASE_URL}mainApp/view_All_Users`, data)
+      .then((response) => {
+        setAllDetails(response.data);
+        console.log("view_all data:", response.data);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching view All users details:", error);
+      });
+  }, []);
+
   return (
-    <div className="container">
-      {doctorProfiles.map((user, id) => (
-        <Grid key={id} item xs={4} md={3} xl={1}>
-          <MDBox mx={1} mb={1}>
-            <UserCard img={user.img} name={user.name} description={user.description} />
-          </MDBox>
-        </Grid>
-      ))}
-    </div>
+    <>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <div className="container">
+          {allDetails.map((user, id) => (
+            <Grid key={id} item xs={4} md={3} xl={1}>
+              <MDBox mx={1} mb={1}>
+                <UserCard img={user.img} name={user.name} description={user.position} />
+              </MDBox>
+            </Grid>
+          ))}
+        </div>
+      )}
+    </>
   );
 }
 

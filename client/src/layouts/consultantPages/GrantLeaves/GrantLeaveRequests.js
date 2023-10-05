@@ -6,13 +6,19 @@ import Grid from "@mui/material/Grid";
 import LeaveRequestCard from "../../../components/LeaveRequestCard/LeaveRequestCard";
 import Loading from "../../../components/Loading";
 import "./GrantLeaveRequests.css";
+import { USER_TYPE, USER_EMAIL } from "layouts/authentication/sign-in";
 
 function GrantLeaveRequests() {
   const [leaveRequestsDetails, setleaveRequestsDetails] = useState([]);
   const [isLoadingLeaveReqDetails, setisLoadingLeaveReqDetails] = useState(true);
 
+  const data = {
+    email: USER_EMAIL,
+    type: USER_TYPE,
+  };
+
   useEffect(() => {
-    Axios.post(`${BASE_URL}mainApp/leaveReqDetails`, {})
+    Axios.post(`${BASE_URL}mainApp/leaveReqDetails`, data)
       .then((response) => {
         setleaveRequestsDetails(response.data);
         setisLoadingLeaveReqDetails(false);

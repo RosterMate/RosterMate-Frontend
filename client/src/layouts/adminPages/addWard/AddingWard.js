@@ -22,6 +22,7 @@ function AddingWard() {
     shifts: "",
     maxleaves: "",
     consecutiveshifts: "",
+    maxnumberdoctors: "",
   };
 
   const [form, setForm] = useState(initialForm);
@@ -42,13 +43,14 @@ function AddingWard() {
   const handleSubmitButtonClick = () => {
     Axios.post(`${BASE_URL}mainApp/addWard`, form)
       .then((response) => {
-        console.log("ward add success :", response.data);
+        console.log("Ward add success:", response.data);
         setIsLoading(false);
         setOpenModal(true);
-        setForm(initialForm);
+        // setForm(form);
+        console.log("Form Data:", form);
       })
       .catch((error) => {
-        console.error("Error fetching doctor details:", error);
+        console.error("Error adding ward:", error);
       });
   };
 
@@ -77,7 +79,7 @@ function AddingWard() {
               <Input
                 hName="Ward Number"
                 type="text"
-                placeholder="Ward Number"
+                placeholder="Ward Number ex-: '001'"
                 id="wardnumber"
                 onChange={handleFormChange}
               ></Input>
@@ -87,7 +89,7 @@ function AddingWard() {
             <div className="form_item">
               <Input
                 hName="Number of Shifts"
-                type="text"
+                type="number"
                 placeholder="Number of Shifts"
                 id="shifts"
                 onChange={handleFormChange}
@@ -98,7 +100,7 @@ function AddingWard() {
             <div className="form_item">
               <Input
                 hName="Maximum Leaves Per month"
-                type="text"
+                type="number"
                 placeholder="Maximum Leaves Per month"
                 id="maxleaves"
                 onChange={handleFormChange}
@@ -110,9 +112,21 @@ function AddingWard() {
             <div className="form_item">
               <Input
                 hName="Consecutive shifts can be done"
-                type="text"
+                type="number"
                 placeholder="Consecutive shifts can be done"
                 id="consecutiveshifts"
+                onChange={handleFormChange}
+              ></Input>
+            </div>
+          </div>
+
+          <div className="form_wrap address">
+            <div className="form_item">
+              <Input
+                hName="Maximum Number of Doctors"
+                type="number"
+                placeholder="Maximum Number of Doctors"
+                id="maxnumberdoctors"
                 onChange={handleFormChange}
               ></Input>
             </div>
