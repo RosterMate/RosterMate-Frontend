@@ -43,11 +43,9 @@ function AddingWard() {
   const handleSubmitButtonClick = () => {
     Axios.post(`${BASE_URL}mainApp/addWard`, form)
       .then((response) => {
-        console.log("Ward add success:", response.data);
         setIsLoading(false);
         setOpenModal(true);
         // setForm(form);
-        console.log("Form Data:", form);
       })
       .catch((error) => {
         console.error("Error adding ward:", error);
