@@ -23,8 +23,7 @@ function AddingDoctor() {
   const [wardNumbers, setWardNumbers] = useState([]);
 
   useEffect(() => {
-    // Fetch ward numbers from the Django API endpoint
-    Axios.post(`${BASE_URL}mainApp/sendWardDetails`) // Update the URL to match your Django endpoint
+    Axios.post(`${BASE_URL}mainApp/sendWardDetails`)
       .then((response) => {
         setWardNumbers(response.data);
         console.log(response.data);
