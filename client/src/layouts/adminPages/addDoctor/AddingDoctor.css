@@ -47,6 +47,14 @@
   border-radius: 15px;
 }
 
+.form_item select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #dadce0;
+  border-radius: 15px;
+}
+
 .form_item Input:focus {
   border-color: #6271f0;
 }
