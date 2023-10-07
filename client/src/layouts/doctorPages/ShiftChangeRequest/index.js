@@ -8,7 +8,8 @@ import Footer from "components/Footer";
 // components
 import MDTypography from "components/MDTypography";
 import MDBox from "components/MDBox";
-import ShiftChangeForm from "components/ShiftChangeRequestForm";
+
+import ShiftChangeForm from "layouts/doctorPages/ShiftChangeRequest/ShiftChangeRequestForm";
 // Material Dashboard 2 React example components
 
 // @mui material components
