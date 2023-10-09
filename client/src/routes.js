@@ -105,7 +105,7 @@ export const doctorRoutes = [
     type: "collapse",
     name: "Shift Change Request",
     key: "shiftChangeRequest",
-    icon: <Icon fontSize="small">R</Icon>,
+    icon: <Icon fontSize="small">D</Icon>,
     route: "/shiftChangeRequest",
     component: <ShiftChangeRequest />,
   },

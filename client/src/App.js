@@ -42,7 +42,6 @@ import GrantLeaves from "layouts/consultantPages/GrantLeaves";
 import ShiftChanges from "layouts/consultantPages/ShiftChangesHistory";
 import ViewUsers from "layouts/consultantPages/ViewAllUsers";
 import ViewWards from "layouts/consultantPages/ViewAllWards";
-import ShiftChangesRequest from "layouts/doctorPages/ShiftChangeRequest";
 
 export default function App() {
   const [controller, dispatch] = useMaterialUIController();
@@ -199,15 +198,6 @@ export default function App() {
           element={
             <DoctorElement>
               <ShiftChanges />
-            </DoctorElement>
-          }
-        />
-
-        <Route
-          path="/shiftChangeRequest"
-          element={
-            <DoctorElement>
-              <ShiftChangesRequest />
             </DoctorElement>
           }
         />
