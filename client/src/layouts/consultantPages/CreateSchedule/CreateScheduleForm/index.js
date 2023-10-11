@@ -42,7 +42,7 @@ function CreateScheduleForm() {
               <label> Senior Home Officer </label>
               <input
                 type="text"
-                name="Senior Home Officer2"
+                name="Senior Home Officer"
                 placeholder="No. of Senior Home Officers"
               />
               <label> Medical Officer </label>
