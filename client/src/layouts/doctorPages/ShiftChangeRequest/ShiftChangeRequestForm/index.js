@@ -13,6 +13,14 @@ const initialValues = {
 };
 
 function ShiftChangeForm() {
+  const [form, setForm] = useState({
+    morningSeniorRegistrars: "",
+  });
+
+  const handleSubmitButtonClick = () => {
+    console.log(form);
+  };
+
   const [date, setDate] = useState(new Date());
   const [fromDate, setFromDate] = useState(new Date());
   const [toDate, setToDate] = useState(new Date());
@@ -96,7 +104,7 @@ function ShiftChangeForm() {
               Submit the form here
             </MDTypography>{" "}
           </label>
-          <button className="mainbutton1">
+          <button className="mainbutton1" onClick={handleSubmitButtonClick}>
             <MDTypography variant="h6" fontWeight="medium" textTransform="capitalize">
               Submit
             </MDTypography>
