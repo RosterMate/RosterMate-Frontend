@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import Axios from "axios";
 
-//components
+// components and helpers
 import Input from "../../../components/InputBox/Input";
 import MDButton from "components/MDButton";
 import Typography from "@mui/material/Typography";
+import PopupModal from "components/PopupModal";
 
 // css
 import "./AddingWard.css";
 
 // base url to connect backend
 import BASE_URL from "config/baseUrl";
-import PopupModal from "components/PopupModal";
 
 const initialForm = {
   wardname: "",
@@ -98,7 +98,7 @@ function AddingWard() {
                 id="wardname"
                 value={form.wardname}
                 onChange={handleFormChange}
-              ></Input>
+              />
             </div>
             <div
               className="form_item"
@@ -125,7 +125,7 @@ function AddingWard() {
                 id="shifts"
                 value={form.shifts}
                 onChange={handleFormChange}
-              ></Input>
+              />
             </div>
           </div>
           <div className="form_wrap">

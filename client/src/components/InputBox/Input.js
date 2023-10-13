@@ -10,7 +10,7 @@ function Input(props) {
         id={props.id}
         value={props.value}
         onChange={props.onChange}
-      ></input>
+      />
     </div>
   );
 }

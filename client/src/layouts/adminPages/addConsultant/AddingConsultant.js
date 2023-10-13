@@ -1,24 +1,31 @@
 import React, { useState, useEffect } from "react";
 import Input from "../../../components/InputBox/Input";
-import Button from "../../../components/Button/Button";
 import "./AddingConsultant.css";
+import Typography from "@mui/material/Typography";
 import MDButton from "components/MDButton";
 import Axios from "axios";
 import BASE_URL from "config/baseUrl";
 import PopupModal from "components/PopupModal";
+import { isEmailValid } from "../../../helpers/validators";
+
+const initialForm = {
+  fullname: "",
+  mobileNo: "",
+  position: "",
+  email: "",
+  password: "",
+  address: "",
+  wardnumber: "",
+  degree: "",
+  specialization: "",
+};
 
 function AddingConsultant() {
-  const [form, setForm] = useState({
-    fullname: "",
-    mobileNo: "",
-    position: "",
-    email: "",
-    password: "",
-    address: "",
-    wardnumber: "",
-    degree: "",
-    specialization: "",
-  });
+  const [form, setForm] = useState(initialForm);
+
+  const [errorMessage, setErrorMessage] = useState("");
+  const [mobileError, setMobileError] = useState("");
+  const [emailError, setEmailError] = useState("");
 
   const [wardNumbers, setWardNumbers] = useState([]);
 
@@ -32,8 +39,6 @@ function AddingConsultant() {
         console.error("Error fetching ward numbers:", error);
       });
   }, []);
-
-  // ...
 
   // Render the dropdown list with fetched ward numbers
   const wardNumberOptions = wardNumbers.map((ward) => (
@@ -56,15 +61,37 @@ function AddingConsultant() {
   };
 
   const handleSubmitButtonClick = () => {
-    Axios.post(`${BASE_URL}mainApp/addConsultant`, form)
-      .then((response) => {
-        setIsLoading(false);
-        setOpenModal(true);
-        // setForm(form);
-      })
-      .catch((error) => {
-        console.error("Error adding Consultant:", error);
-      });
+    if (
+      form.fullname === "" ||
+      form.position === "" ||
+      form.password === "" ||
+      form.address === "" ||
+      form.wardnumber === ""
+    ) {
+      setErrorMessage("*Please enter all the details.");
+      setEmailError("");
+      setMobileError("");
+    } else if (!isEmailValid(form.email)) {
+      setErrorMessage("");
+      setEmailError("*Please enter a valid email.");
+    } else if (form.mobileNo.length !== 10) {
+      setErrorMessage("");
+      setEmailError("");
+      setMobileError("*Enter a valid mobile number.");
+    } else {
+      setErrorMessage("");
+      setMobileError("");
+      setEmailError("");
+
+      Axios.post(`${BASE_URL}mainApp/addConsultant`, form)
+        .then((response) => {
+          setOpenModal(true);
+          setForm(initialForm);
+        })
+        .catch((error) => {
+          console.error("Error adding Consultant:", error);
+        });
+    }
   };
 
   return (
@@ -81,72 +108,86 @@ function AddingConsultant() {
           <div className="form_wrap address">
             <div className="form_item">
               <Input
-                hName="Full Name"
+                hName="Full Name*"
                 type="text"
                 placeholder="Full Name"
                 id="fullname"
+                value={form.fullname}
                 onChange={handleFormChange}
-              ></Input>
+              />
             </div>
             <div className="form_item">
               <Input
-                hName="Mobile No."
-                type="text"
+                hName="Mobile No*"
+                type="number"
                 placeholder="Mobile No."
                 id="mobileNo"
+                value={form.mobileNo}
                 onChange={handleFormChange}
-              ></Input>
+              />
+              {mobileError && (
+                <Typography variant="body2" color="error" style={{ alignSelf: "flex-start" }}>
+                  {mobileError}
+                </Typography>
+              )}
             </div>
           </div>
           <div className="form_wrap">
             <div className="form_item">
               <Input
-                hName="Position"
+                hName="Position*"
                 type="text"
                 placeholder="Position"
                 id="position"
+                value={form.position}
                 onChange={handleFormChange}
-              ></Input>
+              />
             </div>
           </div>
           <div className="form_wrap">
             <div className="form_item">
               <Input
-                hName="Email"
+                hName="Email*"
                 type="email"
                 placeholder="Email"
                 id="email"
+                value={form.email}
                 onChange={handleFormChange}
-              ></Input>
+              />
+              {emailError && (
+                <Typography variant="body2" color="error" style={{ alignSelf: "flex-start" }}>
+                  {emailError}
+                </Typography>
+              )}
             </div>
           </div>
 
           <div className="form_wrap">
             <div className="form_item">
               <Input
-                hName="Password"
+                hName="Password*"
                 type="Password"
                 placeholder="Password"
                 id="password"
                 onChange={handleFormChange}
-              ></Input>
+              />
             </div>
           </div>
 
           <div className="form_wrap address">
             <div className="form_item">
               <Input
-                hName="Address"
+                hName="Address*"
                 type="text"
                 placeholder="Address"
                 id="address"
                 onChange={handleFormChange}
-              ></Input>
+              />
             </div>
           </div>
           <div className="form_wrap address">
             <div className="form_item">
-              <p>Ward ID</p>
+              <p>Ward ID*</p>
               <select id="wardnumber" onChange={handleFormChange} value={form.wardnumber}>
                 <option value="" disabled>
                   Ward ID
@@ -165,8 +206,9 @@ function AddingConsultant() {
                 type="text"
                 placeholder="Degree"
                 id="degree"
+                value={form.degree}
                 onChange={handleFormChange}
-              ></Input>
+              />
             </div>
           </div>
           <div className="form_wrap address">
@@ -176,10 +218,16 @@ function AddingConsultant() {
                 type="text"
                 placeholder="Specialization"
                 id="specialization"
+                value={form.specialization}
                 onChange={handleFormChange}
-              ></Input>
+              />
             </div>
           </div>
+          {errorMessage && (
+            <Typography variant="body2" color="error" style={{ alignSelf: "flex-start" }}>
+              {errorMessage}
+            </Typography>
+          )}
           <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
             <MDButton color="info" onClick={handleSubmitButtonClick}>
               Submit
@@ -187,7 +235,11 @@ function AddingConsultant() {
           </div>
         </form>
       </div>
-      <PopupModal open={openModal} message="Doctor added successfully" onClose={handleCloseModal} />
+      <PopupModal
+        open={openModal}
+        message="Consultant added successfully"
+        onClose={handleCloseModal}
+      />
     </div>
   );
 }

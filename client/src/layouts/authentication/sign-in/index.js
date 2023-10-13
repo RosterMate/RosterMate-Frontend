@@ -22,8 +22,9 @@ import Image1 from "./AdminLogin1.png";
 // CSS
 import "./LogIn.css";
 
-// components
+// components and helpers
 import Footer from "components/Footer";
+import { isEmailValid } from "../../../helpers/validators";
 
 // base url to connect backend
 import BASE_URL from "config/baseUrl";
@@ -88,10 +89,6 @@ export default function LogIn() {
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
-  };
-  const isEmailValid = (email) => {
-    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    return emailRegex.test(email);
   };
   const handleLogin = () => {
     //console.log("Email:", email);
