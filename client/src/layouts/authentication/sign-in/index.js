@@ -71,14 +71,16 @@ export const USER_TYPES = {
   CONSULTANT_USER: "Consultant",
 };
 
-export let USER_TYPE = USER_TYPES.PUBLIC_USER;
+export let USER_TYPE = USER_TYPES.CONSULTANT_USER;
 export let USER_EMAIL = "";
 
 export default function LogIn() {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordError, setPasswordError] = useState("");
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -87,12 +89,22 @@ export default function LogIn() {
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
-
+  const isEmailValid = (email) => {
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return emailRegex.test(email);
+  };
   const handleLogin = () => {
     //console.log("Email:", email);
     //console.log("Password:", password);
 
-    if (email.trim() !== "" && password.trim() !== "") {
+    if (email.trim() === "") {
+      setEmailError("*Please enter an email.");
+    } else if (!isEmailValid(email)) {
+      setEmailError("*Please enter a valid email.");
+    } else if (password.trim() === "") {
+      setPasswordError("*Please login as a valid user to get Access.");
+      setEmailError("");
+    } else {
       const data = {
         email: email,
         password: password,
@@ -159,6 +171,11 @@ export default function LogIn() {
 
             <Typography variant="h5" style={{ alignSelf: "flex-start" }}>
               Email
+              {emailError && (
+                <Typography variant="body2" color="error" style={{ alignSelf: "flex-start" }}>
+                  {emailError}
+                </Typography>
+              )}
             </Typography>
             <input
               type="text"
@@ -184,6 +201,11 @@ export default function LogIn() {
               value={password}
               onChange={handlePasswordChange}
             />
+            {passwordError && (
+              <Typography variant="body2" color="error" style={{ alignSelf: "flex-start" }}>
+                {passwordError}
+              </Typography>
+            )}
 
             <Grid item style={{ marginTop: "10px", alignSelf: "flex-start" }}>
               <Link href="#" variant="body1">
