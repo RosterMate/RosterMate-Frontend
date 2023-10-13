@@ -69,6 +69,8 @@ function AddingDoctor() {
       form.wardnumber === ""
     ) {
       setErrorMessage("*Please enter all the details.");
+      setEmailError("");
+      setMobileError("");
     } else if (!isEmailValid(form.email)) {
       setErrorMessage("");
       setEmailError("*Please enter a valid email.");
@@ -112,7 +114,7 @@ function AddingDoctor() {
                 id="fullname"
                 value={form.fullname}
                 onChange={handleFormChange}
-              ></Input>
+              />
             </div>
             <div className="form_item">
               <Input
@@ -123,9 +125,9 @@ function AddingDoctor() {
                 value={form.mobileNo}
                 onChange={handleFormChange}
               />
-              {emailError && (
+              {mobileError && (
                 <Typography variant="body2" color="error" style={{ alignSelf: "flex-start" }}>
-                  {emailError}
+                  {mobileError}
                 </Typography>
               )}
             </div>

@@ -98,7 +98,7 @@ function AddingWard() {
                 id="wardname"
                 value={form.wardname}
                 onChange={handleFormChange}
-              ></Input>
+              />
             </div>
             <div
               className="form_item"
@@ -125,7 +125,7 @@ function AddingWard() {
                 id="shifts"
                 value={form.shifts}
                 onChange={handleFormChange}
-              ></Input>
+              />
             </div>
           </div>
           <div className="form_wrap">
