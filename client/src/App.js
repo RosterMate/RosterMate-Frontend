@@ -1,3 +1,5 @@
+import "App.css";
+
 // react components & @mui material components
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -151,7 +153,6 @@ export default function App() {
             </AdminElement>
           }
         />
-
         <Route
           path="/addWards"
           element={
