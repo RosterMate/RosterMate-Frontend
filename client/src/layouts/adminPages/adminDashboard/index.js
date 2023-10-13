@@ -29,7 +29,7 @@ function AdminDashboard() {
   const [isLoadingConDetails, setIsLoadingConDetails] = useState(true);
 
   useEffect(() => {
-    Axios.get(`${BASE_URL}mainApp/wardDetails`, {})
+    Axios.post(`${BASE_URL}mainApp/wardDetails`, {})
       .then((response) => {
         setWardDetails(response.data);
         console.log("wardDetails data:", wardDetails);
@@ -39,7 +39,7 @@ function AdminDashboard() {
         console.error("Error fetching ward details:", error);
       });
 
-    Axios.get(`${BASE_URL}mainApp/doctorDetails`)
+    Axios.post(`${BASE_URL}mainApp/doctorDetails`)
       .then((response2) => {
         setDocDetails(response2.data);
         console.log("doctorDetails data:", response2.data);
@@ -49,7 +49,7 @@ function AdminDashboard() {
         console.error("Error fetching doctor details:", error);
       });
 
-    Axios.get(`${BASE_URL}mainApp/consultantDetails`, {})
+    Axios.post(`${BASE_URL}mainApp/consultantDetails`, {})
       .then((response3) => {
         setConDetails(response3.data);
         console.log("consultantDetails data:", conDetails);
