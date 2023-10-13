@@ -39,10 +39,10 @@ function AdminDashboard() {
         console.error("Error fetching ward details:", error);
       });
 
-    Axios.post(`${BASE_URL}mainApp/doctorDetails`, {})
+    Axios.post(`${BASE_URL}mainApp/doctorDetails`)
       .then((response2) => {
         setDocDetails(response2.data);
-        console.log("wardDetails data:", docDetails);
+        console.log("doctorDetails data:", response2.data);
         setIsLoadingDocDetails(false);
       })
       .catch((error) => {
