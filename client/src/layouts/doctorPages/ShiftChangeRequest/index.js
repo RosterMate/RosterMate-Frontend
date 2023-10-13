@@ -5,14 +5,18 @@ import MDBox from "components/MDBox";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "components/Footer";
-
+import MDTypography from "components/MDTypography";
 // Data
 
 function ShiftChangeRequest() {
   return (
     <DashboardLayout>
       <DashboardNavbar />
-      <MDBox mb={2} />
+
+      <MDTypography variant="h3" display="flex">
+        Shift Change Request
+      </MDTypography>
+
       <Footer />
     </DashboardLayout>
   );
