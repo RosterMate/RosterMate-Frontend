@@ -71,7 +71,7 @@ export const USER_TYPES = {
   CONSULTANT_USER: "Consultant",
 };
 
-export let USER_TYPE = USER_TYPES.CONSULTANT_USER;
+export let USER_TYPE = USER_TYPES.PUBLIC_USER;
 export let USER_EMAIL = "";
 
 export default function LogIn() {
@@ -133,7 +133,7 @@ export default function LogIn() {
           } else {
             console.log("Not Authenticated User");
             USER_TYPE = USER_TYPES.PUBLIC_USER;
-            navigate("/error");
+            setPasswordError("*Please login as a valid user to get Access.");
           }
         })
         .catch((error) => {

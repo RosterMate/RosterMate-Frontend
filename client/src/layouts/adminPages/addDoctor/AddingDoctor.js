@@ -146,10 +146,10 @@ function AddingDoctor() {
           </div>
           <div className="form_wrap address">
             <div className="form_item">
-              <p>Ward Number</p>
+              <p>Ward ID</p>
               <select id="wardnumber" onChange={handleFormChange} value={form.wardnumber}>
                 <option value="" disabled>
-                  Ward Number
+                  Ward ID
                 </option>
                 {wardNumberOptions}
               </select>
