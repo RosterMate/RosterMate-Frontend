@@ -73,26 +73,8 @@ function UserCard({ color, img, name, description }) {
           </MDTypography>
         </MDBox>
       </MDBox>
-      <MDBox display="flex" justifyContent="center" alignItems="center">
-        {/* <MDBox
-          variant="gradient"
-          bgColor={color}
-          color={color === "light" ? "dark" : "white"}
-          coloredShadow={color}
-          borderRadius="xl"
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          mx={2}
-          mb={1}
-          p={0.5}
-          width="8rem"
-        >
-          <MDTypography variant="button" display="flex" fontWeight="regular">
-            Message
-          </MDTypography>
-        </MDBox> */}
-      </MDBox>
+
+
     </Card>
   );
 }
