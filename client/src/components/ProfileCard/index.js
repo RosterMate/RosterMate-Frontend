@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Axios from "axios";
 
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
@@ -8,8 +9,13 @@ import Card from "@mui/material/Card";
 import { Typography, TextField, Box, IconButton } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 
-// components
+// components and helpers
 import MDButton from "../MDButton";
+import { isEmailValid } from "../../helpers/validators";
+import { USER_EMAIL } from "layouts/authentication/sign-in";
+
+// base url for the backend
+import BASE_URL from "config/baseUrl";
 
 //images
 import defaultImg from "../../assets/images/profilePictures/DefaultProfilePic.png";
@@ -25,13 +31,31 @@ function ProfileCard({ img, name, email, position, address, information, mobile 
 
   const [user, setUser] = useState(initialUser);
   const [isEditing, setIsEditing] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
   const handleEditClick = () => {
     setIsEditing(true);
   };
 
   const handleSaveClick = () => {
-    setIsEditing(false);
+    if (!isEmailValid(user.Email)) {
+      setErrorMsg("Enter a valid email address*");
+    } else if (user.Mobile.length !== 10) {
+      setErrorMsg("Enter a valid mobile number*");
+    } else {
+      setErrorMsg("");
+
+      Axios.post(`${BASE_URL}mainApp/changeData`, user)
+        .then((response) => {
+          setIsEditing(false);
+          // HAVE TO CHANGE USER EMAIL HERE
+          //USER_EMAIL = user.Email;
+          console.log(USER_EMAIL);
+        })
+        .catch((error) => {
+          console.error("Error when changing details:", error);
+        });
+    }
   };
 
   const handleChange = (event) => {
@@ -54,11 +78,13 @@ function ProfileCard({ img, name, email, position, address, information, mobile 
     >
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <Typography variant="h4">{name}</Typography>
-        <Box>
-          <IconButton onClick={handleEditClick}>
-            <EditIcon />
-          </IconButton>
-        </Box>
+        {!isEditing && (
+          <Box>
+            <IconButton onClick={handleEditClick}>
+              <EditIcon />
+            </IconButton>
+          </Box>
+        )}
       </div>
 
       <img
@@ -89,13 +115,12 @@ function ProfileCard({ img, name, email, position, address, information, mobile 
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <div style={{ marginTop: "1rem", width: "49%" }}>
             <TextField
-              required
               label="Position"
               name="Position"
               fullWidth
               value={user.Position}
               onChange={handleChange}
-              disabled={!isEditing}
+              disabled
               InputProps={{
                 style: textStyles,
               }}
@@ -146,6 +171,11 @@ function ProfileCard({ img, name, email, position, address, information, mobile 
             }}
           />
         </div>
+        {errorMsg && (
+          <Typography variant="body2" color="error" style={{ alignSelf: "flex-start" }}>
+            {errorMsg}
+          </Typography>
+        )}
         {isEditing && (
           <div style={{ display: "flex", justifyContent: "center", marginTop: "1rem" }}>
             <MDButton color="info" onClick={handleSaveClick}>

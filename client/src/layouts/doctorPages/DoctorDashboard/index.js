@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Axios from "axios";
 
 // example components
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
@@ -7,6 +8,10 @@ import Footer from "components/Footer";
 
 // components
 import MDTypography from "components/MDTypography";
+import { USER_EMAIL } from "layouts/authentication/sign-in";
+
+// base url to connect backend
+import BASE_URL from "config/baseUrl";
 
 import {
   ScheduleComponent,
@@ -14,7 +19,6 @@ import {
   ViewDirective,
   Day,
   Week,
-  WorkWeek,
   Month,
   Agenda,
   Inject,
@@ -23,22 +27,53 @@ import {
 } from "@syncfusion/ej2-react-schedule";
 import { DatePickerComponent } from "@syncfusion/ej2-react-calendars";
 
-import { scheduleData } from "./data";
-
 // eslint-disable-next-line react/destructuring-assignment
 const PropertyPane = (props) => <div className="mt-5">{props.children}</div>;
 
+const currentDate = new Date();
+const currentYear = currentDate.getFullYear();
+const currentMonth = currentDate.getMonth();
+const currentDay = currentDate.getDate();
+
 function DoctorDashboard() {
+  const [scheduleData, setScheduleData] = useState("");
+
+  const data = {
+    email: USER_EMAIL,
+    ym: "2023-10",
+  };
+
+  useEffect(() => {
+    Axios.post(`${BASE_URL}mainApp/getScheduleForDoctor`, data)
+      .then((response) => {
+        setScheduleData([
+          {
+            Id: 1,
+            Subject: "ICU 1",
+            StartTime: "2023-10-10T04:00:00.000Z",
+            EndTime: "2023-10-10T05:30:00.000Z",
+            CategoryColor: "#1aaa55",
+          },
+          {
+            Id: 2,
+            Subject: "ICU 1",
+            StartTime: "2023-10-14T06:30:00.000Z",
+            EndTime: "2023-10-14T08:30:00.000Z",
+            CategoryColor: "#357cd2",
+          },
+        ]);
+        console.log("getSchedule data:", scheduleData);
+      })
+      .catch((error) => {
+        console.error("Error fetching getSchedule details:", error);
+      });
+  }, []);
+
   const [scheduleObj, setScheduleObj] = useState();
 
   const change = (args) => {
     scheduleObj.selectedDate = args.value;
     scheduleObj.dataBind();
-  };
-
-  const onDragStart = (arg) => {
-    // eslint-disable-next-line no-param-reassign
-    arg.navigation.enable = true;
   };
 
   return (
@@ -62,7 +97,7 @@ function DoctorDashboard() {
         <ScheduleComponent
           height="650px"
           ref={(schedule) => setScheduleObj(schedule)}
-          selectedDate={new Date(2021, 0, 10)}
+          selectedDate={new Date(currentYear, currentMonth, currentDay)}
           eventSettings={{ dataSource: scheduleData }}
         >
           <ViewsDirective>
