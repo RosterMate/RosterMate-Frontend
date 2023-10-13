@@ -40,6 +40,7 @@ import CreateSchedule from "layouts/consultantPages/CreateSchedule";
 import AccessRestricted from "layouts/accessRestrictedPage";
 import GrantLeaves from "layouts/consultantPages/GrantLeaves";
 import ShiftChanges from "layouts/consultantPages/ShiftChangesHistory";
+import ShiftChangeRequest from "layouts/doctorPages/ShiftChangeRequest";
 import ViewUsers from "layouts/consultantPages/ViewAllUsers";
 import ViewWards from "layouts/consultantPages/ViewAllWards";
 
@@ -198,6 +199,15 @@ export default function App() {
           element={
             <DoctorElement>
               <ShiftChanges />
+            </DoctorElement>
+          }
+        />
+
+        <Route
+          path="/shiftChangeRequest"
+          element={
+            <DoctorElement>
+              <ShiftChangeRequest />
             </DoctorElement>
           }
         />
