@@ -10,6 +10,7 @@ import IconButton from "@mui/material/IconButton";
 import MDBox from "../MDBox";
 import MDTypography from "../MDTypography";
 import MDButton from "../MDButton";
+import { LogOut } from "layouts/authentication/sign-in";
 
 // React context
 import {
@@ -58,6 +59,7 @@ function Settings() {
   };
   const navigate = useNavigate();
   const handleLogout = () => {
+    LogOut();
     navigate("/");
   };
 

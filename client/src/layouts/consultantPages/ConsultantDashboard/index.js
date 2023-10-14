@@ -101,9 +101,6 @@ function ConsultantDashboard() {
     <DashboardLayout>
       <DashboardNavbar />
 
-      <MDTypography variant="h3" display="flex">
-        {/* <GrantLeaveRequests /> */}
-      </MDTypography>
       <MDTypography variant="h3" display="flex" style={{ marginBottom: "10px" }}>
         {wardName} Schedule
       </MDTypography>

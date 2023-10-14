@@ -94,19 +94,19 @@ export const doctorRoutes = [
   },
   {
     type: "collapse",
-    name: "Profile",
-    key: "profile",
-    icon: <Icon fontSize="small">person</Icon>,
-    route: "/profile",
-    component: <Profile />,
-  },
-  {
-    type: "collapse",
     name: "Shift Change Request",
     key: "shiftChangeRequest",
     icon: <Icon fontSize="small">D</Icon>,
     route: "/shiftChangeRequest",
     component: <ShiftChangeRequest />,
+  },
+  {
+    type: "collapse",
+    name: "Profile",
+    key: "profile",
+    icon: <Icon fontSize="small">person</Icon>,
+    route: "/profile",
+    component: <Profile />,
   },
 ];
 

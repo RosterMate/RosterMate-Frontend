@@ -75,6 +75,12 @@ export const USER_TYPES = {
 export let USER_TYPE = USER_TYPES.PUBLIC_USER;
 export let USER_EMAIL = "";
 
+export function LogOut() {
+  USER_TYPE = USER_TYPES.PUBLIC_USER;
+  USER_EMAIL = "";
+  console.log("User logged out");
+}
+
 export default function LogIn() {
   const navigate = useNavigate();
 
