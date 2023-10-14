@@ -26,7 +26,7 @@ function Profile() {
     name: "",
     position: "",
     address: "",
-    information: "",
+    Specialization: "",
     mobile: "",
   });
   const [isLoading, setIsLoading] = useState(true);
@@ -63,7 +63,7 @@ function Profile() {
                 email={USER_EMAIL}
                 position={details.position}
                 address={details.address}
-                information={details.information}
+                information={details.Specialization}
                 mobile={details.mobile}
               />
             )}

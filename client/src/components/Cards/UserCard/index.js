@@ -1,14 +1,17 @@
-// prop-types is a library for typechecking of props
+import React from "react";
+import { useState } from "react";
 import PropTypes from "prop-types";
 
 // @mui material components
 import Card from "@mui/material/Card";
+import CustomPopup from "components/PopupProfile/Popup";
 
 // Components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 
 function UserCard({ color, img, name, description }) {
+  const handleViewProfileClick = () => {};
   return (
     <Card>
       <MDBox p={2} mx={3} display="flex" justifyContent="center">
@@ -60,15 +63,21 @@ function UserCard({ color, img, name, description }) {
           p={0.5}
           width="8rem"
         >
-          <MDTypography variant="button" display="flex" fontWeight="regular">
+          <MDTypography
+            variant="button"
+            display="flex"
+            fontWeight="regular"
+            onClick={handleViewProfileClick}
+          >
             View Profile
           </MDTypography>
         </MDBox>
       </MDBox>
+
+
     </Card>
   );
 }
-
 // Setting default values for the props of UserCard
 UserCard.defaultProps = {
   color: "info",
