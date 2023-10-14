@@ -18,7 +18,7 @@ function ViewAllUsers() {
   };
 
   useEffect(() => {
-    Axios.post(`${BASE_URL}mainApp/view_All_Users`, data)
+    Axios.post(`${BASE_URL}mainApp/consViewDoctors`, data)
       .then((response) => {
         setAllDetails(response.data);
         console.log("view_all data:", response.data);

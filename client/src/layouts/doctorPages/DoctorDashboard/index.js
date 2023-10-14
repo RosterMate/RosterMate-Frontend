@@ -34,6 +34,7 @@ const currentDay = currentDate.getDate();
 
 function DoctorDashboard() {
   const [scheduleData, setScheduleData] = useState("");
+  const [wardName, setWardName] = useState("");
 
   const data = {
     email: USER_EMAIL,
@@ -44,6 +45,7 @@ function DoctorDashboard() {
     Axios.post(`${BASE_URL}mainApp/getScheduleForDoctor`, data)
       .then((response) => {
         setScheduleData(response.data["schedule"]);
+        setWardName("Ward ID:" + response.data["topic"]);
         //console.log("getSchedule data:", response.data["schedule"]);
       })
       .catch((error) => {
@@ -51,16 +53,13 @@ function DoctorDashboard() {
       });
   }, []);
 
-  const [scheduleObj, setScheduleObj] = useState();
-
-  const change = (args) => {
-    scheduleObj.selectedDate = args.value;
-    scheduleObj.dataBind();
-  };
-
   return (
     <DashboardLayout>
       <DashboardNavbar />
+
+      <MDTypography variant="h3" display="flex" style={{ marginBottom: "10px" }}>
+        {wardName}
+      </MDTypography>
 
       <div
         style={{
@@ -78,7 +77,6 @@ function DoctorDashboard() {
       >
         <ScheduleComponent
           height="650px"
-          ref={(schedule) => setScheduleObj(schedule)}
           selectedDate={new Date(currentYear, currentMonth, currentDay)}
           eventSettings={{ dataSource: scheduleData }}
           currentView="Month" // Set the default view to "Month"
@@ -90,24 +88,6 @@ function DoctorDashboard() {
           </ViewsDirective>
           <Inject services={[Week, Month, Agenda]} />
         </ScheduleComponent>
-
-        <PropertyPane>
-          <table style={{ width: "100%", background: "white" }}>
-            <tbody>
-              <tr style={{ height: "50px" }}>
-                <td style={{ width: "100%" }}>
-                  <DatePickerComponent
-                    value={new Date(currentYear, currentMonth, currentDay)}
-                    showClearButton={false}
-                    placeholder="Go To Date"
-                    floatLabelType="Always"
-                    change={change}
-                  />
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </PropertyPane>
       </div>
       <Footer />
     </DashboardLayout>

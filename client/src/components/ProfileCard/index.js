@@ -18,7 +18,7 @@ import { USER_EMAIL } from "layouts/authentication/sign-in";
 import BASE_URL from "config/baseUrl";
 
 //images
-import defaultImg from "../../assets/images/profilePictures/DefaultProfilePic.png";
+import defaultImg from "assets/images/profilePictures/DefaultProfilePic.png";
 
 function ProfileCard({ img, name, email, position, address, information, mobile }) {
   const initialUser = {

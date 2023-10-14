@@ -39,7 +39,7 @@ function Profile() {
     Axios.post(`${BASE_URL}mainApp/view_profile`, data)
       .then((response) => {
         setDetails(response.data);
-        console.log("view_profile data:", response.data);
+        //console.log("view_profile data:", response.data);
         setIsLoading(false);
       })
       .catch((error) => {

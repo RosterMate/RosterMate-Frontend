@@ -1,14 +1,15 @@
 import React from "react";
-import { useState } from "react";
 import PropTypes from "prop-types";
 
 // @mui material components
 import Card from "@mui/material/Card";
-import CustomPopup from "components/PopupProfile/Popup";
 
 // Components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
+
+//images
+import defaultImg from "assets/images/profilePictures/DefaultProfilePic.png";
 
 function UserCard({ color, img, name, description }) {
   const handleViewProfileClick = () => {};
@@ -27,7 +28,7 @@ function UserCard({ color, img, name, description }) {
           borderRadius={50}
         >
           <img
-            src={img}
+            src={img ? img : defaultImg}
             alt={name}
             style={{
               height: "4rem",
@@ -73,8 +74,6 @@ function UserCard({ color, img, name, description }) {
           </MDTypography>
         </MDBox>
       </MDBox>
-
-
     </Card>
   );
 }

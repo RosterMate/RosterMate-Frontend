@@ -60,8 +60,10 @@ function AddingWard() {
 
       Axios.post(`${BASE_URL}mainApp/addWard`, form)
         .then((response) => {
-          if (response.data.error == "true") {
-            setErrorMessage("*Ward ID already exists. Enter new ward ID");
+          if (response.data.error) {
+            setErrorMessage(
+              "*" + response.data.error + " already exists. Enter new " + response.data.error
+            );
           } else {
             setOpenModal(true);
             setForm(initialForm);
@@ -92,7 +94,7 @@ function AddingWard() {
               }}
             >
               <Input
-                hName="Ward Name"
+                hName="Ward Name*"
                 type="text"
                 placeholder="Ward Name"
                 id="wardname"
@@ -107,7 +109,7 @@ function AddingWard() {
               }}
             >
               <Input
-                hName="Ward ID"
+                hName="Ward ID*"
                 type="number"
                 placeholder="Ward ID ex-: '001'"
                 id="wardnumber"
@@ -118,22 +120,22 @@ function AddingWard() {
           </div>
           <div className="form_wrap">
             <div className="form_item">
-              <Input
-                hName="Number of Shifts"
-                type="number"
-                placeholder="Number of Shifts"
-                id="shifts"
-                value={form.shifts}
-                onChange={handleFormChange}
-              />
+              <p>Number Of Shifts Per Day*</p>
+              <select id="shifts" onChange={handleFormChange} value={form.shifts}>
+                <option value="" disabled>
+                  Number Of Shifts
+                </option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
             </div>
           </div>
           <div className="form_wrap">
             <div className="form_item">
               <Input
-                hName="Maximum Leaves Per month"
+                hName="Maximum Leaves Per Month*"
                 type="number"
-                placeholder="Maximum Leaves Per month"
+                placeholder="Maximum Leaves Per Month"
                 id="maxleaves"
                 value={form.maxleaves}
                 onChange={handleFormChange}
@@ -143,21 +145,26 @@ function AddingWard() {
 
           <div className="form_wrap address">
             <div className="form_item">
-              <Input
-                hName="Consecutive shifts can be done"
-                type="number"
-                placeholder="Consecutive shifts can be done"
+              <p>Consecutive Shifts Can Be Done*</p>
+              <select
                 id="consecutiveshifts"
-                value={form.consecutiveshifts}
                 onChange={handleFormChange}
-              />
+                value={form.consecutiveshifts}
+              >
+                <option value="" disabled>
+                  Consecutive Shifts
+                </option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
             </div>
           </div>
 
           <div className="form_wrap address">
             <div className="form_item">
               <Input
-                hName="Maximum Number of Doctors"
+                hName="Maximum Number of Doctors*"
                 type="number"
                 placeholder="Maximum Number of Doctors"
                 id="maxnumberdoctors"
