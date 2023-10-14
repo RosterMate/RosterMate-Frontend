@@ -38,8 +38,9 @@ const currentDay = currentDate.getDate();
 
 function ConsultantDashboard() {
   const [docDetails, setDocDetails] = useState([]);
+  const [conDetails, setConDetails] = useState([]);
   const [isLoadingDocDetails, setIsLoadingDocDetails] = useState(true);
-
+  const [isLoadingConDetails, setIsLoadingConDetails] = useState(true);
   const [scheduleData, setScheduleData] = useState("");
 
   const data = {
@@ -52,6 +53,7 @@ function ConsultantDashboard() {
   };
 
   useEffect(() => {
+    // Schedule data
     Axios.post(`${BASE_URL}mainApp/getScheduleForWard`, data)
       .then((response) => {
         setScheduleData(response.data["schedule"]);
@@ -61,6 +63,7 @@ function ConsultantDashboard() {
         console.error("Error fetching getSchedule details:", error);
       });
 
+    // Doctor details
     Axios.post(`${BASE_URL}mainApp/consViewDoctors`, data2)
       .then((response2) => {
         if (response2.data["message"]) {
@@ -70,6 +73,21 @@ function ConsultantDashboard() {
           //console.log("doctorDetails data:", response2.data);
         }
         setIsLoadingDocDetails(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching doctor details:", error);
+      });
+
+    // Consultant details
+    Axios.post(`${BASE_URL}mainApp/consViewConsultants`, data2)
+      .then((response3) => {
+        if (response3.data["message"]) {
+          console.log(response3.data["message"]);
+        } else {
+          setConDetails(response3.data);
+          //console.log("doctorDetails data:", response2.data);
+        }
+        setIsLoadingConDetails(false);
       })
       .catch((error) => {
         console.error("Error fetching doctor details:", error);
@@ -136,7 +154,19 @@ function ConsultantDashboard() {
       <MDTypography variant="h3" display="flex" style={{ margin: "10px" }}>
         Consultants
       </MDTypography>
-
+      {isLoadingConDetails ? (
+        <Loading />
+      ) : (
+        <ScrollableContainer>
+          {conDetails.map((user, id) => (
+            <Grid key={id} item xs={6} md={3} xl={2}>
+              <MDBox mx={1} mb={1}>
+                <UserCard img={user.img} name={user.name} description={user.position} />
+              </MDBox>
+            </Grid>
+          ))}
+        </ScrollableContainer>
+      )}
       <Footer />
     </DashboardLayout>
   );
