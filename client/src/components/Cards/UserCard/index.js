@@ -73,8 +73,6 @@ function UserCard({ color, img, name, description }) {
           </MDTypography>
         </MDBox>
       </MDBox>
-
-
     </Card>
   );
 }

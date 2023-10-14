@@ -32,7 +32,7 @@ function AdminDashboard() {
     Axios.post(`${BASE_URL}mainApp/wardDetails`, {})
       .then((response) => {
         setWardDetails(response.data);
-        console.log("wardDetails data:", wardDetails);
+        //console.log("wardDetails data:", wardDetails);
         setIsLoadingWardDetails(false);
       })
       .catch((error) => {
@@ -42,7 +42,7 @@ function AdminDashboard() {
     Axios.post(`${BASE_URL}mainApp/doctorDetails`)
       .then((response2) => {
         setDocDetails(response2.data);
-        console.log("doctorDetails data:", response2.data);
+        //console.log("doctorDetails data:", response2.data);
         setIsLoadingDocDetails(false);
       })
       .catch((error) => {
@@ -52,7 +52,7 @@ function AdminDashboard() {
     Axios.post(`${BASE_URL}mainApp/consultantDetails`, {})
       .then((response3) => {
         setConDetails(response3.data);
-        console.log("consultantDetails data:", conDetails);
+        //console.log("consultantDetails data:", conDetails);
         setIsLoadingConDetails(false);
       })
       .catch((error) => {

@@ -44,7 +44,6 @@ import GrantLeaves from "layouts/consultantPages/GrantLeaves";
 import ShiftChanges from "layouts/consultantPages/ShiftChangesHistory";
 import ShiftChangeRequest from "layouts/doctorPages/ShiftChangeRequest";
 import ViewUsers from "layouts/consultantPages/ViewAllUsers";
-import ViewWards from "layouts/consultantPages/ViewAllWards";
 
 export default function App() {
   const [controller, dispatch] = useMaterialUIController();
@@ -232,11 +231,17 @@ export default function App() {
           }
         />
 
+        <Route
+          path="/viewAllUsers"
+          element={
+            <ConsultantElement>
+              <ViewUsers />
+            </ConsultantElement>
+          }
+        />
+
         {/* Page Not Found */}
         <Route path="/error" element={<AccessRestricted />} />
-        {
-          //<Route path="*" element={<div>Page Not Found!</div>} />
-        }
 
         <Route
           path="/grantLeaverequests"
@@ -252,24 +257,6 @@ export default function App() {
           element={
             <ConsultantElement>
               <ShiftChanges />
-            </ConsultantElement>
-          }
-        />
-
-        <Route
-          path="/viewAllUsers"
-          element={
-            <ConsultantElement>
-              <ViewUsers />
-            </ConsultantElement>
-          }
-        />
-
-        <Route
-          path="/viewAllWards"
-          element={
-            <ConsultantElement>
-              <ViewWards />
             </ConsultantElement>
           }
         />

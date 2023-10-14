@@ -12,7 +12,6 @@ import CreateSchedule from "layouts/consultantPages/CreateSchedule";
 import GrantLeaves from "layouts/consultantPages/GrantLeaves";
 import ShiftChanges from "layouts/consultantPages/ShiftChangesHistory";
 import ViewUsers from "layouts/consultantPages/ViewAllUsers";
-import ViewWards from "layouts/consultantPages/ViewAllWards";
 import ShiftChangeRequest from "layouts/doctorPages/ShiftChangeRequest";
 
 // @mui icons
@@ -159,14 +158,6 @@ export const consultantRoutes = [
     icon: <Icon fontSize="small">notifications</Icon>,
     route: "/viewAllUsers",
     component: <ViewUsers />,
-  },
-  {
-    type: "collapse",
-    name: "View All Wards",
-    key: "viewallwards",
-    icon: <Icon fontSize="small">notifications</Icon>,
-    route: "/viewAllWards",
-    component: <ViewWards />,
   },
   {
     type: "collapse",
