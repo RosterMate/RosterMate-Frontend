@@ -42,6 +42,7 @@ function ConsultantDashboard() {
   const [isLoadingDocDetails, setIsLoadingDocDetails] = useState(true);
   const [isLoadingConDetails, setIsLoadingConDetails] = useState(true);
   const [scheduleData, setScheduleData] = useState("");
+  const [wardName, setWardName] = useState("");
 
   const data = {
     email: USER_EMAIL,
@@ -56,8 +57,10 @@ function ConsultantDashboard() {
     // Schedule data
     Axios.post(`${BASE_URL}mainApp/getScheduleForWard`, data)
       .then((response) => {
+        setWardName(response.data["wardName"]);
+        //console.log("wardName:", response.data["wardName"]);
         setScheduleData(response.data["schedule"]);
-        //console.log("getSchedule data:", response.data["schedule"]);
+        //console.log("getSchedule data:", response.data);
       })
       .catch((error) => {
         console.error("Error fetching getSchedule details:", error);
@@ -102,7 +105,7 @@ function ConsultantDashboard() {
         {/* <GrantLeaveRequests /> */}
       </MDTypography>
       <MDTypography variant="h3" display="flex" style={{ marginBottom: "10px" }}>
-        Current schedule -
+        {wardName} Schedule
       </MDTypography>
 
       <div
@@ -126,11 +129,11 @@ function ConsultantDashboard() {
           currentView="Month" // Set the default view to "Month"
         >
           <ViewsDirective>
-            {["Week", "Month", "Agenda"].map((item) => (
+            {["Month", "Agenda"].map((item) => (
               <ViewDirective key={item} option={item} />
             ))}
           </ViewsDirective>
-          <Inject services={[Week, Month, Agenda]} />
+          <Inject services={[Month, Agenda]} />
         </ScheduleComponent>
       </div>
 
