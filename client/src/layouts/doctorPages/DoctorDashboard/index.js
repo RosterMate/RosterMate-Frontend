@@ -17,13 +17,10 @@ import {
   ScheduleComponent,
   ViewsDirective,
   ViewDirective,
-  Day,
   Week,
   Month,
   Agenda,
   Inject,
-  Resize,
-  DragAndDrop,
 } from "@syncfusion/ej2-react-schedule";
 import { DatePickerComponent } from "@syncfusion/ej2-react-calendars";
 
@@ -46,23 +43,8 @@ function DoctorDashboard() {
   useEffect(() => {
     Axios.post(`${BASE_URL}mainApp/getScheduleForDoctor`, data)
       .then((response) => {
-        setScheduleData([
-          {
-            Id: 1,
-            Subject: "ICU 1",
-            StartTime: "2023-10-10T04:00:00.000Z",
-            EndTime: "2023-10-10T05:30:00.000Z",
-            CategoryColor: "#1aaa55",
-          },
-          {
-            Id: 2,
-            Subject: "ICU 1",
-            StartTime: "2023-10-14T06:30:00.000Z",
-            EndTime: "2023-10-14T08:30:00.000Z",
-            CategoryColor: "#357cd2",
-          },
-        ]);
-        console.log("getSchedule data:", scheduleData);
+        setScheduleData(response.data["schedule"]);
+        //console.log("getSchedule data:", response.data["schedule"]);
       })
       .catch((error) => {
         console.error("Error fetching getSchedule details:", error);
@@ -99,13 +81,14 @@ function DoctorDashboard() {
           ref={(schedule) => setScheduleObj(schedule)}
           selectedDate={new Date(currentYear, currentMonth, currentDay)}
           eventSettings={{ dataSource: scheduleData }}
+          currentView="Month" // Set the default view to "Month"
         >
           <ViewsDirective>
-            {["Day", "Week", "Month", "Agenda"].map((item) => (
+            {["Week", "Month", "Agenda"].map((item) => (
               <ViewDirective key={item} option={item} />
             ))}
           </ViewsDirective>
-          <Inject services={[Day, Week, Month, Agenda, Resize, DragAndDrop]} />
+          <Inject services={[Week, Month, Agenda]} />
         </ScheduleComponent>
 
         <PropertyPane>
@@ -114,9 +97,9 @@ function DoctorDashboard() {
               <tr style={{ height: "50px" }}>
                 <td style={{ width: "100%" }}>
                   <DatePickerComponent
-                    value={new Date(2021, 0, 10)}
+                    value={new Date(currentYear, currentMonth, currentDay)}
                     showClearButton={false}
-                    placeholder="Current Date"
+                    placeholder="Go To Date"
                     floatLabelType="Always"
                     change={change}
                   />
