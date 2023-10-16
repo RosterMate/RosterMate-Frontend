@@ -1,40 +1,32 @@
-import { useEffect, useState } from "react";
-import popupStyles from "./Popup.css";
-import PropTypes from "prop-types";
-const CustomPopup = (props) => {
-  const [show, setShow] = useState(false);
+import React from "react";
+import Dialog from "@mui/material/Dialog";
+import DialogTitle from "@mui/material/DialogTitle";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
 
-  const closeHandler = (e) => {
-    setShow(false);
-    props.onClose(false);
-  };
-
-  useEffect(() => {
-    setShow(props.show);
-  }, [props.show]);
-
+function ProfileModal({ open, handleClose, name, position, img }) {
   return (
-    <div
-      style={{
-        visibility: show ? "visible" : "hidden",
-        opacity: show ? "1" : "0",
-      }}
-      className={popupStyles.overlay}
-    >
-      <div className={popupStyles.popup}>
-        <h2>{props.title}</h2>
-        <span className={popupStyles.close} onClick={closeHandler}>
-          &times;
-        </span>
-        <div className={popupStyles.content}>{props.children}</div>
-      </div>
-    </div>
+    <Dialog open={open} onClose={handleClose}>
+      <DialogTitle sx={{ textAlign: "center", fontSize: "2rem" }}>{name}</DialogTitle>{" "}
+      {/* Increase font size and center text */}
+      <DialogContent>
+        <img
+          src={img}
+          alt={name}
+          style={{
+            width: "100%",
+            height: "auto",
+            display: "block",
+            marginLeft: "auto",
+            marginRight: "auto",
+          }}
+        />{" "}
+        {/* Center image */}
+        <DialogContentText sx={{ textAlign: "center" }}>{position}</DialogContentText>{" "}
+        {/* Center text */}
+      </DialogContent>
+    </Dialog>
   );
-};
+}
 
-CustomPopup.propTypes = {
-  title: PropTypes.string.isRequired,
-  show: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
-};
-export default CustomPopup;
+export default ProfileModal;
