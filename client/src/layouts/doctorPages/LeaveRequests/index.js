@@ -22,7 +22,6 @@ const data = {
 };
 function LeaveRequests() {
   const [isHistoryAvailable, setIsHistoryAvailable] = useState(false);
-  const [isLoadingHistory, setIsLoadingHistory] = useState(true);
   const [history, setHistory] = useState([]);
 
   useEffect(() => {
@@ -38,7 +37,6 @@ function LeaveRequests() {
       .catch((error) => {
         console.error("Error fetching ward details:", error);
       });
-    setIsLoadingHistory(false);
   }, []);
   return (
     <DashboardLayout>
@@ -49,35 +47,34 @@ function LeaveRequests() {
       </MDTypography>
 
       {isHistoryAvailable ? (
-        <MDTypography variant="h3" display="flex">
-          History
-        </MDTypography>
+        <>
+          <MDTypography variant="h3" display="flex">
+            History
+          </MDTypography>
+
+          <div>
+            <MDBox pt={3} mb={2}>
+              <Grid container spacing={3}>
+                {history.map((req, id) => (
+                  <Grid item xs={12} md={6} lg={3} key={id}>
+                    <MDBox mt={3}>
+                      <LeaveRequestCard
+                        Status={req.Status}
+                        Name={req.Name}
+                        Date={req.Date}
+                        FromTime={req.FromTime}
+                        ToTime={req.ToTime}
+                        Reason={req.Reason}
+                      />
+                    </MDBox>
+                  </Grid>
+                ))}
+              </Grid>
+            </MDBox>
+          </div>
+        </>
       ) : (
         <></>
-      )}
-      {isLoadingHistory ? (
-        <Loading />
-      ) : (
-        <div>
-          <MDBox pt={3} mb={2}>
-            <Grid container spacing={3}>
-              {history.map((req, id) => (
-                <Grid item xs={12} md={6} lg={3} key={id}>
-                  <MDBox mt={3}>
-                    <LeaveRequestCard
-                      Status={req.Status}
-                      Name={req.Name}
-                      Date={req.Date}
-                      FromTime={req.FromTime}
-                      ToTime={req.ToTime}
-                      Reason={req.Reason}
-                    />
-                  </MDBox>
-                </Grid>
-              ))}
-            </Grid>
-          </MDBox>
-        </div>
       )}
       <Footer />
     </DashboardLayout>
