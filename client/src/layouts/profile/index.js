@@ -31,11 +31,11 @@ function Profile() {
   });
   const [isLoading, setIsLoading] = useState(true);
 
-  const data = {
-    email: USER_EMAIL,
-    type: USER_TYPE,
-  };
   useEffect(() => {
+    const data = {
+      email: USER_EMAIL,
+      type: USER_TYPE,
+    };
     Axios.post(`${BASE_URL}mainApp/view_profile`, data)
       .then((response) => {
         setDetails(response.data);

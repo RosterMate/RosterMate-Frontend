@@ -19,10 +19,6 @@ import { Typography } from "@mui/material";
 import defaultImg from "assets/images/profilePictures/DefaultProfilePic.png";
 
 function ConDetailsTable() {
-  const data = {
-    email: USER_EMAIL,
-    type: USER_TYPE,
-  };
   const User = ({ image, name, email }) => (
     <MDBox display="flex" alignItems="center" lineHeight={1}>
       <MDAvatar src={image} name={name} size="sm" />
@@ -61,6 +57,11 @@ function ConDetailsTable() {
   const [rows, setRows] = useState([]);
 
   useEffect(() => {
+    const data = {
+      email: USER_EMAIL,
+      type: USER_TYPE,
+    };
+
     // Doctor all details
     Axios.post(`${BASE_URL}mainApp/conViwAllConDetails`, data)
       .then((response1) => {

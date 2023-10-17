@@ -12,12 +12,11 @@ function ViewAllUsers() {
   const [allDetails, setAllDetails] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const data = {
-    email: USER_EMAIL,
-    type: USER_TYPE,
-  };
-
   useEffect(() => {
+    const data = {
+      email: USER_EMAIL,
+      type: USER_TYPE,
+    };
     Axios.post(`${BASE_URL}mainApp/consViewDoctors`, data)
       .then((response) => {
         setAllDetails(response.data);

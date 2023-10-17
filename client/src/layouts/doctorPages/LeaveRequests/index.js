@@ -9,24 +9,25 @@ import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "components/Footer";
 
 // components
-import Loading from "../../../components/Loading";
 import LeaveRequestCard from "../../../components/LeaveRequestCard/LeaveRequestCard";
+import Typography from "@mui/material/Typography";
 import MDTypography from "components/MDTypography";
 import MDBox from "components/MDBox";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import Card from "@mui/material/Card";
 import MDButton from "components/MDButton";
+import PopupModal from "components/PopupModal";
 
-const data = {
-  email: USER_EMAIL,
-  type: USER_TYPE,
-};
 function LeaveRequests() {
   const [isHistoryAvailable, setIsHistoryAvailable] = useState(false);
   const [history, setHistory] = useState([]);
 
   useEffect(() => {
+    const data = {
+      email: USER_EMAIL,
+      type: USER_TYPE,
+    };
     Axios.post(`${BASE_URL}mainApp/docLeaveReqHistory`, data)
       .then((response) => {
         if (response.data["historyDetails"].length === 0) {
@@ -46,12 +47,46 @@ function LeaveRequests() {
   const [toDate, setToDate] = useState("");
   const [reason, setReason] = useState("");
 
+  const [errorMsg, setErrorMsg] = useState("");
+  const [openModal, setOpenModal] = useState(false);
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+    //navigate("/addWards");
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Submitted: ", { fromDate, toDate, reason });
-    setReason("");
-    setFromDate("");
-    setToDate("");
+
+    if (fromDate === "" || toDate === "" || reason === "") {
+      setErrorMsg("*Please fill all the fields");
+    } else {
+      setErrorMsg("");
+
+      const data2 = {
+        email: USER_EMAIL,
+        type: USER_TYPE,
+        fromDate: fromDate,
+        toDate: toDate,
+        reason: reason,
+      };
+
+      Axios.post(`${BASE_URL}mainApp/docLeaveReq`, data2)
+        .then((response) => {
+          if (response.data["status"] === "success") {
+            console.log("message:", response.data["message"]);
+            setOpenModal(true);
+            setReason("");
+            setFromDate("");
+            setToDate("");
+          } else {
+            console.log("message:", response.data["message"]);
+            setErrorMsg("*Error in sending request. Please try again.");
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching view_profile details:", error);
+        });
+    }
   };
   return (
     <DashboardLayout>
@@ -100,6 +135,11 @@ function LeaveRequests() {
               fullWidth
             />
           </div>
+          {errorMsg && (
+            <Typography variant="body2" color="error" style={{ alignSelf: "flex-start" }}>
+              {errorMsg}
+            </Typography>
+          )}
           <div style={{ margin: "auto", textAlign: "center" }}>
             <MDButton variant="gradient" color="info" onClick={handleSubmit}>
               Accept
@@ -107,7 +147,6 @@ function LeaveRequests() {
           </div>
         </form>
       </Card>
-
       {isHistoryAvailable ? (
         <>
           <MDTypography variant="h3" display="flex">
@@ -138,6 +177,12 @@ function LeaveRequests() {
       ) : (
         <></>
       )}
+      <PopupModal
+        open={openModal}
+        message="Leave request sent successfully"
+        onClose={handleCloseModal}
+      />
+
       <Footer />
     </DashboardLayout>
   );

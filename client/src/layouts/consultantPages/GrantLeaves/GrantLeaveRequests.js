@@ -18,12 +18,11 @@ function GrantLeaveRequests() {
   const [HistoryDetails, setHistoryDetails] = useState([]);
   const [isLoadingHistoryDetails, setIsLoadingHistoryDetails] = useState(true);
 
-  const data = {
-    email: USER_EMAIL,
-    type: USER_TYPE,
-  };
-
   useEffect(() => {
+    const data = {
+      email: USER_EMAIL,
+      type: USER_TYPE,
+    };
     Axios.post(`${BASE_URL}mainApp/leaveReqDetails`, data)
       .then((response) => {
         setleaveRequestsDetails(response.data["reqDetails"]);
