@@ -11,7 +11,11 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { IconButton } from "@mui/material";
+import TextField from "@mui/material/TextField";
+import InputAdornment from "@mui/material/InputAdornment";
+import IconButton from "@mui/material/IconButton";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 // Images
 import AppleIcon from "@mui/icons-material/Apple";
@@ -88,6 +92,7 @@ export default function LogIn() {
   const [emailError, setEmailError] = useState("");
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -96,10 +101,12 @@ export default function LogIn() {
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
-  const handleLogin = () => {
-    //console.log("Email:", email);
-    //console.log("Password:", password);
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const handleLogin = () => {
     if (email.trim() === "") {
       setEmailError("*Please enter an email.");
     } else if (!isEmailValid(email)) {
@@ -180,29 +187,38 @@ export default function LogIn() {
                 </Typography>
               )}
             </Typography>
-            <input
+            <TextField
               type="text"
-              className="rounded-input"
-              placeholder="Email"
-              id="email"
               autoComplete="email"
-              required
+              placeholder="Email"
               value={email}
               onChange={handleEmailChange}
+              InputProps={{
+                style: { borderRadius: "100px" },
+              }}
+              style={{ width: "100%", marginTop: "10px", marginBottom: "10px" }}
             />
 
             <Typography variant="h5" style={{ alignSelf: "flex-start" }}>
               Password
             </Typography>
-            <input
-              type="password"
-              className="rounded-input"
-              placeholder="Password"
-              id="password"
+            <TextField
+              type={showPassword ? "text" : "password"}
               autoComplete="current-password"
-              required
+              placeholder="Password"
               value={password}
               onChange={handlePasswordChange}
+              InputProps={{
+                style: { borderRadius: "100px" },
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton onClick={togglePasswordVisibility}>
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+              style={{ width: "100%", marginTop: "10px", marginBottom: "10px" }}
             />
             {passwordError && (
               <Typography variant="body2" color="error" style={{ alignSelf: "flex-start" }}>
