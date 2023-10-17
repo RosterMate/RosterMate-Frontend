@@ -14,8 +14,10 @@ import LeaveRequestCard from "../../../components/LeaveRequestCard/LeaveRequestC
 import MDTypography from "components/MDTypography";
 import MDBox from "components/MDBox";
 import Grid from "@mui/material/Grid";
+import TextField from "@mui/material/TextField";
+import Card from "@mui/material/Card";
+import MDButton from "components/MDButton";
 
-// css
 const data = {
   email: USER_EMAIL,
   type: USER_TYPE,
@@ -38,6 +40,19 @@ function LeaveRequests() {
         console.error("Error fetching ward details:", error);
       });
   }, []);
+
+  // Define state for form inputs
+  const [fromDate, setFromDate] = useState("");
+  const [toDate, setToDate] = useState("");
+  const [reason, setReason] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Submitted: ", { fromDate, toDate, reason });
+    setReason("");
+    setFromDate("");
+    setToDate("");
+  };
   return (
     <DashboardLayout>
       <DashboardNavbar />
@@ -45,6 +60,53 @@ function LeaveRequests() {
       <MDTypography variant="h3" display="flex">
         New Leave Request
       </MDTypography>
+
+      <Card
+        style={{
+          width: window.innerWidth <= 800 ? "100%" : "50%",
+          margin: "0 auto",
+          padding: "20px",
+          boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
+        }}
+      >
+        <form onSubmit={handleSubmit} style={{ padding: "20px" }}>
+          <div style={{ padding: "5px" }}>
+            <TextField
+              label="From date"
+              type="date"
+              value={fromDate}
+              onChange={(e) => setFromDate(e.target.value)}
+              InputLabelProps={{ shrink: true }}
+              fullWidth
+            />
+          </div>
+          <div style={{ padding: "5px" }}>
+            <TextField
+              label="To date"
+              type="date"
+              value={toDate}
+              onChange={(e) => setToDate(e.target.value)}
+              InputLabelProps={{ shrink: true }}
+              fullWidth
+            />
+          </div>
+          <div style={{ padding: "5px" }}>
+            <TextField
+              label="Reason"
+              multiline
+              rows={4}
+              value={reason}
+              onChange={(e) => setReason(e.target.value)}
+              fullWidth
+            />
+          </div>
+          <div style={{ margin: "auto", textAlign: "center" }}>
+            <MDButton variant="gradient" color="info" onClick={handleSubmit}>
+              Accept
+            </MDButton>
+          </div>
+        </form>
+      </Card>
 
       {isHistoryAvailable ? (
         <>
