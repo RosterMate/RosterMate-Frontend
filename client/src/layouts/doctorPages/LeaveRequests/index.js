@@ -104,7 +104,7 @@ function LeaveRequests() {
           boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
         }}
       >
-        <form onSubmit={handleSubmit} style={{ padding: "20px" }}>
+        <form onSubmit={handleSubmit} style={{ padding: "10px" }}>
           <div style={{ padding: "5px" }}>
             <TextField
               label="From date"
