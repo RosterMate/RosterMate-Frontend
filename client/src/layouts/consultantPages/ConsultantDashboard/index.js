@@ -16,6 +16,7 @@ import MDTypography from "components/MDTypography";
 import ScrollableContainer from "components/ScrollableContainer";
 import GrantLeaveRequests from "../GrantLeaves/GrantLeaveRequests";
 import { USER_EMAIL, USER_TYPE } from "layouts/authentication/sign-in";
+import { Link } from "react-router-dom";
 
 // base url to connect backend
 import BASE_URL from "config/baseUrl";
@@ -134,9 +135,12 @@ function ConsultantDashboard() {
         </ScheduleComponent>
       </div>
 
-      <MDTypography variant="h3" display="flex" style={{ margin: "10px" }}>
-        Doctors
-      </MDTypography>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <MDTypography variant="h3" display="flex" style={{ margin: "10px" }}>
+          Doctors
+        </MDTypography>
+        <Link to="/viewAllUsers">View all</Link>
+      </div>
       {isLoadingDocDetails ? (
         <Loading />
       ) : (
@@ -150,10 +154,12 @@ function ConsultantDashboard() {
           ))}
         </ScrollableContainer>
       )}
-
-      <MDTypography variant="h3" display="flex" style={{ margin: "10px" }}>
-        Consultants
-      </MDTypography>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <MDTypography variant="h3" display="flex" style={{ margin: "10px" }}>
+          Consultants
+        </MDTypography>
+        <Link to="/viewAllUsers">View all</Link>
+      </div>
       {isLoadingConDetails ? (
         <Loading />
       ) : (
