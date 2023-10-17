@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Axios from "axios";
 
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
@@ -12,6 +13,9 @@ import MailOpen from "@mui/icons-material/Drafts";
 import MDBox from "components/MDBox";
 import MDButton from "components/MDButton";
 import MDTypography from "components/MDTypography";
+
+// base url to connect backend
+import BASE_URL from "config/baseUrl";
 
 function LeaveRequestCard({ Status, Name, Date, FromTime, ToTime, Reason }) {
   const [color, setColor] = useState(
@@ -27,11 +31,28 @@ function LeaveRequestCard({ Status, Name, Date, FromTime, ToTime, Reason }) {
     setColor("success");
     setTopic("Accepted");
     setIcon(<MailOpen fontSize="large" />);
+    handleLeaveResponse("Accepted");
   };
   const handleReject = () => {
     setColor("error");
     setTopic("Rejected");
     setIcon(<MailOpen fontSize="large" />);
+    handleLeaveResponse("Rejected");
+  };
+
+  const handleLeaveResponse = (LStatus) => {
+    Axios.post(`${BASE_URL}mainApp/leaveResponse`, {
+      status: LStatus,
+      name: Name,
+      date: Date,
+      fromTime: FromTime,
+    })
+      .then((response) => {
+        console.log("getSchedule data:", response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching getSchedule details:", error);
+      });
   };
 
   return (

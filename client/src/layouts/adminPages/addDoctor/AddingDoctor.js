@@ -85,8 +85,14 @@ function AddingDoctor() {
 
       Axios.post(`${BASE_URL}mainApp/addDoctor`, form)
         .then((response) => {
-          setOpenModal(true);
-          setForm(initialForm);
+          if (response.data.error) {
+            setErrorMessage(
+              "*" + response.data.error + " already exists. Enter new " + response.data.error
+            );
+          } else {
+            setOpenModal(true);
+            setForm(initialForm);
+          }
         })
         .catch((error) => {
           console.error("Error adding Doctor:", error);
