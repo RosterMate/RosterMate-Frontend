@@ -1,6 +1,6 @@
 // React layouts
 import AdminDashboard from "layouts/adminPages/adminDashboard";
-import Notifications from "layouts/notifications";
+import Notifications from "layouts/doctorPages/notifications";
 import Profile from "layouts/profile";
 import AddWard from "layouts/adminPages/addWard";
 import AddDoctor from "layouts/adminPages/addDoctor";
@@ -118,14 +118,6 @@ export const consultantRoutes = [
     icon: <Icon fontSize="small">dashboard</Icon>,
     route: "/consultantDashboard",
     component: <ConsultantDashboard />,
-  },
-  {
-    type: "collapse",
-    name: "Notifications",
-    key: "notifications",
-    icon: <Icon fontSize="small">notifications</Icon>,
-    route: "/notifications",
-    component: <Notifications />,
   },
   {
     type: "collapse",
