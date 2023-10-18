@@ -28,7 +28,7 @@ import { adminRoutes, doctorRoutes, consultantRoutes } from "./routes";
 
 // React layouts
 import AdminDashboard from "layouts/adminPages/adminDashboard";
-import Notifications from "layouts/notifications";
+import Notifications from "layouts/doctorPages/notifications";
 import Profile from "layouts/profile";
 import SignIn, { USER_TYPES, USER_TYPE } from "layouts/authentication/sign-in";
 import AddWard from "layouts/adminPages/addWard";
@@ -139,9 +139,9 @@ export default function App() {
         <Route
           path="/notifications"
           element={
-            <DocConElement>
+            <DoctorElement>
               <Notifications />
-            </DocConElement>
+            </DoctorElement>
           }
         />
         {/* Admin Pages */}

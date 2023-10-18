@@ -18,12 +18,11 @@ function GrantLeaveRequests() {
   const [HistoryDetails, setHistoryDetails] = useState([]);
   const [isLoadingHistoryDetails, setIsLoadingHistoryDetails] = useState(true);
 
-  const data = {
-    email: USER_EMAIL,
-    type: USER_TYPE,
-  };
-
   useEffect(() => {
+    const data = {
+      email: USER_EMAIL,
+      type: USER_TYPE,
+    };
     Axios.post(`${BASE_URL}mainApp/leaveReqDetails`, data)
       .then((response) => {
         setleaveRequestsDetails(response.data["reqDetails"]);
@@ -33,9 +32,9 @@ function GrantLeaveRequests() {
       })
       .catch((error) => {
         console.error("Error fetching ward details:", error);
-        setisLoadingLeaveReqDetails(false); // Handle the error and set isLoadingLeaveReqDetails to false
+        setisLoadingLeaveReqDetails(false);
       });
-  }, []); // Empty dependency array to run the effect only once
+  }, []);
 
   return (
     <>
