@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
+import { Link } from "react-router-dom";
 
 // example components
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
@@ -83,9 +84,12 @@ function AdminDashboard() {
         )}
       </MDBox>
 
-      <MDTypography variant="h3" display="flex">
-        Doctors
-      </MDTypography>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <MDTypography variant="h3" display="flex">
+          Doctors
+        </MDTypography>
+        <Link to="/allUsers">View all</Link>
+      </div>
       <MDBox py={2} mx={-3}>
         {isLoadingDocDetails ? (
           <Loading />
@@ -102,9 +106,12 @@ function AdminDashboard() {
         )}
       </MDBox>
 
-      <MDTypography variant="h3" display="flex">
-        Consultants
-      </MDTypography>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <MDTypography variant="h3" display="flex">
+          Consultants
+        </MDTypography>
+        <Link to="/allUsers">View all</Link>
+      </div>
       <MDBox py={2} mx={-3}>
         {isLoadingConDetails ? (
           <Loading />

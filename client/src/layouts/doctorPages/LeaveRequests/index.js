@@ -3,23 +3,45 @@ import Axios from "axios";
 import BASE_URL from "config/baseUrl";
 import { USER_TYPE, USER_EMAIL } from "layouts/authentication/sign-in";
 
-// example components
+// components
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "components/Footer";
-
-// components
 import LeaveRequestCard from "../../../components/LeaveRequestCard/LeaveRequestCard";
 import Typography from "@mui/material/Typography";
 import MDTypography from "components/MDTypography";
+import InputLabel from "@mui/material/InputLabel";
+import FormControl from "@mui/material/FormControl";
 import MDBox from "components/MDBox";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import Card from "@mui/material/Card";
 import MDButton from "components/MDButton";
 import PopupModal from "components/PopupModal";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
 
 function LeaveRequests() {
+  const [shiftsList, setShiftsList] = useState([]);
+
+  useEffect(() => {
+    Axios.post(`${BASE_URL}mainApp/getShiftOptions`, { email: USER_EMAIL, type: USER_TYPE })
+      .then((response1) => {
+        setShiftsList(response1.data["shifts"]);
+        //console.log("shiftsList : ", response1.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching shift names:", error);
+      });
+  }, []);
+  const shiftOptions = shiftsList
+    ? shiftsList.map((shift, index) => (
+        <MenuItem key={index} value={shift}>
+          {shift}
+        </MenuItem>
+      ))
+    : [];
+
   const [isHistoryAvailable, setIsHistoryAvailable] = useState(false);
   const [history, setHistory] = useState([]);
 
@@ -44,7 +66,9 @@ function LeaveRequests() {
 
   // Define state for form inputs
   const [fromDate, setFromDate] = useState("");
+  const [fromShift, setFromShift] = useState("");
   const [toDate, setToDate] = useState("");
+  const [toShift, setToShift] = useState("");
   const [reason, setReason] = useState("");
 
   const [errorMsg, setErrorMsg] = useState("");
@@ -52,7 +76,6 @@ function LeaveRequests() {
 
   const handleCloseModal = () => {
     setOpenModal(false);
-    //navigate("/addWards");
   };
 
   const handleSubmit = (e) => {
@@ -61,7 +84,7 @@ function LeaveRequests() {
     const currentDate = new Date();
     const sFromDate = new Date(fromDate);
 
-    if (fromDate === "" || toDate === "" || reason === "") {
+    if (fromDate === "" || toDate === "" || reason === "" || fromShift === "" || toShift === "") {
       setErrorMsg("*Please fill all the fields");
     } else if (fromDate > toDate) {
       setErrorMsg("*From date should be before the to date");
@@ -74,7 +97,9 @@ function LeaveRequests() {
         email: USER_EMAIL,
         type: USER_TYPE,
         fromDate: fromDate,
+        fromShift: fromShift,
         toDate: toDate,
+        toShift: toShift,
         reason: reason,
       };
 
@@ -83,9 +108,11 @@ function LeaveRequests() {
           if (response.data["status"] === "success") {
             console.log("message:", response.data["message"]);
             setOpenModal(true);
-            setReason("");
             setFromDate("");
+            setFromShift("");
             setToDate("");
+            setToShift("");
+            setReason("");
           } else {
             console.log("message:", response.data["message"]);
             setErrorMsg("*Error in sending request. Please try again.");
@@ -96,6 +123,14 @@ function LeaveRequests() {
         });
     }
   };
+
+  const handleFromShiftChange = (event) => {
+    setFromShift(event.target.value);
+  };
+  const handleToShiftChange = (event) => {
+    setToShift(event.target.value);
+  };
+
   return (
     <DashboardLayout>
       <DashboardNavbar />
@@ -123,6 +158,16 @@ function LeaveRequests() {
               fullWidth
             />
           </div>
+
+          <FormControl
+            style={{ marginLeft: "1%", width: "98%", marginTop: "5px", marginBottom: "5px" }}
+          >
+            <InputLabel>From Shift</InputLabel>
+            <Select value={fromShift} onChange={handleFromShiftChange} style={{ height: "42px" }}>
+              {shiftOptions}
+            </Select>
+          </FormControl>
+
           <div style={{ padding: "5px" }}>
             <TextField
               label="To date"
@@ -133,6 +178,16 @@ function LeaveRequests() {
               fullWidth
             />
           </div>
+
+          <FormControl
+            style={{ marginLeft: "1%", width: "98%", marginTop: "5px", marginBottom: "5px" }}
+          >
+            <InputLabel>To Shift</InputLabel>
+            <Select value={toShift} onChange={handleToShiftChange} style={{ height: "42px" }}>
+              {shiftOptions}
+            </Select>
+          </FormControl>
+
           <div style={{ padding: "5px" }}>
             <TextField
               label="Reason"
@@ -170,9 +225,10 @@ function LeaveRequests() {
                       <LeaveRequestCard
                         Status={req.Status}
                         Name={req.Name}
-                        Date={req.Date}
-                        FromTime={req.FromTime}
-                        ToTime={req.ToTime}
+                        FromDate={req.FromDate}
+                        FromShift={req.FromShift}
+                        ToDate={req.ToDate}
+                        ToShift={req.ToShift}
                         Reason={req.Reason}
                       />
                     </MDBox>

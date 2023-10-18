@@ -17,7 +17,7 @@ import MDTypography from "components/MDTypography";
 // base url to connect backend
 import BASE_URL from "config/baseUrl";
 
-function LeaveRequestCard({ Status, Name, Date, FromTime, ToTime, Reason }) {
+function LeaveRequestCard({ Status, Name, FromDate, FromShift, ToDate, ToShift, Reason }) {
   const [color, setColor] = useState(
     Status === "NoResponse" ? "info" : Status === "Accepted" ? "success" : "error"
   );
@@ -44,8 +44,10 @@ function LeaveRequestCard({ Status, Name, Date, FromTime, ToTime, Reason }) {
     Axios.post(`${BASE_URL}mainApp/leaveResponse`, {
       status: LStatus,
       name: Name,
-      date: Date,
-      fromTime: FromTime,
+      fromDate: FromDate,
+      fromShift: FromShift,
+      toDate: ToDate,
+      toShift: ToShift,
     })
       .then((response) => {
         console.log("getSchedule data:", response.data);
@@ -80,15 +82,15 @@ function LeaveRequestCard({ Status, Name, Date, FromTime, ToTime, Reason }) {
         </MDBox>
       </MDBox>
 
-      <MDBox display="raw" pl={6} mt={3} mb={3}>
+      <MDBox display="raw" p={2} mt={3} mb={3}>
         <MDTypography variant="button" display="flex" color="text">
-          Date : {Date}
+          <span style={{ fontWeight: "bold" }}> From : </span> {FromDate} {FromShift}
         </MDTypography>
         <MDTypography variant="button" display="flex" color="text">
-          From : {FromTime}
+          <span style={{ fontWeight: "bold" }}> To : </span> {ToDate} {ToShift}
         </MDTypography>
         <MDTypography variant="button" display="flex" color="text">
-          To : {ToTime}
+          <span style={{ fontWeight: "bold" }}> Reason : </span> {Reason}
         </MDTypography>
       </MDBox>
 
@@ -128,14 +130,13 @@ function LeaveRequestCard({ Status, Name, Date, FromTime, ToTime, Reason }) {
 
 // Typechecking props for the WardCard
 LeaveRequestCard.propTypes = {
-  isReceived: PropTypes.bool,
   Status: PropTypes.oneOf(["NoResponse", "Accepted", "Rejected"]).isRequiredisRequired,
   Name: PropTypes.string.isRequired,
-  count: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  Date: PropTypes.string.isRequired,
-  FromTime: PropTypes.string.isRequired,
-  ToTime: PropTypes.string.isRequired,
   Reason: PropTypes.string.isRequired,
+  FromDate: PropTypes.string.isRequired,
+  FromShift: PropTypes.string.isRequired,
+  ToDate: PropTypes.string.isRequired,
+  ToShift: PropTypes.string.isRequired,
 };
 
 export default LeaveRequestCard;

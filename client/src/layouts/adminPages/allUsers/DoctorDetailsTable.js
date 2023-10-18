@@ -15,10 +15,9 @@ import MDTypography from "components/MDTypography";
 import DataTable from "../../../examples/DataTable";
 import MDAvatar from "components/MDAvatar";
 import { Typography } from "@mui/material";
-
 import defaultImg from "assets/images/profilePictures/DefaultProfilePic.png";
 
-function ConDetailsTable() {
+function DoctorDetailsTable() {
   const User = ({ image, name, email }) => (
     <MDBox display="flex" alignItems="center" lineHeight={1}>
       <MDAvatar src={image} name={name} size="sm" />
@@ -32,7 +31,7 @@ function ConDetailsTable() {
   );
 
   const columns = [
-    { Header: "consultant", accessor: "consultant", width: "45%", align: "left" },
+    { Header: "doctor", accessor: "doctor", width: "45%", align: "left" },
     { Header: "position", accessor: "position", align: "left" },
     { Header: "mobile", accessor: "mobile", align: "center" },
     { Header: "address", accessor: "address", align: "center" },
@@ -41,29 +40,13 @@ function ConDetailsTable() {
     { Header: "Specialization", accessor: "Specialization", align: "center" },
   ];
 
-  const [originalData, setOriginalData] = useState([
-    {
-      Degree: "",
-      Specialization: "",
-      address: "",
-      email: "",
-      mobile: "",
-      name: "",
-      position: "",
-      wardNumber: "",
-    },
-  ]);
+  const [originalData, setOriginalData] = useState([]);
 
   const [rows, setRows] = useState([]);
 
   useEffect(() => {
-    const data = {
-      email: USER_EMAIL,
-      type: USER_TYPE,
-    };
-
-    // Consultant all details
-    Axios.post(`${BASE_URL}mainApp/conViwAllConDetails`, data)
+    // Doctor all details
+    Axios.post(`${BASE_URL}mainApp/adminViwAllDocDetails`, { type: USER_TYPE })
       .then((response1) => {
         if (response1.data["message"]) {
           console.log(response1.data["message"]);
@@ -79,9 +62,7 @@ function ConDetailsTable() {
 
   useEffect(() => {
     const transformedData = originalData.map((item) => ({
-      consultant: (
-        <User image={item.img ? item.img : defaultImg} name={item.name} email={item.email} />
-      ),
+      doctor: <User image={item.img ? item.img : defaultImg} name={item.name} email={item.email} />,
       position: (
         <Typography variant="caption" color="text" fontWeight="medium">
           {item.position}
@@ -120,7 +101,7 @@ function ConDetailsTable() {
   return (
     <>
       <MDTypography variant="h3" display="flex">
-        Consultant Details
+        Doctor Details
       </MDTypography>
       <MDBox pt={1} pb={2}>
         <Grid item xs={12}>
@@ -141,4 +122,4 @@ function ConDetailsTable() {
   );
 }
 
-export default ConDetailsTable;
+export default DoctorDetailsTable;

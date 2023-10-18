@@ -41,29 +41,13 @@ function ConDetailsTable() {
     { Header: "Specialization", accessor: "Specialization", align: "center" },
   ];
 
-  const [originalData, setOriginalData] = useState([
-    {
-      Degree: "",
-      Specialization: "",
-      address: "",
-      email: "",
-      mobile: "",
-      name: "",
-      position: "",
-      wardNumber: "",
-    },
-  ]);
+  const [originalData, setOriginalData] = useState([]);
 
   const [rows, setRows] = useState([]);
 
   useEffect(() => {
-    const data = {
-      email: USER_EMAIL,
-      type: USER_TYPE,
-    };
-
     // Consultant all details
-    Axios.post(`${BASE_URL}mainApp/conViwAllConDetails`, data)
+    Axios.post(`${BASE_URL}mainApp/adminViwAllConDetails`, { type: USER_TYPE })
       .then((response1) => {
         if (response1.data["message"]) {
           console.log(response1.data["message"]);

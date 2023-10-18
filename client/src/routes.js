@@ -13,6 +13,7 @@ import GrantLeaves from "layouts/consultantPages/GrantLeaves";
 import ShiftChanges from "layouts/consultantPages/ShiftChangesHistory";
 import ViewUsers from "layouts/consultantPages/ViewAllUsers";
 import ShiftChangeRequest from "layouts/doctorPages/ShiftChangeRequest";
+import AllUsers from "layouts/adminPages/allUsers";
 
 // @mui icons
 import Icon from "@mui/material/Icon";
@@ -55,6 +56,14 @@ export const adminRoutes = [
     icon: <PersonAddIcon />,
     route: "/addConsultant",
     component: <AddConsultant />,
+  },
+  {
+    type: "collapse",
+    name: "All Users",
+    key: "AllUsers",
+    icon: <GroupsIcon />,
+    route: "/allUsers",
+    component: <AllUsers />,
   },
   {
     type: "collapse",
