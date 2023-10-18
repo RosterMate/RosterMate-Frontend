@@ -54,11 +54,19 @@ function LeaveRequests() {
     setOpenModal(false);
     //navigate("/addWards");
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const currentDate = new Date();
+    const sFromDate = new Date(fromDate);
+
     if (fromDate === "" || toDate === "" || reason === "") {
       setErrorMsg("*Please fill all the fields");
+    } else if (fromDate > toDate) {
+      setErrorMsg("*From date should be before the to date");
+    } else if (sFromDate < currentDate) {
+      setErrorMsg("*From date should be in the future");
     } else {
       setErrorMsg("");
 

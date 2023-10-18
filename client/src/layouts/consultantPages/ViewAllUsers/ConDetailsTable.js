@@ -120,7 +120,7 @@ function ConDetailsTable() {
   return (
     <>
       <MDTypography variant="h3" display="flex">
-        Consultants Details
+        Consultant Details
       </MDTypography>
       <MDBox pt={1} pb={2}>
         <Grid item xs={12}>

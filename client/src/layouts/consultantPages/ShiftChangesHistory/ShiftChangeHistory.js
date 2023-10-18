@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./ShiftChangeHistory.css";
 import ShiftChangesCard from "components/ShiftChangesCard/ShiftChangesCard";
+import MDTypography from "components/MDTypography";
 
 const ChangesCard = [
   {
@@ -78,20 +79,33 @@ const ChangesCard = [
 ];
 
 const ShiftChangeHistory = () => {
+  const [isHistoryAvailable, setIsHistoryAvailable] = useState(true);
+
   return (
-    <div className="container">
-      {ChangesCard.map((item) => (
-        <ShiftChangesCard
-          key={item.id}
-          RequestSenderName={item.RequestSenderName}
-          RequestReceiverName={item.RequestReceiverName}
-          fromShiftSlot={item.fromShiftSlot}
-          ToShiftSlot={item.ToShiftSlot}
-          Reason={item.Reason}
-          Status={item.Status}
-        />
-      ))}
-    </div>
+    <>
+      {isHistoryAvailable ? (
+        <>
+          <MDTypography variant="h3" display="flex">
+            History
+          </MDTypography>
+          <div className="container">
+            {ChangesCard.map((item) => (
+              <ShiftChangesCard
+                key={item.id}
+                RequestSenderName={item.RequestSenderName}
+                RequestReceiverName={item.RequestReceiverName}
+                fromShiftSlot={item.fromShiftSlot}
+                ToShiftSlot={item.ToShiftSlot}
+                Reason={item.Reason}
+                Status={item.Status}
+              />
+            ))}
+          </div>
+        </>
+      ) : (
+        <></>
+      )}
+    </>
   );
 };
 
