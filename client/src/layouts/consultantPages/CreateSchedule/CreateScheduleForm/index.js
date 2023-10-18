@@ -1,28 +1,32 @@
 import React, { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import "./styles.css";
 import MDBox from "components/MDBox";
 import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
+import Typography from "@mui/material/Typography";
 import MDTypography from "components/MDTypography";
 import MDButton from "components/MDButton";
 
 function CreateScheduleForm() {
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
   const [form, setForm] = useState({
-    morningSeniorRegistrars: "",
-    morningRegistrars: "",
-    morningSeniorHomeOfficers: "",
-    morningMedicalOfficers: "",
-    eveningSeniorRegistrars: "",
-    evenningRegistrars: "",
-    eveningSeniorHomeOfficers: "",
-    eveningMedicalOfficers: "",
-    nightSeniorRegistrars: "",
-    nightRegistrars: "",
-    nightSeniorHomeOfficers: "",
-    nightMedicalOfficers: "",
+    shifts: "",
+    consecutiveShifts: "",
+    number1: "",
+    number2: "",
+    number3: "",
   });
 
   const handleFormChange = (event) => {
+    setForm({
+      ...form,
+      [event.target.name]: event.target.value,
+    });
+  };
+  const handleFormChange2 = (event) => {
     setForm({
       ...form,
       [event.target.id]: event.target.value,
@@ -31,6 +35,26 @@ function CreateScheduleForm() {
 
   const handleSubmitButtonClick = () => {
     console.log(form);
+    if (
+      form.shifts === "" ||
+      form.consecutiveShifts === "" ||
+      selectedDate === null ||
+      form.number1 === "" ||
+      form.number2 === "" ||
+      form.number3 === ""
+    ) {
+      setErrorMessage("*Please enter all the details.");
+    } else {
+      setErrorMessage("correct.");
+      setForm({
+        shifts: "",
+        consecutiveShifts: "",
+        number1: "",
+        number2: "",
+        number3: "",
+      });
+      setSelectedDate(null);
+    }
   };
 
   return (
@@ -42,31 +66,12 @@ function CreateScheduleForm() {
               Morning
             </MDTypography>
             <form>
-              <label> Senior Registrar </label>
+              <label> Number of doctors </label>
               <input
-                type="text"
-                name="SeniorRegistrar1"
-                placeholder="No. of Senior Registrars"
-                onChange={handleFormChange}
-              />
-              <label> Registrar </label>
-              <input
-                type="text"
-                name="Registrar1"
-                placeholder="No. of Registrars"
-                onChange={handleFormChange}
-              />
-              <label> Senior Home Officer </label>
-              <input
-                type="text"
-                name="Senior Home Officer"
-                placeholder="No. of Senior Home Officers"
-              />
-              <label> Medical Officer </label>
-              <input
-                type="text"
-                name="Medical Officer1"
-                placeholder="No. of Medical Officers"
+                type="number"
+                name="number1"
+                value={form.number1}
+                placeholder="Number of doctors"
                 onChange={handleFormChange}
               />
             </form>
@@ -76,31 +81,12 @@ function CreateScheduleForm() {
               Evening
             </MDTypography>
             <form>
-              <label> Senior Registrar </label>
+              <label> Number of doctors </label>
               <input
-                type="text"
-                name="SeniorRegistrar2"
-                placeholder="No. of Senior Registrars"
-                onChange={handleFormChange}
-              />
-              <label> Registrar </label>
-              <input
-                type="text"
-                name="Registrar2"
-                placeholder="No. of Registrars"
-                onChange={handleFormChange}
-              />
-              <label> Senior Home Officer </label>
-              <input
-                type="text"
-                name="Senior Home Officer"
-                placeholder="No. of Senior Home Officers"
-              />
-              <label> Medical Officer </label>
-              <input
-                type="text"
-                name="Medical Officer"
-                placeholder="No. of Medical Officers"
+                type="number"
+                name="number2"
+                value={form.number2}
+                placeholder="Number of doctors"
                 onChange={handleFormChange}
               />
             </form>
@@ -111,43 +97,91 @@ function CreateScheduleForm() {
               Night
             </MDTypography>
             <form>
-              <label> Senior Registrar </label>
+              <label> Number of doctors </label>
               <input
-                type="text"
-                name="SeniorRegistrar3"
-                placeholder="No. of Senior Registrars"
-                onChange={handleFormChange}
-              />
-              <label> Registrar </label>
-              <input
-                type="text"
-                name="Registrar3"
-                placeholder="No. of Registrars"
-                onChange={handleFormChange}
-              />
-              <label> Senior Home Officer </label>
-              <input
-                type="text"
-                name="Senior Home Officer3"
-                placeholder="No. of Senior Home Officers"
-              />
-              <label> Medical Officer </label>
-              <input
-                type="text"
-                name="Medical Officer3"
-                placeholder="No. of Medical Officers"
+                type="number"
+                name="number3"
+                value={form.number3}
+                placeholder="Number of doctors"
                 onChange={handleFormChange}
               />
             </form>
           </Grid>
+
+          <Grid item xs={12} md={6} xl={4}>
+            <label>Shifts Per Day</label>
+            <div style={{ width: "100%" }}>
+              <select
+                id="shifts"
+                onChange={handleFormChange2}
+                value={form.shifts}
+                style={{
+                  width: "100%",
+                  height: "2rem",
+                  padding: "0.25rem",
+                  border: "1px solid #ccc",
+                  borderRadius: "4px",
+                  fontSize: "1rem",
+                }}
+              >
+                <option value="" disabled>
+                  Number Of Shifts
+                </option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            </div>
+          </Grid>
+
+          <Grid item xs={12} md={6} xl={4}>
+            <label>Maximum Consecutive Shifts</label>
+            <div style={{ width: "100%" }}>
+              <select
+                id="consecutiveShifts"
+                onChange={handleFormChange2}
+                value={form.consecutiveShifts}
+                style={{
+                  width: "100%",
+                  height: "2rem",
+                  padding: "0.25rem",
+                  border: "1px solid #ccc",
+                  borderRadius: "4px",
+                  fontSize: "1rem",
+                }}
+              >
+                <option value="" disabled>
+                  Consecutive Shifts
+                </option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            </div>
+          </Grid>
+
+          <Grid item xs={12} md={6} xl={4}>
+            <label>Month</label>
+            <div style={{ width: "100%" }}>
+              <DatePicker
+                selected={selectedDate}
+                onChange={(date) => setSelectedDate(date)}
+                showMonthYearPicker
+                dateFormat="MM/yyyy"
+              />
+            </div>
+          </Grid>
         </Grid>
       </MDBox>
+      {errorMessage && (
+        <Typography variant="body2" color="error" style={{ alignSelf: "flex-start" }}>
+          {errorMessage}
+        </Typography>
+      )}
 
-      <MDButton color="info" onClick={handleSubmitButtonClick}>
-        <MDTypography variant="h4" display="flex">
+      <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+        <MDButton color="info" onClick={handleSubmitButtonClick}>
           Create Schedule
-        </MDTypography>
-      </MDButton>
+        </MDButton>
+      </div>
     </div>
   );
 }
