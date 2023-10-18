@@ -1,34 +1,37 @@
 import React from "react";
 
-// example components
+// components
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "components/Footer";
-
-// components
 import MDTypography from "components/MDTypography";
-import Header from "layouts/consultantPages/CreateSchedule/Header";
 import CreateScheduleForm from "layouts/consultantPages/CreateSchedule/CreateScheduleForm";
 import MDBox from "components/MDBox";
+import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
 
 function CreateSchedule() {
   return (
     <DashboardLayout>
       <DashboardNavbar />
-      <Header>
-        <MDBox pt={3} mb={3}>
-          <Grid container spacing={4}>
-            <Grid item xs={10} md={12} lg={10}>
-              <MDBox mt={3}>
-                <CreateScheduleForm />
-              </MDBox>
-            </Grid>
+      <MDTypography variant="h3" display="flex">
+        Create Schedule
+      </MDTypography>
+      <Card
+        sx={{
+          mt: 1,
+          mx: 1,
+          px: 2,
+          pb: 2,
+        }}
+      >
+        <Grid container spacing={4}>
+          <Grid item xs={12} md={12} lg={12}>
+            <CreateScheduleForm />
           </Grid>
-        </MDBox>
-
-        <Footer />
-      </Header>
+        </Grid>
+      </Card>
+      <Footer />
     </DashboardLayout>
   );
 }

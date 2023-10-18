@@ -35,8 +35,7 @@ function CreateScheduleForm() {
 
   return (
     <div className="app">
-      <h4>Number of Doctors needed per day:</h4>
-      <MDBox mt={5} mb={3}>
+      <MDBox mt={2} mb={2}>
         <Grid container spacing={1}>
           <Grid item xs={12} md={6} xl={4}>
             <MDTypography variant="h5" display="flex">
@@ -144,13 +143,11 @@ function CreateScheduleForm() {
         </Grid>
       </MDBox>
 
-      <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-        <MDButton color="info" onClick={handleSubmitButtonClick}>
-          <MDTypography variant="h4" display="flex">
-            Create Schedule
-          </MDTypography>
-        </MDButton>
-      </div>
+      <MDButton color="info" onClick={handleSubmitButtonClick}>
+        <MDTypography variant="h4" display="flex">
+          Create Schedule
+        </MDTypography>
+      </MDButton>
     </div>
   );
 }
