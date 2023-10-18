@@ -51,8 +51,6 @@ function AddingWard() {
       form.maxnumberdoctors === ""
     ) {
       setErrorMessage("*Please enter all the details.");
-    } else if (form.consecutiveshifts == "0") {
-      setErrorMessage("*Consecutive shifts must be at least 2.");
     } else if (form.maxnumberdoctors < 3) {
       setErrorMessage("*Maximun number doctors must be at least 3.");
     } else {

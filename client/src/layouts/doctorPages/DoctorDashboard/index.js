@@ -36,12 +36,11 @@ function DoctorDashboard() {
   const [scheduleData, setScheduleData] = useState("");
   const [wardName, setWardName] = useState("");
 
-  const data = {
-    email: USER_EMAIL,
-    ym: "2023-10",
-  };
-
   useEffect(() => {
+    const data = {
+      email: USER_EMAIL,
+      ym: "2023-10",
+    };
     Axios.post(`${BASE_URL}mainApp/getScheduleForDoctor`, data)
       .then((response) => {
         setScheduleData(response.data["schedule"]);
