@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Axios from "axios";
-
+import Cookies from "js-cookie";
 // MUI
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -76,7 +76,7 @@ export const USER_TYPES = {
   CONSULTANT_USER: "Consultant",
 };
 
-export let USER_TYPE = USER_TYPES.PUBLIC_USER;
+export let USER_TYPE = Cookies.get("userType") || USER_TYPES.PUBLIC_USER;
 export let USER_EMAIL = "";
 
 export function LogOut() {
@@ -93,6 +93,7 @@ export default function LogIn() {
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [typeUser, setTypeUser] = useState(USER_TYPES.PUBLIC_USER);
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -119,10 +120,18 @@ export default function LogIn() {
         email: email,
         password: password,
       };
-
       Axios.post(`${BASE_URL}api/login`, data)
         .then((response) => {
           const userData = response.data;
+          // const tokenData = { token: userData.token, type: userData.USERTYPE };
+          Cookies.set("roster-mate-token", userData.token, {
+            expires: new Date(Date.now() + 1 * 60 * 60 * 1000 * 24 * 30),
+          });
+          Cookies;
+
+          // localStorage.setItem("userType", userData.USERTYPE);
+          // localStorage.setItem("userEmail", email);
+
           console.log("User data:", userData);
           if (userData.isAuthenticated) {
             USER_EMAIL = email;
@@ -140,6 +149,9 @@ export default function LogIn() {
               USER_TYPE = USER_TYPES.PUBLIC_USER;
               navigate("/error");
             }
+            Cookies.set("userType", USER_TYPE, {
+              expires: new Date(Date.now() + 1 * 60 * 60 * 1000 * 24 * 30),
+            });
           } else {
             console.log("Not Authenticated User");
             USER_TYPE = USER_TYPES.PUBLIC_USER;

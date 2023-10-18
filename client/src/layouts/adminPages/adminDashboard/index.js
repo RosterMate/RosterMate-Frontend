@@ -75,7 +75,12 @@ function AdminDashboard() {
             {wardDetails.map((ward, id) => (
               <Grid item xs={12} md={6} lg={3} key={id}>
                 <MDBox mx={1} mb={1} mt={2}>
-                  <WardCard wardName={ward.wardName} count={ward.NoOfDoctors} />
+                  <WardCard
+                    wardName={ward.wardName}
+                    wardNumber={ward.wardNumber}
+                    Doctors={ward.Doctors}
+                    count={ward.NoOfDoctors}
+                  />
                 </MDBox>
               </Grid>
             ))}
@@ -94,7 +99,16 @@ function AdminDashboard() {
             {docDetails.map((user, id) => (
               <Grid key={id} item xs={6} md={3} xl={2}>
                 <MDBox mx={1} mb={1}>
-                  <UserCard img={user.img} name={user.name} description={user.position} />
+                  <UserCard
+                    img={user.img}
+                    name={user.name}
+                    description={user.position}
+                    email={user.email}
+                    address={user.address}
+                    ward={user.wardNumber}
+                    degree={user.Degree}
+                    mobile={user.mobile}
+                  />
                 </MDBox>
               </Grid>
             ))}
@@ -113,7 +127,16 @@ function AdminDashboard() {
             {conDetails.map((user, id) => (
               <Grid key={id} item xs={6} md={3} xl={2}>
                 <MDBox mx={1} mb={1}>
-                  <UserCard img={user.img} name={user.name} description={user.description} />
+                  <UserCard
+                    img={user.img}
+                    name={user.name}
+                    description={user.position}
+                    email={user.email}
+                    address={user.address}
+                    ward={user.wardNumber}
+                    degree={user.Degree}
+                    mobile={user.mobile}
+                  />
                 </MDBox>
               </Grid>
             ))}

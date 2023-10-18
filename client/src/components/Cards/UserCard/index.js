@@ -13,7 +13,7 @@ import MDTypography from "components/MDTypography";
 import defaultImg from "assets/images/profilePictures/DefaultProfilePic.png";
 import ProfileModal from "components/PopupProfile/Popup";
 
-function UserCard({ color, img, name, description }) {
+function UserCard({ color, name, description, img, email, address, ward, degree, mobile }) {
   const [open, setOpen] = useState(false);
 
   const handleViewProfileClick = () => {
@@ -94,6 +94,11 @@ function UserCard({ color, img, name, description }) {
         name={name}
         position={description}
         img={img}
+        email={email}
+        address={address}
+        ward={ward}
+        degree={degree}
+        mobile={mobile}
       />
     </>
   );
