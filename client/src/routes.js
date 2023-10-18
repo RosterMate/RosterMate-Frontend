@@ -16,6 +16,13 @@ import ShiftChangeRequest from "layouts/doctorPages/ShiftChangeRequest";
 
 // @mui icons
 import Icon from "@mui/material/Icon";
+import AddHomeIcon from "@mui/icons-material/AddHomeWork";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import CreateIcon from "@mui/icons-material/Create";
+import GroupsIcon from "@mui/icons-material/Groups";
+import AutoAwesomeMotionIcon from "@mui/icons-material/AutoAwesomeMotion";
+import ChangeCircleIcon from "@mui/icons-material/ChangeCircleOutlined";
+
 export const adminRoutes = [
   {
     type: "collapse",
@@ -29,7 +36,7 @@ export const adminRoutes = [
     type: "collapse",
     name: "Add Ward",
     key: "addWard",
-    icon: <Icon fontSize="small">W</Icon>,
+    icon: <AddHomeIcon />,
     route: "/addWards",
     component: <AddWard />,
   },
@@ -37,7 +44,7 @@ export const adminRoutes = [
     type: "collapse",
     name: "Add Doctor",
     key: "addDoctor",
-    icon: <Icon fontSize="small">D</Icon>,
+    icon: <PersonAddIcon />,
     route: "/addDoctor",
     component: <AddDoctor />,
   },
@@ -45,7 +52,7 @@ export const adminRoutes = [
     type: "collapse",
     name: "Add Consultant",
     key: "addConsultant",
-    icon: <Icon fontSize="small">C</Icon>,
+    icon: <PersonAddIcon />,
     route: "/addConsultant",
     component: <AddConsultant />,
   },
@@ -80,7 +87,7 @@ export const doctorRoutes = [
     type: "collapse",
     name: "Leave Requests",
     key: "leaveRequests",
-    icon: <Icon fontSize="small">Requests</Icon>,
+    icon: <AutoAwesomeMotionIcon />,
     route: "/leaveRequests",
     component: <LeaveRequests />,
   },
@@ -88,7 +95,7 @@ export const doctorRoutes = [
     type: "collapse",
     name: "Shift Changes",
     key: "shiftChanges",
-    icon: <Icon fontSize="small">Change</Icon>,
+    icon: <ChangeCircleIcon />,
     route: "/shiftChanges",
     component: <ShiftChanges />,
   },
@@ -123,7 +130,7 @@ export const consultantRoutes = [
     type: "collapse",
     name: "Create Schedule",
     key: "createSchedule",
-    icon: <Icon fontSize="small">Schedule</Icon>,
+    icon: <CreateIcon />,
     route: "/createSchedule",
     component: <CreateSchedule />,
   },
@@ -131,7 +138,7 @@ export const consultantRoutes = [
     type: "collapse",
     name: "Leave Requests",
     key: "leaverequests",
-    icon: <Icon fontSize="small">R</Icon>,
+    icon: <AutoAwesomeMotionIcon />,
     route: "/grantLeaverequests",
     component: <GrantLeaves />,
   },
@@ -139,7 +146,7 @@ export const consultantRoutes = [
     type: "collapse",
     name: "Shift Changes History",
     key: "shiftchanges",
-    icon: <Icon fontSize="small">notifications</Icon>,
+    icon: <ChangeCircleIcon />,
     route: "/shiftChangesHistory",
     component: <ShiftChanges />,
   },
@@ -147,7 +154,7 @@ export const consultantRoutes = [
     type: "collapse",
     name: "View All Users",
     key: "viewallusers",
-    icon: <Icon fontSize="small">notifications</Icon>,
+    icon: <GroupsIcon />,
     route: "/viewAllUsers",
     component: <ViewUsers />,
   },
