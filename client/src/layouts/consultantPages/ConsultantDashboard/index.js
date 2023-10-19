@@ -148,7 +148,16 @@ function ConsultantDashboard() {
           {docDetails.map((user, id) => (
             <Grid key={id} item xs={6} md={3} xl={2}>
               <MDBox mx={1} mb={1}>
-                <UserCard img={user.img} name={user.name} description={user.position} />
+                <UserCard
+                  img={user.img}
+                  name={user.name}
+                  description={user.position}
+                  email={user.email}
+                  address={user.address}
+                  ward={user.wardNumber}
+                  degree={user.Degree}
+                  mobile={user.mobile}
+                />
               </MDBox>
             </Grid>
           ))}
@@ -167,7 +176,16 @@ function ConsultantDashboard() {
           {conDetails.map((user, id) => (
             <Grid key={id} item xs={6} md={3} xl={2}>
               <MDBox mx={1} mb={1}>
-                <UserCard img={user.img} name={user.name} description={user.position} />
+                <UserCard
+                  img={user.img}
+                  name={user.name}
+                  description={user.position}
+                  email={user.email}
+                  address={user.address}
+                  ward={user.wardNumber}
+                  degree={user.Degree}
+                  mobile={user.mobile}
+                />
               </MDBox>
             </Grid>
           ))}
