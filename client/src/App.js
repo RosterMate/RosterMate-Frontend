@@ -36,6 +36,7 @@ import AddDoctor from "layouts/adminPages/addDoctor";
 import AddConsultant from "layouts/adminPages/addConsultant";
 import DoctorDashboard from "layouts/doctorPages/DoctorDashboard";
 import LeaveRequests from "layouts/doctorPages/LeaveRequests";
+import AllUsers from "layouts/adminPages/allUsers";
 //import ShiftChanges from "layouts/doctorPages/ShiftChanges";
 import ConsultantDashboard from "layouts/consultantPages/ConsultantDashboard";
 import CreateSchedule from "layouts/consultantPages/CreateSchedule";
@@ -174,6 +175,14 @@ export default function App() {
           element={
             <AdminElement>
               <AddConsultant />
+            </AdminElement>
+          }
+        />
+        <Route
+          path="/allUsers"
+          element={
+            <AdminElement>
+              <AllUsers />
             </AdminElement>
           }
         />

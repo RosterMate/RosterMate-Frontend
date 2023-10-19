@@ -53,9 +53,10 @@ function GrantLeaveRequests() {
                     <LeaveRequestCard
                       Status={req.Status}
                       Name={req.Name}
-                      Date={req.Date}
-                      FromTime={req.FromTime}
-                      ToTime={req.ToTime}
+                      FromDate={req.FromDate}
+                      FromShift={req.FromShift}
+                      ToDate={req.ToDate}
+                      ToShift={req.ToShift}
                       Reason={req.Reason}
                     />
                   </MDBox>
@@ -80,9 +81,10 @@ function GrantLeaveRequests() {
                     <LeaveRequestCard
                       Status={req.Status}
                       Name={req.Name}
-                      Date={req.Date}
-                      FromTime={req.FromTime}
-                      ToTime={req.ToTime}
+                      FromDate={req.FromDate}
+                      FromShift={req.FromShift}
+                      ToDate={req.ToDate}
+                      ToShift={req.ToShift}
                       Reason={req.Reason}
                     />
                   </MDBox>

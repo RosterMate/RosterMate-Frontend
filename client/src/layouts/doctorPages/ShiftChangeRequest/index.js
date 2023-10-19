@@ -1,23 +1,39 @@
-// Material Dashboard 2 React components
-import MDBox from "components/MDBox";
+import React from "react";
 
-// Material Dashboard 2 React example components
+// example components
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "components/Footer";
-import MDTypography from "components/MDTypography";
-// Data
+
+// components
+
+import MDBox from "components/MDBox";
+
+import ShiftChangeForm from "layouts/doctorPages/ShiftChangeRequest/ShiftChangeRequestForm";
+// Material Dashboard 2 React example components
+
+// @mui material components
+import Grid from "@mui/material/Grid";
+
+import Header from "./Header";
 
 function ShiftChangeRequest() {
   return (
     <DashboardLayout>
       <DashboardNavbar />
+      <Header>
+        <MDBox pt={3} mb={3}>
+          <Grid container spacing={4}>
+            <Grid item xs={10} md={12} lg={10}>
+              <MDBox mt={3}>
+                <ShiftChangeForm />
+              </MDBox>
+            </Grid>
+          </Grid>
+        </MDBox>
 
-      <MDTypography variant="h3" display="flex">
-        Shift Change Request
-      </MDTypography>
-
-      <Footer />
+        <Footer />
+      </Header>
     </DashboardLayout>
   );
 }
