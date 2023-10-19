@@ -90,7 +90,7 @@ export default function App() {
   return (
     <ThemeProvider theme={darkMode ? themeDark : theme}>
       <CssBaseline />
-      {layout === "dashboard" && pathname !== "/" && (
+      {layout === "dashboard" && pathname !== "/" && pathname !== "/error" && (
         <>
           {USER_TYPE === USER_TYPES.ADMIN_USER && (
             <Sidenav
