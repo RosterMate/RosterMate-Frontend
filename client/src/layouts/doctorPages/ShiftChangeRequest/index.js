@@ -6,11 +6,8 @@ import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "components/Footer";
 
 // components
-
 import MDBox from "components/MDBox";
-
 import ShiftChangeForm from "layouts/doctorPages/ShiftChangeRequest/ShiftChangeRequestForm";
-// Material Dashboard 2 React example components
 
 // @mui material components
 import Grid from "@mui/material/Grid";
