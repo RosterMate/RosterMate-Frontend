@@ -105,7 +105,7 @@ function ShiftChangeForm() {
             </MDTypography>{" "}
           </label>
           <button className="mainbutton1" onClick={handleSubmitButtonClick}>
-            <MDTypography variant="h6" fontWeight="medium" textTransform="capitalize">
+            <MDTypography variant="h6" fontWeight="medium">
               Submit
             </MDTypography>
           </button>

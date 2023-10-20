@@ -28,7 +28,6 @@ import { adminRoutes, doctorRoutes, consultantRoutes } from "./routes";
 
 // React layouts
 import AdminDashboard from "layouts/adminPages/adminDashboard";
-import Notifications from "layouts/doctorPages/notifications";
 import Profile from "layouts/profile";
 import SignIn, { USER_TYPES, USER_TYPE } from "layouts/authentication/sign-in";
 import AddWard from "layouts/adminPages/addWard";
@@ -43,6 +42,7 @@ import CreateSchedule from "layouts/consultantPages/CreateSchedule";
 import AccessRestricted from "layouts/accessRestrictedPage";
 import GrantLeaves from "layouts/consultantPages/GrantLeaves";
 import ShiftChanges from "layouts/consultantPages/ShiftChangesHistory";
+import DocShiftChanges from "layouts/doctorPages/ShiftChanges";
 import ShiftChangeRequest from "layouts/doctorPages/ShiftChangeRequest";
 import ViewUsers from "layouts/consultantPages/ViewAllUsers";
 
@@ -137,14 +137,6 @@ export default function App() {
             </UserElement>
           }
         />
-        <Route
-          path="/notifications"
-          element={
-            <DoctorElement>
-              <Notifications />
-            </DoctorElement>
-          }
-        />
         {/* Admin Pages */}
         <Route
           path="/adminDashboard"
@@ -204,10 +196,10 @@ export default function App() {
           }
         />
         <Route
-          path="/shiftChanges"
+          path="/docShiftChanges"
           element={
             <DoctorElement>
-              <ShiftChanges />
+              <DocShiftChanges />
             </DoctorElement>
           }
         />
