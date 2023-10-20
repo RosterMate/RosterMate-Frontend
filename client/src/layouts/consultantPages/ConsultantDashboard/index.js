@@ -34,7 +34,8 @@ import {
 
 const currentDate = new Date();
 const currentYear = currentDate.getFullYear();
-const currentMonth = currentDate.getMonth();
+const currentMonth = String(currentDate.getMonth() + 1).padStart(2, "0"); // Adding 1 to the month as it is zero-based
+const currentMonth2 = currentDate.getMonth();
 const currentDay = currentDate.getDate();
 
 function ConsultantDashboard() {
@@ -47,8 +48,9 @@ function ConsultantDashboard() {
 
   const data = {
     email: USER_EMAIL,
-    ym: "2023-10",
+    ym: `${currentYear}-${currentMonth}`,
   };
+
   const data2 = {
     email: USER_EMAIL,
     type: USER_TYPE,
@@ -122,7 +124,7 @@ function ConsultantDashboard() {
       >
         <ScheduleComponent
           height="650px"
-          selectedDate={new Date(currentYear, currentMonth, currentDay)}
+          selectedDate={new Date(currentYear, currentMonth2, currentDay)}
           eventSettings={{ dataSource: scheduleData }}
           currentView="Month" // Set the default view to "Month"
         >

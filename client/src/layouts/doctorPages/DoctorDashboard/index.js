@@ -22,14 +22,13 @@ import {
   Agenda,
   Inject,
 } from "@syncfusion/ej2-react-schedule";
-import { DatePickerComponent } from "@syncfusion/ej2-react-calendars";
 
 // eslint-disable-next-line react/destructuring-assignment
-const PropertyPane = (props) => <div className="mt-5">{props.children}</div>;
 
 const currentDate = new Date();
 const currentYear = currentDate.getFullYear();
-const currentMonth = currentDate.getMonth();
+const currentMonth = String(currentDate.getMonth() + 1).padStart(2, "0"); // Adding 1 to the month as it is zero-based
+const currentMonth2 = currentDate.getMonth();
 const currentDay = currentDate.getDate();
 
 function DoctorDashboard() {
@@ -39,7 +38,7 @@ function DoctorDashboard() {
   useEffect(() => {
     const data = {
       email: USER_EMAIL,
-      ym: "2023-10",
+      ym: `${currentYear}-${currentMonth}`,
     };
     Axios.post(`${BASE_URL}mainApp/getScheduleForDoctor`, data)
       .then((response) => {
@@ -76,7 +75,7 @@ function DoctorDashboard() {
       >
         <ScheduleComponent
           height="650px"
-          selectedDate={new Date(currentYear, currentMonth, currentDay)}
+          selectedDate={new Date(currentYear, currentMonth2, currentDay)}
           eventSettings={{ dataSource: scheduleData }}
           currentView="Month" // Set the default view to "Month"
         >

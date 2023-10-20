@@ -72,10 +72,11 @@ function AddingDoctor() {
       setEmailError("");
       setMobileError("");
     } else if (!isEmailValid(form.email)) {
-      setErrorMessage("");
+      setErrorMessage("*Please enter a valid email.");
       setEmailError("*Please enter a valid email.");
+      setMobileError("");
     } else if (form.mobileNo.length !== 10) {
-      setErrorMessage("");
+      setErrorMessage("*Enter a valid mobile number.");
       setEmailError("");
       setMobileError("*Enter a valid mobile number.");
     } else {
