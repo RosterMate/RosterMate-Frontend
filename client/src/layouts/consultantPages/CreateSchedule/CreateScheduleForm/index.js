@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./styles.css";
@@ -8,10 +9,22 @@ import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
 import MDTypography from "components/MDTypography";
 import MDButton from "components/MDButton";
+import PopupModal from "components/PopupModal";
+import BASE_URL from "config/baseUrl";
 
 function CreateScheduleForm() {
+  const [openModal, setOpenModal] = useState(false);
+  const handleCloseModal = () => {
+    setOpenModal(false);
+    setPopupMsg("Schedule will be created for the selected month. This may take a few minutes");
+  };
+  const [popupMsg, setPopupMsg] = useState(
+    "Schedule will be created for the selected month. This may take a few minutes"
+  );
+
   const [selectedDate, setSelectedDate] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
+
   const [form, setForm] = useState({
     shifts: "",
     consecutiveShifts: "",
@@ -45,15 +58,33 @@ function CreateScheduleForm() {
     ) {
       setErrorMessage("*Please enter all the details.");
     } else {
-      setErrorMessage("correct.");
-      setForm({
-        shifts: "",
-        consecutiveShifts: "",
-        number1: "",
-        number2: "",
-        number3: "",
-      });
-      setSelectedDate(null);
+      setOpenModal(true);
+
+      // Send constraints to backend to create schedule
+      Axios.post(`${BASE_URL}mainApp/createSchedule`, { form, month: selectedDate })
+        .then((response) => {
+          if (response.data["message"] === "error") {
+            console.log(response.data["message"]);
+          } else {
+            //console.log("doctorDetails data:", response.data);
+            setPopupMsg("Schedule created successfully!");
+            setErrorMessage("");
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching doctor details:", error);
+          setOpenModal(true);
+          setPopupMsg("Server error. Please try again.");
+        });
+
+      //setForm({
+      //  shifts: "",
+      //  consecutiveShifts: "",
+      //  number1: "",
+      //  number2: "",
+      //  number3: "",
+      //});
+      //setSelectedDate(null);
     }
   };
 
@@ -182,6 +213,7 @@ function CreateScheduleForm() {
           Create Schedule
         </MDButton>
       </div>
+      <PopupModal open={openModal} message={popupMsg} onClose={handleCloseModal} />
     </div>
   );
 }
