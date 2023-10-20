@@ -19,8 +19,8 @@ function CreateSchedule() {
 
       <Card
         sx={{
-          mt: 1,
-          mx: 1,
+          m: 1,
+          mb: 2,
           px: 2,
           pb: 2,
         }}
