@@ -21,20 +21,20 @@ The application uses a combination of React for the frontend, Django for the bac
 
 ## Deployment
 
+#### Web : *https://rostermate-scheduler.web.app*
+
 The application is deployed using the following services:
 
-#### Web : *https://rostermate-scheduler.web.app*
 - Frontend: Firebase
 - Backend: Heroku
 - Database: MongoDB
 
-
 To run this application locally, follow these steps:
 
 1. Clone the frontend repository:
-```
-git clone https://github.com/RosterMate/RosterMate-Frontend.git
-```
+  ```
+  git clone https://github.com/RosterMate/RosterMate-Frontend.git
+  ```
 
 2. Set up the frontend:
 - Navigate to the `frontend` directory.
