@@ -33,7 +33,7 @@ function AddingConsultant() {
     Axios.post(`${BASE_URL}mainApp/sendWardDetails`)
       .then((response) => {
         setWardNumbers(response.data);
-        console.log(response.data);
+        //console.log(response.data);
       })
       .catch((error) => {
         console.error("Error fetching ward numbers:", error);

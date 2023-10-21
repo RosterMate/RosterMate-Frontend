@@ -106,7 +106,7 @@ function LeaveRequests() {
       Axios.post(`${BASE_URL}mainApp/docLeaveReq`, data2)
         .then((response) => {
           if (response.data["status"] === "success") {
-            console.log("message:", response.data["message"]);
+            //console.log("message:", response.data["message"]);
             setOpenModal(true);
             setFromDate("");
             setFromShift("");

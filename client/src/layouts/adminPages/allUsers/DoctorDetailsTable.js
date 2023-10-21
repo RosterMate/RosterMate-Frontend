@@ -52,7 +52,7 @@ function DoctorDetailsTable() {
           console.log(response1.data["message"]);
         } else {
           setOriginalData(response1.data);
-          console.log("doctorDetails data:", response1.data);
+          //console.log("doctorDetails data:", response1.data);
         }
       })
       .catch((error) => {

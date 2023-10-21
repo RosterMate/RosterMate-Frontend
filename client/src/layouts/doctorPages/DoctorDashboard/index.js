@@ -65,7 +65,7 @@ function DoctorDashboard() {
           backgroundColor: "white",
           borderRadius: "1.5rem", // 3xl rounded corners
           // You can adjust these values for different screen sizes
-          "@media (min-width: 768px)": {
+          "@media (minWidth: 768px)": {
             margin: "10px",
             padding: "10px",
             marginTop: "24px",
