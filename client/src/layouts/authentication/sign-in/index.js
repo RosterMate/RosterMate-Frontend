@@ -77,7 +77,7 @@ export const USER_TYPES = {
 };
 
 export let USER_TYPE = Cookies.get("userType") || USER_TYPES.PUBLIC_USER;
-export let USER_EMAIL = "";
+export let USER_EMAIL = Cookies.get("userEmail") || "";
 
 export function LogOut() {
   USER_TYPE = USER_TYPES.PUBLIC_USER;
@@ -93,7 +93,6 @@ export default function LogIn() {
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [typeUser, setTypeUser] = useState(USER_TYPES.PUBLIC_USER);
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -150,6 +149,9 @@ export default function LogIn() {
               navigate("/error");
             }
             Cookies.set("userType", USER_TYPE, {
+              expires: new Date(Date.now() + 1 * 60 * 60 * 1000 * 24 * 30),
+            });
+            Cookies.set("userEmail", USER_EMAIL, {
               expires: new Date(Date.now() + 1 * 60 * 60 * 1000 * 24 * 30),
             });
           } else {

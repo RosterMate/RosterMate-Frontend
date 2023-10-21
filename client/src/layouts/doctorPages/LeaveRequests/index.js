@@ -205,7 +205,7 @@ function LeaveRequests() {
           )}
           <div style={{ margin: "auto", textAlign: "center" }}>
             <MDButton variant="gradient" color="info" onClick={handleSubmit}>
-              Accept
+              Request
             </MDButton>
           </div>
         </form>

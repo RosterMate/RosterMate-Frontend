@@ -1,6 +1,5 @@
 // React layouts
 import AdminDashboard from "layouts/adminPages/adminDashboard";
-import Notifications from "layouts/doctorPages/notifications";
 import Profile from "layouts/profile";
 import AddWard from "layouts/adminPages/addWard";
 import AddDoctor from "layouts/adminPages/addDoctor";
@@ -11,6 +10,7 @@ import ConsultantDashboard from "layouts/consultantPages/ConsultantDashboard";
 import CreateSchedule from "layouts/consultantPages/CreateSchedule";
 import GrantLeaves from "layouts/consultantPages/GrantLeaves";
 import ShiftChanges from "layouts/consultantPages/ShiftChangesHistory";
+import DocShiftChanges from "layouts/doctorPages/ShiftChanges";
 import ViewUsers from "layouts/consultantPages/ViewAllUsers";
 import ShiftChangeRequest from "layouts/doctorPages/ShiftChangeRequest";
 import AllUsers from "layouts/adminPages/allUsers";
@@ -86,14 +86,6 @@ export const doctorRoutes = [
   },
   {
     type: "collapse",
-    name: "Notifications",
-    key: "notifications",
-    icon: <Icon fontSize="small">notifications</Icon>,
-    route: "/notifications",
-    component: <Notifications />,
-  },
-  {
-    type: "collapse",
     name: "Leave Requests",
     key: "leaveRequests",
     icon: <AutoAwesomeMotionIcon />,
@@ -103,11 +95,12 @@ export const doctorRoutes = [
   {
     type: "collapse",
     name: "Shift Changes",
-    key: "shiftChanges",
+    key: "ShiftChanges",
     icon: <ChangeCircleIcon />,
-    route: "/shiftChanges",
-    component: <ShiftChanges />,
+    route: "/docShiftChanges",
+    component: <DocShiftChanges />,
   },
+
   {
     type: "collapse",
     name: "Shift Change Request",
