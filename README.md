@@ -2,7 +2,8 @@
 
 ## Project Overview
 
-RosterMate is a mobile-optimized web application developed as a group project by members @thejanb, B, and C in October 2023. It is designed to assist hospitals in creating and managing schedules for healthcare professionals.
+RosterMate is a mobile-optimized web application developed as a group project by members @thejanb, Sithum, and Ishan in October 2023. It is designed to assist hospitals in creating and managing schedules for healthcare professionals.
+
 
 The application uses a combination of React for the frontend, Django for the backend, and MongoDB for the database. Firebase is used to host the frontend, while the backend is deployed on Heroku. MongoDB provides the database storage.
 
@@ -16,9 +17,6 @@ The application uses a combination of React for the frontend, Django for the bac
 - Detailed testing and validation to ensure accuracy and reliability.
 - Deployment on Firebase for the frontend, Heroku for the backend, and MongoDB for data storage.
 
-## Getting Started
-
-
 ## Deployment
 
 #### Web : *https://rostermate-scheduler.web.app*
@@ -28,6 +26,8 @@ The application is deployed using the following services:
 - Frontend: Firebase
 - Backend: Heroku
 - Database: MongoDB
+
+## Getting Started
 
 To run this application locally, follow these steps:
 
@@ -86,12 +86,12 @@ This project is licensed under the [MIT License](LICENSE).
 
 If you have questions or need assistance, you can contact the project developers:
 
-- Thejan Weerasekara :
-    -- thejanbweerasekara@gmail.com
-    -- www.linkedin.com/in/thejan-weerasekara
-    -- github.com/ThejanB
-- Sithum Vihanga
-- Ishan
+- **Thejan Weerasekara:**
+    - Email: thejanbweerasekara@gmail.com
+    - LinkedIn: [www.linkedin.com/in/thejan-weerasekara](https://www.linkedin.com/in/thejan-weerasekara)
+    - GitHub: [github.com/ThejanB](https://github.com/ThejanB)
+- **Sithum Vihanga**
+- **Ishan**
 
 Feel free to reach out with any inquiries or feedback.
 
