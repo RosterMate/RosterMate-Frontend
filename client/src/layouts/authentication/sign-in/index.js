@@ -131,7 +131,7 @@ export default function LogIn() {
           // localStorage.setItem("userType", userData.USERTYPE);
           // localStorage.setItem("userEmail", email);
 
-          console.log("User data:", userData);
+          //console.log("User data:", userData);
           if (userData.isAuthenticated) {
             USER_EMAIL = email;
             if (userData.USERTYPE === "Admin") {
@@ -144,7 +144,7 @@ export default function LogIn() {
               USER_TYPE = USER_TYPES.CONSULTANT_USER;
               navigate("/consultantDashboard");
             } else {
-              console.log("Login type error");
+              //console.log("Login type error");
               USER_TYPE = USER_TYPES.PUBLIC_USER;
               navigate("/error");
             }
@@ -155,7 +155,7 @@ export default function LogIn() {
               expires: new Date(Date.now() + 1 * 60 * 60 * 1000 * 24 * 30),
             });
           } else {
-            console.log("Not Authenticated User");
+            //console.log("Not Authenticated User");
             USER_TYPE = USER_TYPES.PUBLIC_USER;
             setPasswordError("*Please login as a valid user to get Access.");
           }

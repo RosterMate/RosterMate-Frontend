@@ -50,7 +50,7 @@ function ProfileCard({ img, name, email, position, address, information, mobile 
           setIsEditing(false);
           // HAVE TO CHANGE USER EMAIL HERE
           //USER_EMAIL = user.Email;
-          console.log(USER_EMAIL);
+          //console.log(USER_EMAIL);
         })
         .catch((error) => {
           console.error("Error when changing details:", error);
@@ -197,7 +197,7 @@ ProfileCard.propTypes = {
   email: PropTypes.string.isRequired,
   position: PropTypes.string.isRequired,
   address: PropTypes.string.isRequired,
-  information: PropTypes.string.isRequired,
+  information: PropTypes.string,
   mobile: PropTypes.string.isRequired,
 };
 
