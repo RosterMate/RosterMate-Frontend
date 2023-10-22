@@ -7,13 +7,6 @@ RosterMate is a mobile-optimized web application developed as a group project by
 
 The application uses a combination of React for the frontend, Django for the backend, and MongoDB for the database. Firebase is used to host the frontend, while the backend is deployed on Heroku. MongoDB provides the database storage.
 
-#### Mobile View
-![Mobile View](https://github.com/RosterMate/RosterMate-Frontend/assets/92569392/46711b48-766d-4e9c-b371-13c6f1c9b9da)
-
-#### Desktop View
-![Desktop View](https://github.com/RosterMate/RosterMate-Frontend/assets/92569392/136c82d4-50fb-41f6-af09-3c58599ce358)
-
-
 ## Features
 
 - Define and manage scheduling constraints.
@@ -85,10 +78,6 @@ Contributions are welcome! If you'd like to contribute to RosterMate, please fol
 3. Make your changes and test them.
 4. Submit a pull request.
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
 ## Contact
 
 If you have questions or need assistance, you can contact the project developers:
@@ -104,6 +93,16 @@ If you have questions or need assistance, you can contact the project developers
 - **Ishan**
 
 Feel free to reach out with any inquiries or feedback.
+
+#### Mobile View
+![Mobile View](https://github.com/RosterMate/RosterMate-Frontend/assets/92569392/20fcf982-45d0-4ada-aeab-8676d52837dc)
+
+#### Desktop View
+![Desktop View](https://github.com/RosterMate/RosterMate-Frontend/assets/92569392/136c82d4-50fb-41f6-af09-3c58599ce358)
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
 
 Thank you!
 
