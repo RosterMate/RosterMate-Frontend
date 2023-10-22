@@ -187,7 +187,22 @@ export default function LogIn() {
           >
             <Typography
               variant="h2"
-              style={{ fontWeight: "bold", alignSelf: "flex-start" }}
+              style={{
+                fontWeight: "bold",
+                alignSelf: "flex-start",
+                fontFamily: "Georgia, sans-serif",
+              }}
+              sx={{ mb: 0 }}
+            >
+              Roster Mate
+            </Typography>
+            <Typography
+              variant="h4"
+              style={{
+                fontFamily: "Georgia, sans-serif",
+                fontWeight: "bold",
+                alignSelf: "flex-start",
+              }}
               sx={{ mb: 3 }}
             >
               Login
