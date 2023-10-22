@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 
 // prop-types is a library for typechecking of props
-import PropTypes from "prop-types";
+import PropTypes, { number, string } from "prop-types";
 
 // Custom styles for MDBox
 import MDBoxRoot from "components/MDBox/MDBoxRoot";
@@ -33,7 +33,7 @@ MDBox.propTypes = {
   bgColor: PropTypes.string,
   color: PropTypes.string,
   opacity: PropTypes.number,
-  borderRadius: PropTypes.string,
+  borderRadius: PropTypes.oneOf([number, string, "none"]),
   shadow: PropTypes.string,
   coloredShadow: PropTypes.oneOf([
     "primary",

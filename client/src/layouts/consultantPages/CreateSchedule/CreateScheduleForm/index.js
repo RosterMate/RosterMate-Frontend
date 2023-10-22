@@ -64,7 +64,7 @@ function CreateScheduleForm({ numDoc }) {
     } else if (form.number1 < 0 || form.number2 < 0 || form.number3 < 0) {
       setErrorMessage("*Number of doctors cannot be negative.");
     } else {
-      console.log("form:", form.number1, numDoc);
+      //console.log("form:", form.number1, numDoc);
       setPopupMsg("Creating Schedule...");
       setOpenModal(true);
 
