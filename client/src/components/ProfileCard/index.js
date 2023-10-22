@@ -13,6 +13,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import MDButton from "../MDButton";
 import { isEmailValid } from "../../helpers/validators";
 import { USER_EMAIL } from "layouts/authentication/sign-in";
+import PasswoedChange from "components/PasswordChange";
 
 // base url for the backend
 import BASE_URL from "config/baseUrl";
@@ -62,6 +63,15 @@ function ProfileCard({ img, name, email, position, address, information, mobile 
     const { name, value } = event.target;
     setUser({ ...user, [name]: value });
   };
+  const [open, setOpen] = useState(false);
+
+  const handleChangePassword = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   // styles for the text based on the editing modes
   const textStyles = {
@@ -86,7 +96,6 @@ function ProfileCard({ img, name, email, position, address, information, mobile 
           </Box>
         )}
       </div>
-
       <img
         src={img ? img : defaultImg}
         alt={name}
@@ -104,9 +113,9 @@ function ProfileCard({ img, name, email, position, address, information, mobile 
             label="Email"
             name="Email"
             fullWidth
+            disabled
             value={user.Email}
-            onChange={handleChange}
-            disabled={!isEditing}
+            //onChange={handleChange}
             InputProps={{
               style: textStyles,
             }}
@@ -119,7 +128,7 @@ function ProfileCard({ img, name, email, position, address, information, mobile 
               name="Position"
               fullWidth
               value={user.Position}
-              onChange={handleChange}
+              //onChange={handleChange}
               disabled
               InputProps={{
                 style: textStyles,
@@ -158,19 +167,27 @@ function ProfileCard({ img, name, email, position, address, information, mobile 
             }}
           />
         </div>
-        <div style={{ marginTop: "1rem" }}>
-          <TextField
-            label="More Information"
-            name="Information"
-            fullWidth
-            value={user.Information}
-            onChange={handleChange}
-            disabled={!isEditing}
-            InputProps={{
-              style: textStyles,
-            }}
-          />
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <div style={{ marginTop: "1rem", width: "49%" }}>
+            <TextField
+              label="More Information"
+              name="Information"
+              fullWidth
+              value={user.Information}
+              onChange={handleChange}
+              disabled={!isEditing}
+              InputProps={{
+                style: textStyles,
+              }}
+            />
+          </div>
+          <div style={{ marginTop: "1rem", width: "49%" }}>
+            <MDButton onClick={handleChangePassword} fullWidth color="info">
+              Change Password
+            </MDButton>
+          </div>
         </div>
+
         {errorMsg && (
           <Typography variant="body2" color="error" style={{ alignSelf: "flex-start" }}>
             {errorMsg}
@@ -184,6 +201,12 @@ function ProfileCard({ img, name, email, position, address, information, mobile 
           </div>
         )}
       </div>
+      <PasswoedChange
+        open={open}
+        handleClose={handleClose}
+        message="Password changed successfully"
+      />
+      ;
     </Card>
   );
 }
