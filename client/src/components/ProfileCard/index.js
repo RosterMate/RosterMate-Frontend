@@ -30,6 +30,10 @@ function ProfileCard({ img, name, email, position, address, Specialization, mobi
     Specialization: Specialization,
     Type: USER_TYPE,
   };
+  const handleImageUpload = (event) => {
+    const selectedFile = event.target.files[0];
+    // mathod to upload profile picture
+  };
 
   const [user, setUser] = useState(initialUser);
   const [isEditing, setIsEditing] = useState(false);
@@ -107,6 +111,29 @@ function ProfileCard({ img, name, email, position, address, Specialization, mobi
           alignSelf: "center",
         }}
       />
+      {isEditing && (
+        <div
+          style={{
+            marginTop: "1rem",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Typography variant="body4" style={{ alignSelf: "flex-start" }}>
+            Upload a new profile picture :
+          </Typography>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleImageUpload}
+              disabled={!isEditing}
+            />
+          </div>
+        </div>
+      )}
+
       <div style={{ marginTop: "1rem" }}>
         <div>
           <TextField
