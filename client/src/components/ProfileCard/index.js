@@ -12,7 +12,7 @@ import EditIcon from "@mui/icons-material/Edit";
 // components and helpers
 import MDButton from "../MDButton";
 import { isEmailValid } from "../../helpers/validators";
-import { USER_EMAIL } from "layouts/authentication/sign-in";
+import { USER_EMAIL, USER_TYPE } from "layouts/authentication/sign-in";
 import PasswoedChange from "components/PasswordChange";
 
 // base url for the backend
@@ -21,13 +21,14 @@ import BASE_URL from "config/baseUrl";
 //images
 import defaultImg from "assets/images/profilePictures/DefaultProfilePic.png";
 
-function ProfileCard({ img, name, email, position, address, information, mobile }) {
+function ProfileCard({ img, name, email, position, address, Specialization, mobile }) {
   const initialUser = {
     Email: email,
     Position: position,
     Mobile: mobile,
     Address: address,
-    Information: information,
+    Specialization: Specialization,
+    Type: USER_TYPE,
   };
 
   const [user, setUser] = useState(initialUser);
@@ -48,10 +49,10 @@ function ProfileCard({ img, name, email, position, address, information, mobile 
 
       Axios.post(`${BASE_URL}mainApp/changeData`, user)
         .then((response) => {
+          if (response.data["msg"] === "error") {
+            alert("Error when changing details");
+          }
           setIsEditing(false);
-          // HAVE TO CHANGE USER EMAIL HERE
-          //USER_EMAIL = user.Email;
-          //console.log(USER_EMAIL);
         })
         .catch((error) => {
           console.error("Error when changing details:", error);
@@ -170,10 +171,10 @@ function ProfileCard({ img, name, email, position, address, information, mobile 
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <div style={{ marginTop: "1rem", width: "49%" }}>
             <TextField
-              label="More Information"
-              name="Information"
+              label="Specialization"
+              name="Specialization"
               fullWidth
-              value={user.Information}
+              value={user.Specialization}
               onChange={handleChange}
               disabled={!isEditing}
               InputProps={{
@@ -206,7 +207,6 @@ function ProfileCard({ img, name, email, position, address, information, mobile 
         handleClose={handleClose}
         message="Password changed successfully"
       />
-      ;
     </Card>
   );
 }
@@ -220,7 +220,7 @@ ProfileCard.propTypes = {
   email: PropTypes.string.isRequired,
   position: PropTypes.string.isRequired,
   address: PropTypes.string.isRequired,
-  information: PropTypes.string,
+  Specialization: PropTypes.string,
   mobile: PropTypes.string.isRequired,
 };
 
