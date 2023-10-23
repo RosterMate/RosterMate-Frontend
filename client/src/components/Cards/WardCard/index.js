@@ -75,7 +75,13 @@ function WardCard({ color, wardName, wardNumber, Doctors, count, icon }) {
             p={0.5}
             width="8rem"
           >
-            <MDTypography variant="button" display="flex" fontWeight="regular" onClick={openModal}>
+            <MDTypography
+              variant="button"
+              display="flex"
+              fontWeight="regular"
+              onClick={openModal}
+              style={{ cursor: "pointer" }}
+            >
               View Details
             </MDTypography>
           </MDBox>

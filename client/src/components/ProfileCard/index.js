@@ -30,10 +30,6 @@ function ProfileCard({ img, name, email, position, address, Specialization, mobi
     Specialization: Specialization,
     Type: USER_TYPE,
   };
-  const handleImageUpload = (event) => {
-    const selectedFile = event.target.files[0];
-    // mathod to upload profile picture
-  };
 
   const [user, setUser] = useState(initialUser);
   const [isEditing, setIsEditing] = useState(false);
@@ -43,6 +39,14 @@ function ProfileCard({ img, name, email, position, address, Specialization, mobi
     setIsEditing(true);
   };
 
+  const formData = new FormData();
+
+  const handleImageUpload = (event) => {
+    const selectedFile = event.target.files[0];
+    formData.append("image", selectedFile);
+    formData.append("email", USER_EMAIL);
+    formData.append("type", USER_TYPE);
+  };
   const handleSaveClick = () => {
     if (!isEmailValid(user.Email)) {
       setErrorMsg("Enter a valid email address*");
@@ -61,6 +65,18 @@ function ProfileCard({ img, name, email, position, address, Specialization, mobi
         .catch((error) => {
           console.error("Error when changing details:", error);
         });
+    }
+    console.log(formData);
+    if (formData !== null) {
+      Axios.post(`${BASE_URL}mainApp/uploadImg`, formData)
+        .then((response) => {
+          console.log(response.data["msg"]);
+        })
+        .catch((error) => {
+          console.error("Error when uploading image:", error);
+        });
+    } else {
+      console.log("No image selected");
     }
   };
 
