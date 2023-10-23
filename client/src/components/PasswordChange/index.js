@@ -116,12 +116,13 @@ function passwordChange({ open, message, handleClose }) {
           {errorMessage}
         </Typography>
       )}
-      <Button onClick={handleClose} color="primary" autoFocus>
-        Calcel
-      </Button>
       <Button onClick={handleOk} color="primary" autoFocus>
         OK
       </Button>
+      <Button onClick={handleClose} color="primary" autoFocus>
+        Cancel
+      </Button>
+
       <PopupModal
         open={openModal2}
         message="Details are not correct. Password cannot change."
