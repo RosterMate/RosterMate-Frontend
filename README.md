@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-RosterMate is a mobile-optimized web application developed as a group project by members [Thejan](https://github.com/thejanb), Sithum, and Ishan in October 2023. It is designed to assist hospitals in creating and managing schedules for healthcare professionals.
+RosterMate is a mobile-optimized web application developed as a group project by members [Thejan](https://github.com/thejanb), [Sithum](https://github.com/SVGamage), and [Ishan](https://github.com/IshanWarshamana) in October 2023. It is designed to assist hospitals in creating and managing schedules for healthcare professionals.
 
 
 The application uses a combination of React for the frontend, Django for the backend, and MongoDB for the database. Firebase is used to host the frontend, while the backend is deployed on Heroku. MongoDB provides the database storage.
@@ -78,10 +78,6 @@ Contributions are welcome! If you'd like to contribute to RosterMate, please fol
 3. Make your changes and test them.
 4. Submit a pull request.
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
 ## Contact
 
 If you have questions or need assistance, you can contact the project developers:
@@ -91,9 +87,23 @@ If you have questions or need assistance, you can contact the project developers
     - LinkedIn: [linkedin.com/in/thejan-weerasekara](https://www.linkedin.com/in/thejan-weerasekara)
     - GitHub: [github.com/ThejanB](https://github.com/ThejanB)
 - **Sithum Vihanga**
+    - Email: [sithumvgamage@gmail.com](mailto:sithumvgamage@gmail.com)
+    - LinkedIn: [linkedin.com/in/sithum-vihanga](https://www.linkedin.com/in/sithum-vihanga/)
+    - GitHub: [github.com/SVGamage](https://github.com/SVGamage)
 - **Ishan**
+    - GitHub: [github.com/IshanWarshamana](https://github.com/IshanWarshamana)
 
 Feel free to reach out with any inquiries or feedback.
+
+#### Mobile View
+![Mobile View](https://github.com/RosterMate/RosterMate-Frontend/assets/92569392/20fcf982-45d0-4ada-aeab-8676d52837dc)
+
+#### Desktop View
+![Desktop View](https://github.com/RosterMate/RosterMate-Frontend/assets/92569392/136c82d4-50fb-41f6-af09-3c58599ce358)
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
 
 Thank you!
 

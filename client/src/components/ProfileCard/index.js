@@ -12,7 +12,8 @@ import EditIcon from "@mui/icons-material/Edit";
 // components and helpers
 import MDButton from "../MDButton";
 import { isEmailValid } from "../../helpers/validators";
-import { USER_EMAIL } from "layouts/authentication/sign-in";
+import { USER_EMAIL, USER_TYPE } from "layouts/authentication/sign-in";
+import PasswoedChange from "components/PasswordChange";
 
 // base url for the backend
 import BASE_URL from "config/baseUrl";
@@ -20,13 +21,18 @@ import BASE_URL from "config/baseUrl";
 //images
 import defaultImg from "assets/images/profilePictures/DefaultProfilePic.png";
 
-function ProfileCard({ img, name, email, position, address, information, mobile }) {
+function ProfileCard({ img, name, email, position, address, Specialization, mobile }) {
   const initialUser = {
     Email: email,
     Position: position,
     Mobile: mobile,
     Address: address,
-    Information: information,
+    Specialization: Specialization,
+    Type: USER_TYPE,
+  };
+  const handleImageUpload = (event) => {
+    const selectedFile = event.target.files[0];
+    // mathod to upload profile picture
   };
 
   const [user, setUser] = useState(initialUser);
@@ -47,10 +53,10 @@ function ProfileCard({ img, name, email, position, address, information, mobile 
 
       Axios.post(`${BASE_URL}mainApp/changeData`, user)
         .then((response) => {
+          if (response.data["msg"] === "error") {
+            alert("Error when changing details");
+          }
           setIsEditing(false);
-          // HAVE TO CHANGE USER EMAIL HERE
-          //USER_EMAIL = user.Email;
-          //console.log(USER_EMAIL);
         })
         .catch((error) => {
           console.error("Error when changing details:", error);
@@ -61,6 +67,15 @@ function ProfileCard({ img, name, email, position, address, information, mobile 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setUser({ ...user, [name]: value });
+  };
+  const [open, setOpen] = useState(false);
+
+  const handleChangePassword = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
   };
 
   // styles for the text based on the editing modes
@@ -86,7 +101,6 @@ function ProfileCard({ img, name, email, position, address, information, mobile 
           </Box>
         )}
       </div>
-
       <img
         src={img ? img : defaultImg}
         alt={name}
@@ -97,6 +111,29 @@ function ProfileCard({ img, name, email, position, address, information, mobile 
           alignSelf: "center",
         }}
       />
+      {isEditing && (
+        <div
+          style={{
+            marginTop: "1rem",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Typography variant="body4" style={{ alignSelf: "flex-start" }}>
+            Upload a new profile picture :
+          </Typography>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleImageUpload}
+              disabled={!isEditing}
+            />
+          </div>
+        </div>
+      )}
+
       <div style={{ marginTop: "1rem" }}>
         <div>
           <TextField
@@ -104,9 +141,9 @@ function ProfileCard({ img, name, email, position, address, information, mobile 
             label="Email"
             name="Email"
             fullWidth
+            disabled
             value={user.Email}
-            onChange={handleChange}
-            disabled={!isEditing}
+            //onChange={handleChange}
             InputProps={{
               style: textStyles,
             }}
@@ -119,7 +156,7 @@ function ProfileCard({ img, name, email, position, address, information, mobile 
               name="Position"
               fullWidth
               value={user.Position}
-              onChange={handleChange}
+              //onChange={handleChange}
               disabled
               InputProps={{
                 style: textStyles,
@@ -158,19 +195,27 @@ function ProfileCard({ img, name, email, position, address, information, mobile 
             }}
           />
         </div>
-        <div style={{ marginTop: "1rem" }}>
-          <TextField
-            label="More Information"
-            name="Information"
-            fullWidth
-            value={user.Information}
-            onChange={handleChange}
-            disabled={!isEditing}
-            InputProps={{
-              style: textStyles,
-            }}
-          />
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <div style={{ marginTop: "1rem", width: "49%" }}>
+            <TextField
+              label="Specialization"
+              name="Specialization"
+              fullWidth
+              value={user.Specialization}
+              onChange={handleChange}
+              disabled={!isEditing}
+              InputProps={{
+                style: textStyles,
+              }}
+            />
+          </div>
+          <div style={{ marginTop: "1rem", width: "49%" }}>
+            <MDButton onClick={handleChangePassword} fullWidth color="info">
+              Change Password
+            </MDButton>
+          </div>
         </div>
+
         {errorMsg && (
           <Typography variant="body2" color="error" style={{ alignSelf: "flex-start" }}>
             {errorMsg}
@@ -184,6 +229,11 @@ function ProfileCard({ img, name, email, position, address, information, mobile 
           </div>
         )}
       </div>
+      <PasswoedChange
+        open={open}
+        handleClose={handleClose}
+        message="Password changed successfully"
+      />
     </Card>
   );
 }
@@ -197,7 +247,7 @@ ProfileCard.propTypes = {
   email: PropTypes.string.isRequired,
   position: PropTypes.string.isRequired,
   address: PropTypes.string.isRequired,
-  information: PropTypes.string,
+  Specialization: PropTypes.string,
   mobile: PropTypes.string.isRequired,
 };
 

@@ -63,7 +63,7 @@ function Profile() {
                 email={USER_EMAIL}
                 position={details.position}
                 address={details.address}
-                information={details.Specialization}
+                Specialization={details.Specialization}
                 mobile={details.mobile}
               />
             )}

@@ -18,19 +18,24 @@ function ShiftChangeRequest() {
   return (
     <DashboardLayout>
       <DashboardNavbar />
+
+      <MDTypography variant="h3" display="flex">
+        Shift Change Request From
+      </MDTypography>
       <Card
         sx={{
-          m: 1,
-          p: 2,
+          m: "auto",
+          p: 3,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+        style={{
+          width: window.innerWidth <= 800 ? "100%" : "50%",
         }}
       >
-        <MDTypography variant="h3" display="flex">
-          Shift Change Request From
-        </MDTypography>
-
-        <MDBox mb={3}>
-          <ShiftChangeForm />
-        </MDBox>
+        <ShiftChangeForm />
       </Card>
       <Footer />
     </DashboardLayout>

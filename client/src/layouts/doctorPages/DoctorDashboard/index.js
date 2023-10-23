@@ -63,13 +63,12 @@ function DoctorDashboard() {
         style={{
           padding: "1rem",
           backgroundColor: "white",
-          borderRadius: "1.5rem", // 3xl rounded corners
-          // You can adjust these values for different screen sizes
+          borderRadius: "1.5rem",
           "@media (minWidth: 768px)": {
             margin: "10px",
             padding: "10px",
             marginTop: "24px",
-            borderRadius: "1.5rem", // 3xl rounded corners for larger screens
+            borderRadius: "1.5rem",
           },
         }}
       >

@@ -34,7 +34,7 @@
 .accountsettings .form .form-group {
   display: flex;
   flex-direction: column;
-  width: 45%;
+  width: 90%;
   margin: 8px;
 }
 .accountsettings .form .form-group label {
