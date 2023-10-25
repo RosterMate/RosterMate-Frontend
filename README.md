@@ -9,7 +9,7 @@ The application uses a combination of React for the frontend, Django for the bac
 
 ## YouTube demonstrating video 
 
-[https://youtu.be/jndi202d4PQ?si=H9p_l9tPqgkzv-Rk](https://youtu.be/jndi202d4PQ?si=H9p_l9tPqgkzv-Rk)
+[RosterMate - Constraint Based Roster Scheduler](https://youtu.be/jndi202d4PQ?si=H9p_l9tPqgkzv-Rk)
 
 ## Features
 
