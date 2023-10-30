@@ -95,6 +95,8 @@ If you have questions or need assistance, you can contact the project developers
     - LinkedIn: [linkedin.com/in/sithum-vihanga](https://www.linkedin.com/in/sithum-vihanga/)
     - GitHub: [github.com/SVGamage](https://github.com/SVGamage)
 - **Ishan**
+    - Email: [ishanwarshamana@gmail.com(mailto:ishanwarshamana@gmail.com)
+    - LinkedIn: [linkedin.com/in/ishan-warshamana](https://www.linkedin.com/in/ishan-warshamana-60b5a7233/)
     - GitHub: [github.com/IshanWarshamana](https://github.com/IshanWarshamana)
 
 Feel free to reach out with any inquiries or feedback.
